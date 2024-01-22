@@ -34,9 +34,9 @@
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command "my-hello" to your
     # # environment:
-    # (pkgs.writeShellScriptBin "reload" ''
-    #   nix run home-manager/release-${stateVersion} -- switch
-    # '')
+    (pkgs.writeShellScriptBin "reload" ''
+      nix run home-manager/release-${config.home.stateVersion} -- switch
+    '')
   ];
 
   editorconfig = {
@@ -90,16 +90,22 @@
   };
 
   home.shellAliases = {
-    reload = "nix run home-manager/release-${config.home.stateVersion} -- switch";
-
     ".."    = "cd ..";
     "..."   = "cd ../..";
     "...."  = "cd ../../..";
     "....." = "cd ../../../..";
 
+    # TODO: Overwrite oh-my-zsh aliases for these to take effect
     la = "eza -la";
     ls = "eza -l";
     l  = "eza";
+
+    dl = "cd ~/Downloads";
+    dt = "cd ~/Desktop";
+
+    g = "git";
+    h = "history";
+    j = "jobs";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
