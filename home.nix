@@ -23,6 +23,7 @@
     # pkgs.hello
     pkgs.nodejs_21
     pkgs.git
+    pkgs.eza
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don"t forget the
@@ -90,6 +91,15 @@
 
   home.shellAliases = {
     reload = "nix run home-manager/release-${config.home.stateVersion} -- switch";
+
+    ".."    = "cd ..";
+    "..."   = "cd ../..";
+    "...."  = "cd ../../..";
+    "....." = "cd ../../../..";
+
+    la = "eza -la";
+    ls = "eza -l";
+    l  = "eza";
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
