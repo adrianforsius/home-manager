@@ -1,11 +1,11 @@
-# { config, pkgs, extraSpecialArgs, ... }:
-{ config, pkgs, ... }:
+{ config, pkgs, specialArgs, ... }:
+# { config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "adrianforsius";
-  # home.username = extraSpecialArgs.user.name;
+  # home.username = "adrianforsius";
+  home.username = specialArgs.user.name;
 
   # home.homeDirectory = extraSpecialArgs.user.home;
   home.homeDirectory = "/home/adrianforsius";

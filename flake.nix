@@ -20,14 +20,14 @@
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
-      # extraSpecialArgs = {
-      #   host = "adrian";
-      #   user = {
-      #     name = "adrianforsius";
-      #     home = "/home/adrianforsius";
-      #   };
-      #   load = "./linux.nix";
-      # };
+      extraSpecialArgs = {
+        host = "adrian";
+        user = {
+          name = "adrianforsius";
+          home = "/home/adrianforsius";
+        };
+        load = "./linux.nix";
+      };
     };
     # homeConfigurations."adrianforsius-macos" = home-manager.lib.homeManagerConfiguration {
     #   pkgs = nixpkgs.legacyPackages."x86_64-darwin"
