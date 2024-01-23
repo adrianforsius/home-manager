@@ -1,9 +1,13 @@
+# { config, pkgs, extraSpecialArgs, ... }:
 { config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "adrianforsius";
+  # home.username = extraSpecialArgs.user.name;
+
+  # home.homeDirectory = extraSpecialArgs.user.home;
   home.homeDirectory = "/home/adrianforsius";
 
   # This value determines the Home Manager release that your configuration is
@@ -106,7 +110,37 @@
     g = "git";
     h = "history";
     j = "jobs";
+
+    grep = "grep --color=auto";
+
+    # Enable aliases to be sudo’ed
+    sudo = "sudo ";
+
+    # View HTTP traffic
+    sniff = "sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'";
+    httpdump = "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\"";
+
+    # Trim new lines and copy to clipboard
+    c = "tr -d '\n' | pbcopy";
+
+    week = "date +%V";
+
+    ip  = "dig +short myip.opendns.com @resolver1.opendns.com";
+    ips = "ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'";
+    # Intuitive map function
+    # For example, to list all directories that contain a certain file:
+    # find . -name .gitattributes | map dirname
+    map = "xargs -n1";
+
+    tre = "tree -I 'vendor'";
+
+    aws-login = "aws ecr get-login --no-include-email | sh";
+
+    d = "docker-compose";
+    k = "kubectl";
+    swap-clean = "rm -f $HOME/.vim/swaps/.*; rm -f $HOME/.vim/swaps/*";
   };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through "home.file".
@@ -177,4 +211,7 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  # } import "${extraSpecialArgs.user.load}" { inherit pkgs config;}
+  # // pkgs.stdenv.isLinux [(import ./linux.nix { inherit pkgs config;})]
 }
+
