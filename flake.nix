@@ -26,7 +26,6 @@
           name = "adrianforsius";
           home = "/home/adrianforsius";
         };
-        load = ./linux.nix;
       };
     };
 
@@ -45,7 +44,6 @@
           name = "adrianforsius";
           home = "/Users/adrianforsius";
         };
-        load = ./macos.nix;
       };
     };
   };

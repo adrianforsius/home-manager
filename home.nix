@@ -21,7 +21,6 @@
   # environment.
 
   home.packages = import ./home/packages.nix { inherit pkgs config; };
-  home.shellAliases = import ./home/aliases.nix { inherit pkgs config; };
 
   editorconfig = {
     enable = true;
@@ -114,11 +113,11 @@
     # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
     PYTHONIOENCODING="UTF-8";
 
-    # Increase Bash history size. Allow 32³ entries; the default is 500.
-    HISTSIZE="32768";
-    HISTFILESIZE="$(HISTSIZE)";
-    # Omit duplicates and commands that begin with a space from history.
-    HISTCONTROL="ignoreboth";
+    # # Increase Bash history size. Allow 32³ entries; the default is 500.
+    # HISTSIZE="32768";
+    # HISTFILESIZE="$(HISTSIZE)";
+    # # Omit duplicates and commands that begin with a space from history.
+    # HISTCONTROL="ignoreboth";
 
     # add time to History
     HISTTIMEFORMAT="%d/%m/%y %T ";
@@ -142,8 +141,30 @@
 
   };
 
+  home.sessionPath = [
+    "$HOME/sdk/go1.21.1/bin"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.thefuck.enable = true;
+  programs.go.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = import ./home/aliases.nix { inherit pkgs config; };
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    "oh-my-zsh" = {
+      enable = true;
+      plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git"];
+      theme = "steeef";
+    };
+  };
 }
 
