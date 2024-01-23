@@ -1,5 +1,4 @@
 { config, pkgs, specialArgs, ... }:
-# { config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -7,8 +6,7 @@
   # home.username = "adrianforsius";
   home.username = specialArgs.user.name;
 
-  # home.homeDirectory = extraSpecialArgs.user.home;
-  home.homeDirectory = "/home/adrianforsius";
+  home.homeDirectory = specialArgs.user.home;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -21,27 +19,9 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the "hello" command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-    pkgs.nodejs_21
-    pkgs.git
-    pkgs.eza
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don"t forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command "my-hello" to your
-    # # environment:
-    (pkgs.writeShellScriptBin "reload" ''
-      nix run home-manager/release-${config.home.stateVersion} -- switch
-    '')
-  ];
+  home.packages = import ./home/packages.nix { inherit pkgs config; };
+  home.shellAliases = import ./home/aliases.nix { inherit pkgs config; };
 
   editorconfig = {
     enable = true;
@@ -93,53 +73,6 @@
     };
   };
 
-  home.shellAliases = {
-    ".."    = "cd ..";
-    "..."   = "cd ../..";
-    "...."  = "cd ../../..";
-    "....." = "cd ../../../..";
-
-    # TODO: Overwrite oh-my-zsh aliases for these to take effect
-    la = "eza -la";
-    ls = "eza -l";
-    l  = "eza";
-
-    dl = "cd ~/Downloads";
-    dt = "cd ~/Desktop";
-
-    g = "git";
-    h = "history";
-    j = "jobs";
-
-    grep = "grep --color=auto";
-
-    # Enable aliases to be sudo’ed
-    sudo = "sudo ";
-
-    # View HTTP traffic
-    sniff = "sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'";
-    httpdump = "sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\"";
-
-    # Trim new lines and copy to clipboard
-    c = "tr -d '\n' | pbcopy";
-
-    week = "date +%V";
-
-    ip  = "dig +short myip.opendns.com @resolver1.opendns.com";
-    ips = "ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'";
-    # Intuitive map function
-    # For example, to list all directories that contain a certain file:
-    # find . -name .gitattributes | map dirname
-    map = "xargs -n1";
-
-    tre = "tree -I 'vendor'";
-
-    aws-login = "aws ecr get-login --no-include-email | sh";
-
-    d = "docker-compose";
-    k = "kubectl";
-    swap-clean = "rm -f $HOME/.vim/swaps/.*; rm -f $HOME/.vim/swaps/*";
-  };
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -211,7 +144,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  # } import "${extraSpecialArgs.user.load}" { inherit pkgs config;}
-  # // pkgs.stdenv.isLinux [(import ./linux.nix { inherit pkgs config;})]
+
 }
 
