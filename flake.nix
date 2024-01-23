@@ -11,7 +11,7 @@
   };
 
   outputs = { nixpkgs, home-manager, ... }: {
-    homeConfigurations."adrianforsius" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
       # Specify your home configuration modules here, for example,
@@ -29,23 +29,24 @@
         load = "./linux.nix";
       };
     };
-    # homeConfigurations."adrianforsius-macos" = home-manager.lib.homeManagerConfiguration {
-    #   pkgs = nixpkgs.legacyPackages."x86_64-darwin"
 
-    #   # Specify your home configuration modules here, for example,
-    #   # the path to your home.nix.
-    #   modules = [ ./home.nix ];
+    homeConfigurations."adrianf@adrian" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-darwin";
 
-    #   # Optionally use extraSpecialArgs
-    #   # to pass through arguments to home.nix
-    #   extraSpecialArgs = {
-    #     host = "adrian";
-    #     user = {
-    #       name = "adrianforsius";
-    #       home = "/Users/adrianforsius";
-    #     };
-    #     load = "./macos.nix";
-    #   };
-    # };
+      # Specify your home configuration modules here, for example,
+      # the path to your home.nix.
+      modules = [ ./home.nix ];
+
+      # Optionally use extraSpecialArgs
+      # to pass through arguments to home.nix
+      extraSpecialArgs = {
+        host = "adrian";
+        user = {
+          name = "adrianforsius";
+          home = "/Users/adrianforsius";
+        };
+        load = "./macos.nix";
+      };
+    };
   };
 }
