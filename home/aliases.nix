@@ -45,7 +45,9 @@
 
   d = "docker-compose";
   k = "kubectl";
-  swap-clean = "rm -f $HOME/.vim/swaps/.*; rm -f $HOME/.vim/swaps/*";
+  swap-clean = "rm -f ~/.vim/swaps/.*; rm -f ~/.vim/swaps/*";
+  pubkey = "cat ~/.ssh/id_ed25519.pub | pbcopy";
+
 } // pkgs.lib.optionals pkgs.stdenv.isLinux {
   pbcopy  = "xsel --clipboard --input";
   pbpaste = "xsel --clipboard --output";

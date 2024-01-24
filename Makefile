@@ -12,3 +12,8 @@ build:
 .PHONY: fmt
 fmt:
 	find . -name "*.nix" | xargs nix develop --command alejandra
+
+.PHONY: bootstrap
+bootrap:
+	./bootstrap.sh
+

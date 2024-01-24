@@ -4,9 +4,22 @@ with pkgs; [
   # # Adds the "hello" command to your environment. It prints a friendly
   # # "Hello, world!" when run.
   # pkgs.hello
-  nodejs_21
   git
   eza
+  pulumi-bin
+  coreutils
+  wget
+  tree
+  grc
+  curl
+  docker
+  gcc
+  gnugrep
+  z-lua
+  netcat
+
+  python3
+  nodejs_21
 
   # # It is sometimes useful to fine-tune packages, for example, by applying
   # # overrides. You can do that directly here, just don"t forget the

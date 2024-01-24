@@ -84,6 +84,7 @@
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
+
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # "";
@@ -149,6 +150,27 @@
   programs.home-manager.enable = true;
   programs.thefuck.enable = true;
   programs.go.enable = true;
+  programs.gpg.enable = true;
+  programs.bat.enable = true;
+  programs.ripgrep = {
+    enable = true;
+    arguments = [
+      "--max-columns-preview"
+      "--colors=line:style:bold"
+    ];
+  };
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    # useKeychain = "yes";
+    matchBlocks = {
+      "*" = {
+        identityFile = "~/.ssh/id_ed25519";
+      };
+    };
+
+  };
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
