@@ -109,14 +109,13 @@
     ];
   };
 
+  
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    extraConfig = ''
-      UseKeychain yes
-      identityFile ~/.ssh/id_ed25519
-    ''; 
+    extraConfig = if pkgs.stdenv.isLinux then ''identityFile ~/.ssh/id_ed25519'' else ''identityFile ~/.ssh/id_ed25519 UseKeyChain yes'';
   };
+
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -128,7 +127,7 @@
     enableAutosuggestions = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    "oh-my-zsh" = {
+    "oh-my-zsh" = { 
       enable = true;
       plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git"];
       theme = "steeef";
