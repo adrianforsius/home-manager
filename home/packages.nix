@@ -4,7 +4,6 @@ with pkgs; [
   # # Adds the "hello" command to your environment. It prints a friendly
   # # "Hello, world!" when run.
   # pkgs.hello
-  git
   eza
   pulumi-bin
   coreutils
@@ -16,10 +15,14 @@ with pkgs; [
   gnugrep
   z-lua
   netcat
+  openssl
   go-swagger
   swagger-codegen
   ngrok
+  minikube
+  ansible
 
+  transmission
   zoom
   vscode
   # postman # TODO: 404 on mirror
@@ -56,6 +59,8 @@ with pkgs; [
   pacman
   albert
 ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+  xquartz
+  rectangle
   iterm2
 ]
 

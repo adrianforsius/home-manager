@@ -23,5 +23,12 @@ else
   echo "ssh-key found, moving on\n"
 fi
 
+printf "generating new gpg keys\n"
+gpg --default-new-key-algo rsa4096 --gen-key
+
+gpg --list-secret-keys --keyid-format=long
+printf "get armored gpg key, run:\n"
+printf "gpg --armor --export <key>\n"
+
 printf "all done!\n"
 

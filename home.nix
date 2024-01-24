@@ -101,37 +101,112 @@
   programs.go.enable = true;
   programs.gpg.enable = true;
   programs.bat.enable = true;
-  programs.ripgrep = {
+  programs.git = {
     enable = true;
-    arguments = [
-      "--max-columns-preview"
-      "--colors=line:style:bold"
-    ];
+    userName = "Adrian Forsius";
+    userEmail = "adrianforsius@gmail.com";
+    # signing.gpgPath = "/usr/local/bin/gpg";
+    signing.signByDefault = true;
+    signing.key = "6FADEE05C3DE7B1A";
+
+    aliases = {
+      # View abbreviated SHA, description, and history graph of the latest 20 commits
+      l = "log --pretty=oneline -n 20 --graph --abbrev-commit";
+      # View the current working tree status using the short format
+      s = "status -s";
+      # Show the diff between the latest commit and the current state
+      # d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+      ## `git di $number` shows the diff between the state `$number` revisions ago and the current state
+      #di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+      ## Pull in remote changes for the current repository and all its submodules
+      #p = !"git pull; git submodule foreach git pull origin master"
+      ## Clone a repository including all submodules
+      #c = clone --recursive
+      ## Commit all changes
+      #ca = !git add -A && git commit -av
+      ## Switch to a branch, creating it if necessary
+      #go = checkout -B
+      ## Show verbose output about tags, branches or remotes
+      #tags = tag -l
+      #branches = branch -a
+      #remotes = remote -v
+      ## Credit an author on the latest commit
+      #credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+      ## Interactive rebase with the given number of latest commits
+      #rev = "!f() { git rev-list --count HEAD ^master; }; f"
+      ## Interactive rebase with the given number of latest commits
+      #reb = "!f() { git rebase -i HEAD~$1; }; f"
+      ##
+      #rem = "!f() { git rebase origin/master; }; f"
+      ## Push to own branchh
+      #ne = "!f() { git commit --no-verify --amend --no-edit; }; f"
+      ## Find branches containing commit
+      #e = "!f() { git config --global -e; }; f"
+      ## Master rebase
+      #fb = "!f() { git branch -a --contains $1; }; f"
+      ## Find tags containing commit
+      #ft = "!f() { git describe --always --contains $1; }; f"
+      ## Find commits by source code
+      #fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+      ## Find commits by commit message
+      #fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+      ## Remove branches that have already been merged with master
+      #dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+      ## set upstream
+      #up = "!git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)"
+      ## Push to own branchh
+      #po = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\""
+      ## Make temporal wip commit
+      #w = "!git commit --no-verify -m wip"
+      ## Reset head one back
+      #rh = "!git reset HEAD~1"
+      ## List recent checked out branches
+      #lb = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)' | head -n 15; }; f"
+      ## List commits between dates
+      #lc = "!f() { git log --pretty=format:'%ad - %an: %s %H' --after='$(date --date=\"10 days ago\")' --until='$(date)'; }; f"
+      ## count commits since master
+      #ccm = "!git rev-list --count HEAD ^master"
+    };
+  };
+  programs.ripgrep = {
+      enable = true;
+      arguments = [
+          "--max-columns-preview"
+              "--colors=line:style:bold"
+      ];
   };
 
-  
+
   programs.ssh = {
-    enable = true;
-    addKeysToAgent = "yes";
-    extraConfig = if pkgs.stdenv.isLinux then ''identityFile ~/.ssh/id_ed25519'' else ''identityFile ~/.ssh/id_ed25519 UseKeyChain yes'';
+      enable = true;
+      addKeysToAgent = "yes";
+      extraConfig = if pkgs.stdenv.isLinux then ''identityFile ~/.ssh/id_ed25519'' else ''identityFile ~/.ssh/id_ed25519 UseKeyChain yes'';
   };
 
   programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
+      enable = true;
+      enableZshIntegration = true;
   };
 
   programs.zsh = {
-    enable = true;
-    shellAliases = import ./home/aliases.nix { inherit pkgs config; };
-    enableAutosuggestions = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    "oh-my-zsh" = { 
       enable = true;
-      plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git"];
-      theme = "steeef";
-    };
+      shellAliases = import ./home/aliases.nix { inherit pkgs config; };
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      syntaxHighlighting.enable = true;
+      "oh-my-zsh" = { 
+          enable = true;
+          plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git"];
+          theme = "steeef";
+      };
   };
+  services.gpg-agent = {
+    enable = true;
+    defaultCacheTtl = 34560000;
+    maxCacheTtl = 34560000;
+    pinentryFlavor = "qt";
+    enableScDaemon = false;
+  };
+
 }
 
