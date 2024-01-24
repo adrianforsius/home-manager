@@ -12,7 +12,7 @@
 
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
@@ -30,7 +30,7 @@
     };
 
     homeConfigurations."adrianf@adrian" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages."x86_64-darwin";
+      pkgs = import nixpkgs { system = "x86_64-darwin"; config.allowUnfree = true; };
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.

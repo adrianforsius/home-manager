@@ -12,11 +12,26 @@ with pkgs; [
   tree
   grc
   curl
-  docker
   gcc
   gnugrep
   z-lua
   netcat
+  go-swagger
+  swagger-codegen
+  ngrok
+
+  zoom
+  vscode
+  # postman # TODO: 404 on mirror
+  insomnia
+  gimp
+  qpdfview
+  vlc
+  slack
+  franz
+  docker
+  virtualbox
+  google-chrome
 
   python3
   nodejs_21
@@ -34,7 +49,12 @@ with pkgs; [
     nix run home-manager/release-${config.home.stateVersion} -- switch
   '')
 ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+  teams-for-linux
   whatsapp-for-linux
   xclip
+  xfce.xfce4-terminal
+  # albert
+] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+  iterm2
 ]
 
