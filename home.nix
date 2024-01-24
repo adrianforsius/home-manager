@@ -163,13 +163,10 @@
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    # useKeychain = "yes";
-    matchBlocks = {
-      "*" = {
-        identityFile = "~/.ssh/id_ed25519";
-      };
-    };
-
+    extraConfig = ''
+      UseKeychain yes
+      identityFile ~/.ssh/id_ed25519
+    ''; 
   };
   programs.fzf = {
     enable = true;

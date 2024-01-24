@@ -16,6 +16,9 @@ if [ ! -f ~/.ssh/id_ed25519 ]; then
   if [[ $platform == 'osx' ]]; then
     ssh-add --apple-use-keychain ~/.ssh/id_ed25519
   fi
+  if [[ $platform == 'linux-gnu' ]]; then
+    ssh-add -k ~/.ssh/id_ed25519
+  fi
 else
   echo "ssh-key found, moving on\n"
 fi

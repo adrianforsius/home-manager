@@ -34,6 +34,7 @@ with pkgs; [
     nix run home-manager/release-${config.home.stateVersion} -- switch
   '')
 ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+  whatsapp-for-linux
   xclip
 ]
 
