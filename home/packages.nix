@@ -53,7 +53,8 @@ with pkgs; [
   whatsapp-for-linux
   xclip
   xfce.xfce4-terminal
-  # albert
+  pacman
+  albert
 ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
   iterm2
 ]
