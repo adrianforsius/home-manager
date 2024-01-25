@@ -58,6 +58,7 @@ with pkgs; [
   xfce.xfce4-terminal
   pacman
   albert
+  # cerebro
 ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
   xquartz
   rectangle

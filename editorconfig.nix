@@ -37,6 +37,11 @@
       indent_size = 2;
     };
 
+    "*.nix" = {
+      indent_style = "space";
+      indent_size = 2;
+    };
+
     "[{*.json,*.js,*.ts}]" = {
       indent_style = "space";
       indent_size = 2;

@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # (builtins.getFlake "./flake/cerebro/flake.nix").packages.x86_64-linux.default)
   };
 
   outputs = { nixpkgs, home-manager, ... }: {
