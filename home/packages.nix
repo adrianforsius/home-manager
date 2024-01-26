@@ -12,6 +12,7 @@ with pkgs; [
   grc
   curl
   gcc
+  pipenv
   gnugrep
   z-lua
   netcat
@@ -55,7 +56,7 @@ with pkgs; [
   teams-for-linux
   whatsapp-for-linux
   xclip
-  xfce.xfce4-terminal
+  # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
   pacman
   albert
   # cerebro

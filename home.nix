@@ -237,36 +237,35 @@
     };
   };
   programs.ripgrep = {
-      enable = true;
-      arguments = [
-          "--max-columns-preview"
-              "--colors=line:style:bold"
-      ];
+    enable = true;
+    arguments = [ "--max-columns-preview" "--colors=line:style:bold" ];
   };
 
 
   programs.ssh = {
-      enable = true;
-      addKeysToAgent = "yes";
-      extraConfig = if pkgs.stdenv.isLinux then ''identityFile ~/.ssh/id_ed25519'' else ''identityFile ~/.ssh/id_ed25519 UseKeyChain yes'';
+    enable = true;
+    addKeysToAgent = "yes";
+    extraConfig = if pkgs.stdenv.isLinux then ''identityFile ~/.ssh/id_ed25519'' else ''identityFile ~/.ssh/id_ed25519
+      UseKeyChain yes
+    '';
   };
 
   programs.fzf = {
-      enable = true;
-      enableZshIntegration = true;
+    enable = true;
+    enableZshIntegration = true;
   };
 
   programs.zsh = {
+    enable = true;
+    shellAliases = import ./home/aliases.nix { inherit pkgs config; };
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+    "oh-my-zsh" = { 
       enable = true;
-      shellAliases = import ./home/aliases.nix { inherit pkgs config; };
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      syntaxHighlighting.enable = true;
-      "oh-my-zsh" = { 
-          enable = true;
-          plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git"];
-          theme = "steeef";
-      };
+      plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git" ];
+      theme = "steeef";
+    };
   };
   services.gpg-agent = {
     enable = true;
@@ -275,6 +274,4 @@
     pinentryFlavor = "qt";
     enableScDaemon = false;
   };
-
 }
-
