@@ -33,6 +33,7 @@ with pkgs; [
   gimp
   qpdfview
   vlc
+  feh
   slack
   franz
   docker

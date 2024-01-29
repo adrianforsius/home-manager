@@ -1,5 +1,4 @@
 { config, pkgs, specialArgs, ... }:
-
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -272,19 +271,7 @@
     maxCacheTtl = 34560000;
     pinentryFlavor = "qt";
     enableScDaemon = false;
-  };
+  }; 
 
-  xdg = {
-    enable = true;
-    systemDirs = {
-      data = [ "~/.nix-profile/share" "~/.nix-profile/share/applications" ];
-    };
-    desktopEntries = {
-      chrome = {
-        name = "Chrome";
-        type = "Application";
-        exec = "google-chrome-stable";
-      };
-    };
-  };
+  xdg = if pkgs.stdenv.isLinux then import ./home/xdg.nix { inherit pkgs; } else {};
 }
