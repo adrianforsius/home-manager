@@ -88,7 +88,6 @@
     # GPG_TTY="$(tty)";
 
     VIRTUAL_ENV_DISABLE_PROMPT="0";
-
   };
 
   home.sessionPath = [
@@ -273,5 +272,19 @@
     maxCacheTtl = 34560000;
     pinentryFlavor = "qt";
     enableScDaemon = false;
+  };
+
+  xdg = {
+    enable = true;
+    systemDirs = {
+      data = [ "~/.nix-profile/share" "~/.nix-profile/share/applications" ];
+    };
+    desktopEntries = {
+      chrome = {
+        name = "Chrome";
+        type = "Application";
+        exec = "google-chrome-stable";
+      };
+    };
   };
 }

@@ -22,6 +22,8 @@ with pkgs; [
   ngrok
   minikube
   ansible
+  appimagekit
+  (callPackage ./package/cerebro {})
 
   transmission
   zoom
