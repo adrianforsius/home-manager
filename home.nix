@@ -38,6 +38,18 @@
     # "";
   };
 
+  # home.activation = {
+  #   linkDesktopApplications = {
+  #     after = [ "writeBoundary" "createXdgUserDirectories" ];
+  #     before = [ ];
+  #     data = ''
+  #       rm -rf ${config.xdg.dataHome}/"applications/home-manager"
+  #       mkdir -p ${config.xdg.dataHome}/"applications/home-manager"
+  #       cp -Lr ${config.home.homeDirectory}/.nix-profile/share/applications/* ${config.xdg.dataHome}/"applications/home-manager/"
+  #     '';
+  #   };
+  # };
+
   # Home Manager can also manage your environment variables through
   # "home.sessionVariables". If you don't want to manage your shell through Home
   # Manager then you have to manually source "hm-session-vars.sh" located at
@@ -273,5 +285,35 @@
     enableScDaemon = false;
   }; 
 
+  xfconf.settings = {
+    xfce4-session = {
+      "startup/ssh-agent/enabled" = true;
+    };
+  };
+
+  gtk = {
+    enable = true;
+      iconTheme = {
+      name = "adwaita";
+      # package = pkgs.xfce.papirus-dark-icon-theme;
+      package = pkgs.xfce.xfce4-icon-theme;
+    };
+    theme = {
+      name = "matcha-dark-pueril";
+      package = pkgs.matcha-gtk-theme;
+    };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+  };
+
+  targets.genericLinux.enable = pkgs.stdenv.isLinux;
   xdg = if pkgs.stdenv.isLinux then import ./home/xdg.nix { inherit pkgs; } else {};
 }

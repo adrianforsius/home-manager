@@ -3,16 +3,8 @@
 {
   enable = true;
 
-  systemDirs = {
-    data = [ "~/.nix-profile/share" ];
-  };
-  desktopEntries = {
-    chrome = {
-      name = "google-chrome";
-      type = "Application";
-      exec = "google-chrome-stable";
-    };
-  };
+  configFile."mimeapps.list".force = true;
+
 
   mime.enable = true;
   mimeApps = {
