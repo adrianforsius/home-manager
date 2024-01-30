@@ -120,73 +120,39 @@
     signing.key = "0EA152470286BFC4";
 
     diff-so-fancy.enable = true;
-    # extraConfig = ''
-    #   [color "branch"]
-    #     current = yellow reverse
-    #     local = yellow
-    #     remote = green
-    #   [color "diff"]
-    #     meta = yellow bold
-    #     frag = magenta bold
-    #     old = red
-    #     new = green
-    #   [color "status"]
-    #     added = yellow
-    #     changed = green
-    #     untracked = cyan
-    #     ui = auto
-    #   [diff]
-    #     tool = vimdiff
-    #     wsErrorHighlight = all
-    #   [merge]
-    #     conflictstyle = diff3
-    #     tool = vimdiff
-    #   [mergetool]
-    #     keepBackup = false
-    #     prompt = false
-    #     tool = vimdiff
-    #   [pull]
-    #     rebase = true
-    #   [pager]
-    #     branch = false
-    # '';
+
     extraConfig = {
-       push.default = "matching";
+      push.default = "matching";
+      diff.tool = "code";
+      merge = {
+        tool = "code";
+        conflictstyle = "diff3";
+      };
+      mergetool = {
+        tool = "code";
+        keepBackup = false;
+      };
+      pull.rebase = true;
+      apply.whitespace = "fix";
+      pager.branch = false;
+      "color \"status\"" = {
+        added = "yellow";
+        changed = "green";
+        untracked = "cyan";
+        ui = "auto";
+      };
+      "color \"branch\"" = {
+        current = "yellow reverse";
+        local = "yellow";
+        remote = "green";
+      };
+      "color \"diff\"" = {
+        meta = "yellow bold";
+	      frag = "magenta bold";
+        old = "red";
+        new = "green";
+      };
     };
-    # extraConfig = {
-    #   push.default = "matching";
-    #   diff.tool = "code";
-    #   merge = {
-    #     tool = "code";
-    #     conflictstyle = "diff3";
-    #   };
-    #   mergetool = {
-    #     tool = "code";
-    #     keepBackup = false;
-    #   };
-    #   pull.rebase = true;
-    #   apply.whitespace = "fix";
-    #   pager.branch = false;
-    #   color = {
-    #     branch = {
-    #       current = "yellow reverse";
-    #       local = "yellow";
-    #       remote = "green";
-    #     };
-    #     diff = {
-    #       meta = "yellow bold";
-    #       frag = "magneta bold";
-    #       old = "red";
-    #       new = "green";
-    #     };
-    #     status = {
-    #       added = "yellow";
-    #       changed = "green";
-    #       untracked = "cyan";
-    #       ui = "auto";
-    #     };
-    #   };
-    # };
 
     aliases = {
       # View abbreviated SHA, description, and history graph of the latest 20 commits
@@ -313,12 +279,6 @@
       '';
     };
   };
-
-  hardware = {
-    pulseaudio.enable = false;
-    bluetooth.enable = true;
-  };
-
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
   xdg = if pkgs.stdenv.isLinux then import ./home/xdg.nix { inherit pkgs; } else {};
