@@ -162,7 +162,7 @@
       # Show the diff between the latest commit and the current state
       d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat";
       # `git di $number` shows the diff between the state `$number` revisions ago and the current state
-      di = "!d() { git diff --patch-with-stat head~$1; }; git diff-index --quiet head -- || clear; d";
+      di = "!d() { git diff --patch-with-stat head~$1; }; git diff-index --quiet HEAD -- || clear; d";
       # pull in remote changes for the current repository and all its submodules
       p = "!git pull; git submodule foreach git pull origin master";
       # clone a repository including all submodules
@@ -176,11 +176,9 @@
       branches = "branch -a";
       remotes = "remote -v";
       # credit an author on the latest commit
-      credit = "!f() { git commit --amend --author \"$1 <$2>\" -c head; }; f";
+      credit = "!f() { git commit --amend --author \"$1 <$2>\" -c HEAD; }; f";
       # interactive rebase with the given number of latest commits
-      rev = "!f() { git rev-list --count head ^master; }; f";
-      # interactive rebase with the given number of latest commits
-      reb = "!f() { git rebase -i head~$1; }; f";
+      reb = "!f() { git rebase -i HEAD~$1; }; f";
       rem = "!f() { git rebase origin/master; }; f";
       # push to own branchh
       ne = "!f() { git commit --no-verify --amend --no-edit; }; f";
@@ -197,19 +195,21 @@
       # remove branches that have already been merged with master
       dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
       # set upstream
-      up = "!git branch --set-upstream-to=origin/$(git symbolic-ref --short head)";
+      up = "!git branch --set-upstream-to=origin/$(git symbolic-ref --short HEAD)";
       # push to own branchh
-      po = "!git push origin \"$(git rev-parse --abbrev-ref head)\"";
+      po = "!git push origin \"$(git rev-parse --abbrev-ref HEAD)\"";
       # make temporal wip commit
       w = "!git commit --no-verify -m wip";
       # reset head one back
-      rh = "!git reset head~1";
+      rh = "!git reset HEAD~1";
       # list recent checked out branches
       lb = "!f() { git for-each-ref --sort=-committerdate refs/heads/ --format='%(committerdate:short) %(authorname) %(refname:short)' | head -n 15; }; f";
       # list commits between dates
       lc = "!f() { git log --pretty=format:'%ad - %an: %s %h' --after='$(date --date=\"10 days ago\")' --until='$(date)'; }; f";
       # count commits since master
-      ccm = "!git rev-list --count head ^master";
+      ccm = "!git rev-list --count HEAD ^main";
+      # interactive rebase with the given number of latest commits
+      rev = "!git rev-list --count HEAD ^master";
 
     };
   };
