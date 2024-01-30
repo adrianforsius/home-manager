@@ -314,6 +314,12 @@
     };
   };
 
+  hardware = {
+    pulseaudio.enable = false;
+    bluetooth.enable = true;
+  };
+
+
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
   xdg = if pkgs.stdenv.isLinux then import ./home/xdg.nix { inherit pkgs; } else {};
 }

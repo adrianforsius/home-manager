@@ -61,8 +61,7 @@ with pkgs; [
   xclip
   # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
   pacman
-  albert
-  # cerebro
+  # albert
 ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
   xquartz
   rectangle
