@@ -9,6 +9,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     devenv.url = "github:cachix/devenv/latest";
+    flake-utils.url = "github:numtide/flake-utils";
     # (builtins.getFlake "./flake/cerebro/flake.nix").packages.x86_64-linux.default)
   };
 
@@ -17,8 +18,17 @@
     nixpkgs,
     home-manager,
     devenv,
+    flake-utils,
     ...
-  } @ inputs: {
+  } @ inputs: let
+    inherit (flake-utils.lib) eachSystemMap;
+    defaultSystems = [
+      # "aarch64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+      "x86_64-linux"
+    ];
+  in {
     homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -68,5 +78,19 @@
         devenv = inputs.devenv.packages.${prev.system}.devenv;
       };
     };
+
+    devShells = eachSystemMap defaultSystems (system: let
+      pkgs = import inputs.nixpkgs {
+        inherit system;
+        overlays = builtins.attrValues self.overlays;
+      };
+    in {
+      default = devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          (import ./devenv.nix)
+        ];
+      };
+    });
   };
 }
