@@ -4,12 +4,11 @@
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
 
-  outputs = { self, nixpkgs, ... }: {
-    defaultPackage.x86_64-linux =
-      with import nixpkgs { system = "x86_64-linux"; };
+  outputs = {nixpkgs, ...}: {
+    defaultPackage.x86_64-linux = with import nixpkgs {system = "x86_64-linux";};
       stdenv.mkDerivation {
         name = "cerebro";
-        buildInputs = [ yarn ];
+        buildInputs = [yarn];
 
         src = fetchFromGitHub {
           owner = "cerebroapp";

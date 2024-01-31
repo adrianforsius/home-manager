@@ -1,21 +1,16 @@
-{
-  self,
-  inputs,
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}:
+with pkgs; {
   packages = [
-    pkgs.rnix-lsp
-    (inputs.treefmt-nix.lib.mkWrapper pkgs {
-      projectRootFile = "flake.nix";
-      programs = {
-        alejandra.enable = true;
-        shellcheck.enable = true;
-        shfmt.enable = false;
-      };
-    })
+    rnix-lsp
+    alejandra
+    shellcheck
+    shfmt
   ];
+
+  enterShell = ''
+    echo "devenv:"
+    alejandra --version
+  '';
 
   pre-commit = {
     hooks = {

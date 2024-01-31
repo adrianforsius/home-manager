@@ -1,13 +1,13 @@
-{ pkgs ? import <nixpkgs> {} }: with pkgs;
-  let
-    name = "cerebro";
-    version = "0.11.0";
-    src = fetchurl {
-      url = "https://github.com/cerebroapp/cerebro/releases/download/v${version}/Cerebro-${version}.AppImage";
-      sha256 = "1zzcpcp1f9y2jbvk5l1206n8hjnv3rdchrv13kka9p08hhrc1f7s";
-    };
-    appimageContents = appimageTools.extractType2 { inherit name src; };
-  in
+{pkgs ? import <nixpkgs> {}}:
+with pkgs; let
+  name = "cerebro";
+  version = "0.11.0";
+  src = fetchurl {
+    url = "https://github.com/cerebroapp/cerebro/releases/download/v${version}/Cerebro-${version}.AppImage";
+    sha256 = "1zzcpcp1f9y2jbvk5l1206n8hjnv3rdchrv13kka9p08hhrc1f7s";
+  };
+  appimageContents = appimageTools.extractType2 {inherit name src;};
+in
   appimageTools.wrapType2 rec {
     inherit name src;
     version = "0.11.0";

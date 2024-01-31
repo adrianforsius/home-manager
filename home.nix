@@ -1,5 +1,9 @@
-{ config, pkgs, specialArgs, ... }:
 {
+  config,
+  pkgs,
+  specialArgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # home.username = "adrianforsius";
@@ -19,8 +23,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home.packages = import ./home/packages.nix { inherit pkgs config; };
-  editorconfig = import ./editorconfig.nix { };
+  home.packages = import ./home/packages.nix {inherit pkgs config;};
+  editorconfig = import ./editorconfig.nix {};
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through "home.file".
@@ -67,12 +71,12 @@
     # Enable persistent REPL history for `node`.
     NODE_REPL_HISTORY = "~/.node_history";
     # Allow 32³ entries; the default is 1000.
-    NODE_REPL_HISTORY_SIZE="32768";
+    NODE_REPL_HISTORY_SIZE = "32768";
     # Use sloppy mode by default, matching web browsers.
-    NODE_REPL_MODE="sloppy";
+    NODE_REPL_MODE = "sloppy";
 
     # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
-    PYTHONIOENCODING="UTF-8";
+    PYTHONIOENCODING = "UTF-8";
 
     # # Increase Bash history size. Allow 32³ entries; the default is 500.
     # HISTSIZE="32768";
@@ -81,14 +85,14 @@
     # HISTCONTROL="ignoreboth";
 
     # add time to History
-    HISTTIMEFORMAT="%d/%m/%y %T ";
+    HISTTIMEFORMAT = "%d/%m/%y %T ";
 
     # Don’t clear the screen after quitting a manual page.
-    MANPAGER="less -X";
+    MANPAGER = "less -X";
 
     # Prefer US English and use UTF-8.
-    LANG="en_US.UTF-8";
-    LC_ALL="en_US.UTF-8";
+    LANG = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
 
     # Highlight section titles in manual pages.
     # TODO: Fix highlight
@@ -98,7 +102,7 @@
     # TODO: Add to GPG service
     # GPG_TTY="$(tty)";
 
-    VIRTUAL_ENV_DISABLE_PROMPT="0";
+    VIRTUAL_ENV_DISABLE_PROMPT = "0";
   };
 
   home.sessionPath = [
@@ -148,7 +152,7 @@
       };
       "color \"diff\"" = {
         meta = "yellow bold";
-	      frag = "magenta bold";
+        frag = "magenta bold";
         old = "red";
         new = "green";
       };
@@ -210,7 +214,6 @@
       ccm = "!git rev-list --count HEAD ^main";
       # interactive rebase with the given number of latest commits
       rev = "!git rev-list --count HEAD ^master";
-
     };
   };
 
@@ -221,16 +224,18 @@
 
   programs.ripgrep = {
     enable = true;
-    arguments = [ "--max-columns-preview" "--colors=line:style:bold" ];
+    arguments = ["--max-columns-preview" "--colors=line:style:bold"];
   };
-
 
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
-    extraConfig = if pkgs.stdenv.isLinux then ''identityFile ~/.ssh/id_ed25519'' else ''identityFile ~/.ssh/id_ed25519
-      UseKeyChain yes
-    '';
+    extraConfig =
+      if pkgs.stdenv.isLinux
+      then ''identityFile ~/.ssh/id_ed25519''
+      else ''        identityFile ~/.ssh/id_ed25519
+              UseKeyChain yes
+      '';
   };
 
   programs.fzf = {
@@ -240,13 +245,13 @@
 
   programs.zsh = {
     enable = true;
-    shellAliases = import ./home/aliases.nix { inherit pkgs config; };
+    shellAliases = import ./home/aliases.nix {inherit pkgs config;};
     enableAutosuggestions = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    "oh-my-zsh" = { 
+    "oh-my-zsh" = {
       enable = true;
-      plugins = [ "thefuck" "aws" "docker" "history" "z" "gh" "git" ];
+      plugins = ["thefuck" "aws" "docker" "history" "z" "gh" "git"];
       theme = "steeef";
     };
   };
@@ -256,7 +261,7 @@
     maxCacheTtl = 34560000;
     pinentryFlavor = "qt";
     enableScDaemon = false;
-  }; 
+  };
 
   xfconf.settings = {
     xfce4-session = {
@@ -266,7 +271,7 @@
 
   gtk = {
     enable = true;
-      iconTheme = {
+    iconTheme = {
       name = "adwaita";
       # package = pkgs.xfce.papirus-dark-icon-theme;
       package = pkgs.xfce.xfce4-icon-theme;
@@ -288,5 +293,8 @@
   };
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;
-  xdg = if pkgs.stdenv.isLinux then import ./home/xdg.nix { inherit pkgs; } else {};
+  xdg =
+    if pkgs.stdenv.isLinux
+    then import ./home/xdg.nix {inherit pkgs;}
+    else {};
 }

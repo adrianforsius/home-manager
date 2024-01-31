@@ -10,24 +10,25 @@
     };
     devenv.url = "github:cachix/devenv/latest";
     # (builtins.getFlake "./flake/cerebro/flake.nix").packages.x86_64-linux.default)
-    flake-utils.url = "github:numtide/flake-utils";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = { 
+  outputs = {
     self,
-    nixpkgs, 
+    nixpkgs,
     home-manager,
     devenv,
-    flake-utils,
-    ... 
+    ...
   } @ inputs: {
     homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+        overlays = builtins.attrValues self.overlays;
+      };
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
-      modules = [ ./home.nix ];
+      modules = [./home.nix];
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
@@ -41,11 +42,15 @@
     };
 
     homeConfigurations."adrianf@adrian" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs { system = "x86_64-darwin"; config.allowUnfree = true; };
+      pkgs = import nixpkgs {
+        system = "x86_64-darwin";
+        config.allowUnfree = true;
+        overlays = builtins.attrValues self.overlays;
+      };
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
-      modules = [ ./home.nix ];
+      modules = [./home.nix];
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix
@@ -58,27 +63,9 @@
       };
     };
 
-    devShells = flake-utils.lib.eachSystemMap [
-      "aarch64-darwin"
-      "x86_64-darwin"
-      "x86_64-linux"
-    ] (system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = builtins.attrValues self.overlays;
-      };
-    in {
-      default = devenv.lib.mkShell {
-        inherit inputs pkgs;
-        modules = [
-          (import ./devenv.nix)
-        ];
-      };
-    });
-
     overlays = {
       extraPackages = final: prev: {
-        devenv = self.packages.${prev.system}.devenv;
+        devenv = inputs.devenv.packages.${prev.system}.devenv;
       };
     };
   };
