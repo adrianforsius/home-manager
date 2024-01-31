@@ -23,7 +23,6 @@ with pkgs; [
   minikube
   ansible
   appimagekit
-  (callPackage ./package/cerebro {})
 
   transmission
   zoom
@@ -62,6 +61,7 @@ with pkgs; [
   # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
   pacman
   # albert
+  (callPackage ./package/cerebro {})
 ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
   xquartz
   rectangle

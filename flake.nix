@@ -8,10 +8,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    devenv.url = "github:cachix/devenv/latest";
     # (builtins.getFlake "./flake/cerebro/flake.nix").packages.x86_64-linux.default)
+    flake-utils.url = "github:numtide/flake-utils";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, devenv, flake-utils, treefmt-nix, ... }: {
     homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 
@@ -47,5 +50,20 @@
         };
       };
     };
+
+    devShells = flake-utils.lib.eachSystemMap [
+      "aarch64-darwin"
+      "x86_64-darwin"
+      "x86_64-linux"
+    ] (system: let
+      pkgs = import nixpkgs { inherit system; };
+    in {
+      default = devenv.lib.mkShell {
+        inherit treefmt-nix pkgs;
+        modules = [
+          (import ./devenv.nix)
+        ];
+      };
+    });
   };
 }
