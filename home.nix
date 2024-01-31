@@ -42,6 +42,7 @@
     # "";
   };
 
+  # Fix for not finding applications in luanchers
   # home.activation = {
   #   linkDesktopApplications = {
   #     after = [ "writeBoundary" "createXdgUserDirectories" ];
@@ -110,7 +111,7 @@
   ];
 
   programs =
-    import ./home/programs.nix {inherit pkgs config;}
+    import ./home/programs.nix {inherit pkgs;}
     // {
       # TODO: reevalute if I want to move this to programs
       zsh = {
@@ -141,32 +142,15 @@
     };
   };
 
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "adwaita";
-      # package = pkgs.xfce.papirus-dark-icon-theme;
-      package = pkgs.xfce.xfce4-icon-theme;
-    };
-    theme = {
-      name = "matcha-dark-pueril";
-      package = pkgs.matcha-gtk-theme;
-    };
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-  };
+  gtk =
+    if pkgs.stdenv.isLinux
+    then import ./home/gtk.nix {inherit pkgs;}
+    else {};
 
-  targets.genericLinux.enable = pkgs.stdenv.isLinux;
   xdg =
     if pkgs.stdenv.isLinux
     then import ./home/xdg.nix {inherit pkgs;}
     else {};
+
+  targets.genericLinux.enable = pkgs.stdenv.isLinux;
 }
