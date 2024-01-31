@@ -26,11 +26,6 @@
       indent_size = 2;
     };
 
-    ".*" = {
-      indent_style = "space";
-      indent_size = 2;
-    };
-
     "*.sh" = {
       indent_style = "space";
       indent_size = 2;
