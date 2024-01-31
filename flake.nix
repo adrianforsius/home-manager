@@ -14,7 +14,14 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
-  outputs = { nixpkgs, home-manager, devenv, flake-utils, treefmt-nix, ... }: {
+  outputs = { 
+    self,
+    nixpkgs, 
+    home-manager,
+    devenv,
+    flake-utils,
+    ... 
+  } @ inputs: {
     homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
 
@@ -56,14 +63,23 @@
       "x86_64-darwin"
       "x86_64-linux"
     ] (system: let
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = builtins.attrValues self.overlays;
+      };
     in {
       default = devenv.lib.mkShell {
-        inherit treefmt-nix pkgs;
+        inherit inputs pkgs;
         modules = [
           (import ./devenv.nix)
         ];
       };
     });
+
+    overlays = {
+      extraPackages = final: prev: {
+        devenv = self.packages.${prev.system}.devenv;
+      };
+    };
   };
 }
