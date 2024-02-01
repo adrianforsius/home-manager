@@ -8,6 +8,8 @@ with pkgs;
     # # Adds the "hello" command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
+    entr
+    btop
     eza
     pulumi-bin
     coreutils
@@ -43,8 +45,10 @@ with pkgs;
     franz
     docker
     virtualbox
+    tailscale
     google-chrome
 
+    gopls
     python3
     nodejs_21
 

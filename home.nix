@@ -90,6 +90,7 @@
 
     # Don’t clear the screen after quitting a manual page.
     MANPAGER = "less -X";
+    PAGER = "less -FirSwX";
 
     # Prefer US English and use UTF-8.
     LANG = "en_US.UTF-8";
@@ -130,10 +131,12 @@
 
   services.gpg-agent = {
     enable = true;
-    defaultCacheTtl = 34560000;
-    maxCacheTtl = 34560000;
     pinentryFlavor = "qt";
     enableScDaemon = false;
+
+    # cache the keys forever so we don't get asked for a password
+    defaultCacheTtl = 34560000;
+    maxCacheTtl = 34560000;
   };
 
   xfconf.settings = {
@@ -141,6 +144,8 @@
       "startup/ssh-agent/enabled" = true;
     };
   };
+
+  xresources.extraConfig = builtins.readFile ./home/config/xresources;
 
   gtk =
     if pkgs.stdenv.isLinux

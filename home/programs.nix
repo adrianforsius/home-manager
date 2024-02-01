@@ -1,10 +1,16 @@
 {pkgs, ...}: {
   # Let Home Manager install and manage itself.
+
   home-manager.enable = true;
   thefuck.enable = true;
   go.enable = true;
   gpg.enable = true;
   bat.enable = true;
+  dircolors.enable = true;
+  jq.enable = true;
+  less.enable = true;
+  man.enable = true;
+  k9s.enable = true;
 
   git = {
     enable = true;
