@@ -40,6 +40,12 @@
       "video/m4v" = ["vlc.desktop"];
       "video/x-matroska" = ["vlc.desktop"];
       "video/quicktime" = ["vlc.desktop"];
+
+      "text/html" = "google-chrome.desktop";
+      "x-scheme-handler/http" = "google-chrome.desktop";
+      "x-scheme-handler/https" = "google-chrome.desktop";
+      "x-scheme-handler/about" = "google-chrome.desktop";
+      "x-scheme-handler/unknown" = "google-chrome.desktop";
     };
   };
 }

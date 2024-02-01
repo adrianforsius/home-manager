@@ -68,6 +68,7 @@
   #
   home.sessionVariables = {
     EDITOR = "vim";
+    DEFAULT_BROWSER = "google-chrome";
 
     # Enable persistent REPL history for `node`.
     NODE_REPL_HISTORY = "~/.node_history";
@@ -137,6 +138,18 @@
     # cache the keys forever so we don't get asked for a password
     defaultCacheTtl = 34560000;
     maxCacheTtl = 34560000;
+  };
+
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        enableXfwm = true;
+      };
+    };
+    displayManager.defaultSession = "xfce";
   };
 
   xfconf.settings = {
