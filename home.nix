@@ -140,17 +140,28 @@
     maxCacheTtl = 34560000;
   };
 
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xterm.enable = false;
-      xfce = {
-        enable = true;
-        enableXfwm = true;
-      };
-    };
-    displayManager.defaultSession = "xfce";
-  };
+  # # setup windowing environment
+  # services.xserver = {
+  #   enable = true;
+  #   layout = "us";
+  #   dpi = 220;
+
+  #   desktopManager = {
+  #     xterm.enable = false;
+  #     wallpaper.mode = "fill";
+  #   };
+
+  #   displayManager = {
+  #     defaultSession = "none+i3";
+  #     lightdm.enable = true;
+  #   };
+
+  #   windowManager = {
+  #     i3.enable = true;
+  #   };
+  # };
+
+  fonts.fontconfig.enable = true;
 
   xfconf.settings = {
     xfce4-session = {
