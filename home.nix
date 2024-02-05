@@ -81,7 +81,7 @@
     PYTHONIOENCODING = "UTF-8";
 
     # # Increase Bash history size. Allow 32³ entries; the default is 500.
-    # HISTSIZE="32768";
+    HISTSIZE = "32768";
     # HISTFILESIZE="$(HISTSIZE)";
     # # Omit duplicates and commands that begin with a space from history.
     # HISTCONTROL="ignoreboth";
@@ -96,6 +96,7 @@
     # Prefer US English and use UTF-8.
     LANG = "en_US.UTF-8";
     LC_ALL = "en_US.UTF-8";
+    LC_CTYPE = "en_US.UTF-8";
 
     # Highlight section titles in manual pages.
     # TODO: Fix highlight
@@ -126,6 +127,16 @@
           enable = true;
           plugins = ["thefuck" "aws" "docker" "history" "z" "gh" "git"];
           theme = "steeef";
+        };
+
+        history = {
+          expireDuplicatesFirst = true;
+          ignoreSpace = true;
+          ignoreDups = true;
+          extended = true;
+          share = false;
+          save = 10000; # save 10,000 lines of history
+          size = 100000;
         };
       };
     };
@@ -179,6 +190,11 @@
   xdg =
     if pkgs.stdenv.isLinux
     then import ./home/xdg.nix {inherit pkgs;}
+    else {};
+
+  home.language =
+    if pkgs.stdenv.isLinux
+    then import ./home/language.nix {}
     else {};
 
   targets.genericLinux.enable = pkgs.stdenv.isLinux;

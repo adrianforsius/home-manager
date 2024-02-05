@@ -4,6 +4,13 @@
   configFile."mimeapps.list".force = true;
 
   mime.enable = true;
+
+  # desktopEntries = {
+  #   xfce4-terminal = {
+  #     name = "Xfce Terminal";
+  #     exec = "xfce4-terminal --disable-server";
+  #   };
+  # };
   mimeApps = {
     enable = true;
     # Use file --mime-type <filename> to detect mime type

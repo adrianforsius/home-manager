@@ -124,6 +124,19 @@
     arguments = ["--max-columns-preview" "--colors=line:style:bold"];
   };
 
+  alacritty = {
+    enable = true;
+
+    settings = {
+      env.TERM = "xterm-256color";
+    };
+  };
+
+  kitty = {
+    enable = true;
+    extraConfig = builtins.readFile ./config/kitty;
+  };
+
   ssh = {
     enable = true;
     addKeysToAgent = "yes";
