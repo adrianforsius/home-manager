@@ -124,18 +124,15 @@
     arguments = ["--max-columns-preview" "--colors=line:style:bold"];
   };
 
-  alacritty = {
-    enable = true;
+  # TODO: Enable for darwin/NixOS I don't want to deal with nixGl wrapping
+  # for non-darwin/nixos
+  # alacritty = {
+  #   enable = true;
 
-    settings = {
-      env.TERM = "xterm-256color";
-    };
-  };
-
-  kitty = {
-    enable = true;
-    extraConfig = builtins.readFile ./config/kitty;
-  };
+  #   settings = {
+  #     env.TERM = "xterm-256color";
+  #   };
+  # };
 
   ssh = {
     enable = true;
