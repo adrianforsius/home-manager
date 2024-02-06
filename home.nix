@@ -68,6 +68,8 @@
   #
   home.sessionVariables = {
     EDITOR = "vim";
+    VISUAL = "vim";
+    GIT_EDITOR = "vim";
     DEFAULT_BROWSER = "google-chrome";
 
     # Enable persistent REPL history for `node`.
@@ -150,27 +152,6 @@
     defaultCacheTtl = 34560000;
     maxCacheTtl = 34560000;
   };
-
-  # # setup windowing environment
-  # services.xserver = {
-  #   enable = true;
-  #   layout = "us";
-  #   dpi = 220;
-
-  #   desktopManager = {
-  #     xterm.enable = false;
-  #     wallpaper.mode = "fill";
-  #   };
-
-  #   displayManager = {
-  #     defaultSession = "none+i3";
-  #     lightdm.enable = true;
-  #   };
-
-  #   windowManager = {
-  #     i3.enable = true;
-  #   };
-  # };
 
   fonts.fontconfig.enable = true;
 
