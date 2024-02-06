@@ -21,7 +21,7 @@
       indent_size = 8;
     };
 
-    ".vimrc" = {
+    "*.vimrc" = {
       indent_style = "tab";
       indent_size = 2;
     };
@@ -36,12 +36,12 @@
       indent_size = 2;
     };
 
-    "[{*.json,*.js,*.ts}]" = {
+    "{*.json,*.js,*.ts}" = {
       indent_style = "space";
       indent_size = 2;
     };
 
-    "[{*.yaml,*.yml}]" = {
+    "{*.yaml,*.yml}" = {
       indent_style = "space";
       indent_size = 2;
     };

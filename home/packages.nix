@@ -31,10 +31,11 @@ with pkgs;
     appimagekit
     devenv
     cachix
+    lynx
 
     transmission
     zoom
-    vscode
+    # vscode
     # postman # TODO: 404 on mirror
     insomnia
     gimp

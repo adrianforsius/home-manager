@@ -149,4 +149,34 @@
     enable = true;
     enableZshIntegration = true;
   };
+
+  vscode = {
+    enable = true;
+    mutableExtensionsDir =
+      true; # to allow vscode to install extensions not available via nix
+    # VSCode already has sync in the cloud
+    # TODO: Replicate sync settings, for now its just easier to sync
+    # extensions = with pkgs.vscode-extensions; [
+    #   vscodevim.vim
+    #   hashicorp.terraform
+    #   rust-lang.rust-analyzer
+    #   esbenp.prettier-vscode
+    #   bbenoist.nix
+    #   ms-vscode.makefile-tools
+    #   golang.go
+    #   eamodio.gitlens
+    #   github.copilot
+    #   dbaeumer.vscode-eslint
+    #   editorconfig.editorconfig
+    #   mikestead.dotenv
+    #   ms-python.python
+    # ];
+    # keybindings = [
+    # ];
+    # userSettings = {
+    # };
+  };
+
+  vim = {
+  };
 }
