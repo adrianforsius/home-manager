@@ -17,7 +17,6 @@
     self,
     nixpkgs,
     home-manager,
-    devenv,
     flake-utils,
     ...
   } @ inputs: let
@@ -85,7 +84,7 @@
         overlays = builtins.attrValues self.overlays;
       };
     in {
-      default = devenv.lib.mkShell {
+      default = inputs.devenv.lib.mkShell {
         inherit inputs pkgs;
         modules = [
           (import ./devenv.nix)
