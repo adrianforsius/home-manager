@@ -3,10 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./home.nix
-  ];
-
   gtk = import ./home/gtk.nix {inherit pkgs;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
@@ -21,6 +17,7 @@
     pacman
     # albert
     (callPackage ./home/package/cerebro {})
+    virtualbox
   ];
 
   # home.sessionVariables.EDITOR = lib.mkForce "nano";

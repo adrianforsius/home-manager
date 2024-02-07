@@ -3,5 +3,6 @@
     xquartz
     rectangle
     iterm2
+    virtualbox
   ];
 }

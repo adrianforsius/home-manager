@@ -44,7 +44,6 @@ with pkgs; [
   slack
   franz
   docker
-  virtualbox
   tailscale
   google-chrome
 

@@ -48,7 +48,7 @@
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
-      modules = [./user/adrianforsius/linux.nix];
+      modules = [./user/adrianforsius/home.nix ./user/adrianforsius/linux.nix];
 
       extraSpecialArgs = {
         user = {
