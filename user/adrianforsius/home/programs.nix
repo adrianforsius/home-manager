@@ -324,6 +324,8 @@ with pkgs; {
       let g:EditorConfig_exclude_patterns = ['fugitive://.*']
     '';
     plugins = [
+      # Triage:
+      # vimPlugins.copilot-vim
       vimPlugins.editorconfig-vim
       vimPlugins.fzf-vim
       vimPlugins.vim-commentary

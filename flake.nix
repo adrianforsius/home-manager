@@ -8,16 +8,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     devenv.url = "github:cachix/devenv/latest";
     flake-utils.url = "github:numtide/flake-utils";
-    # (builtins.getFlake "./flake/cerebro/flake.nix").packages.x86_64-linux.default)
   };
 
   outputs = {
-    self,
     nixpkgs,
-    home-manager,
     flake-utils,
+    darwin,
     ...
   } @ inputs: let
     inherit (flake-utils.lib) eachSystemMap;
@@ -27,22 +29,28 @@
       "x86_64-darwin"
       "x86_64-linux"
     ];
+
+    overlays = {
+      extraPackages = final: prev: {
+        devenv = inputs.devenv.packages.${prev.system}.devenv;
+      };
+    };
+    mkSystem = import ./lib/mksystem.nix {
+      inherit overlays nixpkgs inputs;
+    };
   in {
-    homeConfigurations."adrianforsius@adrian" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."adrianforsius@adrian" = inputs.home-manager.lib.homeManagerConfiguration rec {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
-        overlays = builtins.attrValues self.overlays;
+        overlays = builtins.attrValues overlays;
       };
 
       # Specify your home configuration modules here, for example,
       # the path to your home.nix.
-      modules = [./home.nix];
+      modules = [./user/adrianforsius/linux.nix];
 
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
       extraSpecialArgs = {
-        host = "adrian";
         user = {
           name = "adrianforsius";
           home = "/home/adrianforsius";
@@ -50,38 +58,46 @@
       };
     };
 
-    homeConfigurations."adrianf@adrian" = home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        system = "x86_64-darwin";
-        config.allowUnfree = true;
-        overlays = builtins.attrValues self.overlays;
-      };
+    # nixosConfigurations."adrianforsius@adrian" = mkSystem "cx1carbon" {
+    #   func = nixpkgs.lib.nixosSystem;
+    #   home-manager = inputs.home-manager.nixosModules;
+    #   name = "nixos";
+    #   arch = "x86_64-linux";
+    #   host = "adrian";
+    #   user = {
+    #     name = "adrianforsius";
+    #     home = "/home/adrianforsius";
+    #   };
+    # };
 
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
-      modules = [./home.nix];
-
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
-      extraSpecialArgs = {
-        host = "adrian";
-        user = {
-          name = "adrianforsius";
-          home = "/Users/adrianforsius";
-        };
+    nixosConfigurations."adrianforsius@adrian" = mkSystem "corei5-home" {
+      func = nixpkgs.lib.nixosSystem;
+      home-manager = inputs.home-manager.nixosModules;
+      name = "nixos";
+      arch = "x86_64-linux";
+      host = "adrian";
+      user = {
+        name = "adrianforsius";
+        home = "/home/adrianforsius";
       };
     };
 
-    overlays = {
-      extraPackages = final: prev: {
-        devenv = inputs.devenv.packages.${prev.system}.devenv;
+    darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" rec {
+      func = inputs.darwin.lib.darwinSystem;
+      home-manager = inputs.home-manager.darwinModules;
+      name = "darwin";
+      arch = "aarch64-darwin";
+      host = "adrian";
+      user = {
+        name = "adrianforsius";
+        home = "/Users/adrianforsius";
       };
     };
 
     devShells = eachSystemMap defaultSystems (system: let
       pkgs = import inputs.nixpkgs {
         inherit system;
-        overlays = builtins.attrValues self.overlays;
+        overlays = builtins.attrValues overlays;
       };
     in {
       default = inputs.devenv.lib.mkShell {

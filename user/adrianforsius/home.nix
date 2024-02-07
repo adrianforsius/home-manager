@@ -7,8 +7,10 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # home.username = "adrianforsius";
+  # home.username = system.user.name;
   home.username = specialArgs.user.name;
 
+  # home.homeDirectory = system.user.home;
   home.homeDirectory = specialArgs.user.home;
 
   # This value determines the Home Manager release that your configuration is
@@ -162,21 +164,4 @@
   };
 
   xresources.extraConfig = builtins.readFile ./home/config/xresources;
-
-  gtk =
-    if pkgs.stdenv.isLinux
-    then import ./home/gtk.nix {inherit pkgs;}
-    else {};
-
-  xdg =
-    if pkgs.stdenv.isLinux
-    then import ./home/xdg.nix {inherit pkgs;}
-    else {};
-
-  home.language =
-    if pkgs.stdenv.isLinux
-    then import ./home/language.nix {}
-    else {};
-
-  targets.genericLinux.enable = pkgs.stdenv.isLinux;
 }
