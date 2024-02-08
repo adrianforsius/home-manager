@@ -70,7 +70,19 @@
     #   };
     # };
 
-    nixosConfigurations."adrianforsius@adrian" = mkSystem "corei5-home" {
+    nixosConfigurations.vm-intel = mkSystem "vm-intel" {
+      func = nixpkgs.lib.nixosSystem;
+      home-manager = inputs.home-manager.nixosModules;
+      name = "nixos";
+      arch = "x86_64-linux";
+      host = "adrian";
+      user = {
+        name = "adrianforsius";
+        home = "/home/adrianforsius";
+      };
+    };
+
+    nixosConfigurations.corei5-home = mkSystem "corei5-home" {
       func = nixpkgs.lib.nixosSystem;
       home-manager = inputs.home-manager.nixosModules;
       name = "nixos";

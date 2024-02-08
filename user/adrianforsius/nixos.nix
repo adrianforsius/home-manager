@@ -9,6 +9,14 @@
 
   home.language = import ./home/language.nix {};
 
+  users.users.adrianforsius = {
+    isNormalUser = true;
+    home = "/home/adrianforsius";
+    extraGroups = ["docker" "wheel"];
+    shell = pkgs.fish;
+    hashedPassword = "$6$jM/t2HIzfLCDj4mn$5PNkU9y3JsRxafqJ9X.l4q4AtAPcQgPBf8dzcmulVsSkZO9rE1CxtmBuJebbWwI3Til.wAyW/PahSifdQTpYh1";
+  };
+
   home.packages = lib.mkAfter [
     teams-for-linux
     whatsapp-for-linux
