@@ -71,39 +71,46 @@
     # };
 
     nixosConfigurations.vm-intel = mkSystem "vm-intel" {
-      func = nixpkgs.lib.nixosSystem;
-      home-manager = inputs.home-manager.nixosModules;
-      name = "nixos";
-      arch = "x86_64-linux";
-      host = "adrian";
-      user = {
-        name = "adrianforsius";
-        home = "/home/adrianforsius";
+      system = {
+        func = nixpkgs.lib.nixosSystem;
+        name = "nixos";
+        arch = "x86_64-linux";
+        host = "adrian";
+        user = {
+          name = "adrianforsius";
+          home = "/home/adrianforsius";
+        };
       };
+      home-manager = inputs.home-manager.nixosModules;
     };
 
     nixosConfigurations.corei5-home = mkSystem "corei5-home" {
-      func = nixpkgs.lib.nixosSystem;
-      home-manager = inputs.home-manager.nixosModules;
-      name = "nixos";
-      arch = "x86_64-linux";
-      host = "adrian";
-      user = {
-        name = "adrianforsius";
-        home = "/home/adrianforsius";
+      system = {
+        func = nixpkgs.lib.nixosSystem;
+        name = "nixos";
+        arch = "x86_64-linux";
+        host = "adrian";
+        user = {
+          name = "adrianforsius";
+          home = "/home/adrianforsius";
+        };
       };
+      home-manager = inputs.home-manager.nixosModules;
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" rec {
-      func = inputs.darwin.lib.darwinSystem;
-      home-manager = inputs.home-manager.darwinModules;
-      name = "darwin";
-      arch = "aarch64-darwin";
-      host = "adrian";
-      user = {
-        name = "adrianforsius";
-        home = "/Users/adrianforsius";
+      system = {
+        func = inputs.darwin.lib.darwinSystem;
+        home-manager = inputs.home-manager.darwinModules;
+        name = "darwin";
+        arch = "aarch64-darwin";
+        host = "adrian";
+        user = {
+          name = "adrianforsius";
+          home = "/Users/adrianforsius";
+        };
       };
+      home-manager = inputs.home-manager.nixosModules;
     };
 
     devShells = eachSystemMap defaultSystems (system: let
