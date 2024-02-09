@@ -17,7 +17,7 @@ with pkgs; {
     # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
     pacman
     # albert
-    (callPackage ./package/cerebro {})
+    (callPackage ./home/package/cerebro {})
   ];
 
   gtk = import ./home/gtk.nix {inherit pkgs;};

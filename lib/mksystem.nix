@@ -6,12 +6,16 @@
   config,
   home-manager,
 }: let
-  mkHome = ./mkhome.nix;
+  mkHome = import ./mkhome.nix;
   # The config files for this system.
   machineConfig = ../machine/${machine}.nix;
   userOSConfig = ../user/${config.user.name}/${config.name}.nix;
   userHMConfig = ../user/${config.user.name}/home.nix;
   userHMOSConfig = ../user/${config.user.name}/home-${config.name}.nix;
+  home = mkHome {
+    modules = [userHMConfig userHMOSConfig];
+    user = config.user;
+  };
 in
   config.func rec {
     system = config.name;
@@ -25,17 +29,12 @@ in
       machineConfig
       userOSConfig
       home-manager.home-manager
-      mkHome
-      {
-        user = config.user;
-        modules = [userHMConfig userHMOSConfig];
-        inherit inputs;
-      }
+      home
 
       # We expose some extra arguments so that our modules can parameterize
       # better based on these values.
       {
-        config._module.args = {inherit config inputs;};
+        config._module.args = {inherit inputs; user = config.user;};
       }
     ];
   }
