@@ -24,11 +24,12 @@ in
 
       machineConfig
       userOSConfig
-      home-manager.home-manage
+      home-manager.home-manager
       mkHome
       {
         user = config.user;
         modules = [userHMConfig userHMOSConfig];
+        inherit inputs;
       }
 
       # We expose some extra arguments so that our modules can parameterize

@@ -1,10 +1,12 @@
 {
   user,
   modules,
+  inputs,
+  ...
 }: {
   useGlobalPkgs = true;
   useUserPackages = true;
   backupFileExtension = "bak";
-  extraSpecialArgs = {inherit inputs username;};
+  extraSpecialArgs = {inherit user inputs;};
   users."${user.name}".imports = modules;
 }
