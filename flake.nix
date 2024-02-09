@@ -71,7 +71,7 @@
     # };
 
     nixosConfigurations.vm-intel = mkSystem "vm-intel" {
-      system = {
+      config = {
         func = nixpkgs.lib.nixosSystem;
         name = "nixos";
         arch = "x86_64-linux";
@@ -85,7 +85,7 @@
     };
 
     nixosConfigurations.corei5-home = mkSystem "corei5-home" {
-      system = {
+      config = {
         func = nixpkgs.lib.nixosSystem;
         name = "nixos";
         arch = "x86_64-linux";
@@ -99,7 +99,7 @@
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" rec {
-      system = {
+      config = {
         func = inputs.darwin.lib.darwinSystem;
         home-manager = inputs.home-manager.darwinModules;
         name = "darwin";

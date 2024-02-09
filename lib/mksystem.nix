@@ -11,8 +11,8 @@
   userOSConfig = ../user/${system.user.name}/${system.name}.nix;
   userHMConfig = ../user/${system.user.name}/home.nix;
 in
-  system.func rec {
-    system = system.name;
+  config.func rec {
+    system = config.name;
 
     modules = [
       # Apply our overlays. Overlays are keyed by system type so we have
