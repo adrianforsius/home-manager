@@ -3,7 +3,7 @@
   overlays,
   inputs,
 }: machine: {
-  system,
+  config,
   home-manager,
 }: let
   # The config files for this system.
