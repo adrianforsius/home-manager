@@ -6,10 +6,12 @@
   config,
   home-manager,
 }: let
+  mkHome = ./mkhome.nix;
   # The config files for this system.
   machineConfig = ../machine/${machine}.nix;
   userOSConfig = ../user/${config.user.name}/${config.name}.nix;
   userHMConfig = ../user/${config.user.name}/home.nix;
+  userHMOSConfig = ../user/${config.user.name}/home-${config.name}.nix;
 in
   config.func rec {
     system = config.name;
@@ -22,12 +24,11 @@ in
 
       machineConfig
       userOSConfig
-      home-manager.home-manager
+      home-manager.home-manage
+      mkHome
       {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {inherit (config) user;};
-        home-manager.users.${config.user.name}.imports = [userHMConfig];
+        inherit user;
+        modules = [userHMConfig userHMOSConfig];
       }
 
       # We expose some extra arguments so that our modules can parameterize

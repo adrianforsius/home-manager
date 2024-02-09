@@ -1,8 +1,7 @@
 {pkgs, ...}:
 with pkgs; {
-  # gtk = import ./home/gtk.nix {inherit pkgs;};
-
-  xdg = import ./home/xdg.nix {inherit pkgs;};
+  xdg.autostart.enable = true;
+  xdg.icons.enable = true;
   # programs.hyperland = {
   #   enable = true;
   #   xwayland.enable = true;
