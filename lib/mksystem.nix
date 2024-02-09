@@ -27,7 +27,7 @@ in
       home-manager.home-manage
       mkHome
       {
-        inherit user;
+        user = config.user;
         modules = [userHMConfig userHMOSConfig];
       }
 
