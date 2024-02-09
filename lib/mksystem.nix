@@ -8,8 +8,8 @@
 }: let
   # The config files for this system.
   machineConfig = ../machine/${machine}.nix;
-  userOSConfig = ../user/${system.user.name}/${system.name}.nix;
-  userHMConfig = ../user/${system.user.name}/home.nix;
+  userOSConfig = ../user/${config.user.name}/${config.name}.nix;
+  userHMConfig = ../user/${config.user.name}/home.nix;
 in
   config.func rec {
     system = config.name;
@@ -26,14 +26,14 @@ in
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = {inherit (system) user;};
-        home-manager.users.${system.user.name}.imports = [userHMConfig];
+        home-manager.extraSpecialArgs = {inherit (config) user;};
+        home-manager.users.${config.user.name}.imports = [userHMConfig];
       }
 
       # We expose some extra arguments so that our modules can parameterize
       # better based on these values.
       {
-        config._module.args = {inherit system inputs;};
+        config._module.args = {inherit config inputs;};
       }
     ];
   }
