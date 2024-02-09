@@ -4,13 +4,20 @@
   ...
 }:
 with pkgs; {
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "xfce";
+  #   style = {
+  #     name = "adwaita-dark";
+  #     package = pkgs.adwaita-qt;
+  #   };
+  # };
+
   gtk = import ./home/gtk.nix {inherit pkgs;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
 
   home.language = import ./home/language.nix {};
-
-  targets.genericLinux.enable = true;
 
   home.packages = lib.mkAfter [
     teams-for-linux
@@ -23,4 +30,6 @@ with pkgs; {
     (callPackage ./home/package/cerebro {})
   ];
   # home.sessionVariables.EDITOR = lib.mkForce "nano";
+
+  targets.genericLinux.enable = true;
 }

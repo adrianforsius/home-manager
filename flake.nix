@@ -30,11 +30,11 @@
       "x86_64-linux"
     ];
 
-    overlays = {
-      extraPackages = final: prev: {
+    overlays = [
+      (final: prev: {
         devenv = inputs.devenv.packages.${prev.system}.devenv;
-      };
-    };
+      })
+    ];
     mkSystem = import ./lib/mksystem.nix {
       inherit overlays nixpkgs inputs;
     };
@@ -43,7 +43,7 @@
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
-        overlays = builtins.attrValues overlays;
+        inherit overlays;
       };
 
       # Specify your home configuration modules here, for example,
@@ -115,8 +115,7 @@
 
     devShells = eachSystemMap defaultSystems (system: let
       pkgs = import inputs.nixpkgs {
-        inherit system;
-        overlays = builtins.attrValues overlays;
+        inherit system overlays;
       };
     in {
       default = inputs.devenv.lib.mkShell {
