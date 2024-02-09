@@ -6,6 +6,7 @@
   config,
   home-manager,
 }: let
+  mkPkgs = import ./mkpkg.nix {inherit nixpkgs;};
   mkHome = import ./mkhome.nix;
   # The config files for this system.
   machineConfig = ../machine/${machine}.nix;
@@ -19,6 +20,7 @@
 in
   config.func rec {
     system = config.name;
+    pkgs = mkPkgs config.arch;
 
     modules = [
       # Apply our overlays. Overlays are keyed by system type so we have
@@ -34,7 +36,10 @@ in
       # We expose some extra arguments so that our modules can parameterize
       # better based on these values.
       {
-        config._module.args = {inherit inputs; user = config.user;};
+        config._module.args = {
+          inherit inputs;
+          user = config.user;
+        };
       }
     ];
   }

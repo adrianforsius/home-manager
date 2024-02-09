@@ -35,9 +35,7 @@
         devenv = inputs.devenv.packages.${prev.system}.devenv;
       })
     ];
-    mkSystem = import ./lib/mksystem.nix {
-      inherit overlays nixpkgs inputs;
-    };
+    mkSystem = import ./lib/mksystem.nix {inherit overlays nixpkgs inputs;};
   in {
     homeConfigurations."adrianforsius@adrian" = inputs.home-manager.lib.homeManagerConfiguration rec {
       pkgs = import nixpkgs {
