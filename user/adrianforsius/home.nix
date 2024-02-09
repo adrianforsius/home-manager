@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   specialArgs,
   ...
@@ -25,7 +26,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home.packages = import ./home/packages.nix {inherit pkgs config;};
+  home.packages = import ./home/packages.nix {inherit pkgs lib config;};
   editorconfig = import ./editorconfig.nix {};
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -162,6 +163,7 @@
       "startup/ssh-agent/enabled" = true;
     };
   };
+  home.language = import ./home/language.nix {};
 
   xresources.extraConfig = builtins.readFile ./home/config/xresources;
 }
