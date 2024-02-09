@@ -1,7 +1,7 @@
 {...}: {
   enable = true;
 
-  configFile."mimeapps.list".force = true;
+  # configFile."mimeapps.list".force = true;
 
   mime.enable = true;
 
