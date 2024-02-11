@@ -9,6 +9,16 @@ with pkgs; {
   #   };
   # };
 
+  # TODO: Enable for darwin/NixOS I don't want to deal with nixGl wrapping
+  # for non-darwin/nixos
+  alacritty = {
+    enable = true;
+
+    settings = {
+      env.TERM = "xterm-256color";
+    };
+  };
+
   home.packages = [
     teams-for-linux
     whatsapp-for-linux

@@ -130,7 +130,7 @@
         "oh-my-zsh" = {
           enable = true;
           plugins = ["thefuck" "aws" "docker" "history" "z" "gh" "git"];
-          theme = "steeef";
+          # theme = "steeef";
         };
 
         history = {
