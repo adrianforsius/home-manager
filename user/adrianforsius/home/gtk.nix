@@ -5,6 +5,10 @@
     # package = pkgs.xfce.papirus-dark-icon-theme;
     package = pkgs.xfce.xfce4-icon-theme;
   };
+  font = {
+    name = "FiraCode Nerd Font";
+    size = 9;
+  };
   theme = {
     name = "matcha-dark-pueril";
     package = pkgs.matcha-gtk-theme;

@@ -1,14 +1,5 @@
 {pkgs, ...}:
 with pkgs; {
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "xfce";
-  #   style = {
-  #     name = "adwaita-dark";
-  #     package = pkgs.adwaita-qt;
-  #   };
-  # };
-
   home.packages = [
     teams-for-linux
     whatsapp-for-linux

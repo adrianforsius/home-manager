@@ -437,6 +437,8 @@ with pkgs; {
         "$custom"
         "$sudo"
         "$cmd_duration"
+
+        # temp indicators
         "$line_break"
         "$jobs"
         "$battery"
@@ -447,7 +449,6 @@ with pkgs; {
         "$shell"
 
         # end of prompt
-        "$linebreak"
         "$character"
       ];
       directory = {
@@ -460,5 +461,8 @@ with pkgs; {
         error_symbol = "[\\$](bold red)";
       };
     };
+  };
+  firefox = {
+    enable = true;
   };
 }
