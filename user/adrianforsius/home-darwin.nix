@@ -2,7 +2,7 @@
 with pkgs; {
   # for non-darwin/nixos
 
-  alacritty = {
+  programs.alacritty = {
     enable = true;
     # TODO: Themeing
     settings = {

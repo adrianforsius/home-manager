@@ -2,7 +2,7 @@
 with pkgs; {
   # TODO: Enable for darwin/NixOS I don't want to deal with nixGl wrapping
   # for non-darwin/nixos
-  alacritty = {
+  programs.alacritty = {
     enable = true;
     # TODO: Themeing
     settings = {
