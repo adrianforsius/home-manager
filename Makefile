@@ -1,13 +1,12 @@
-ACTIVATION_USER ?= ${USER}
-ACTIVATION_HOST ?= $(shell hostname)
+PROFILE ?= ${PROFILE}
 
 .PHONY: switch
 switch:
-	nix run home-manager/release-23.11 -- switch --flake .#"${ACTIVATION_USER}@${ACTIVATION_HOST}"
+	nix run home-manager/release-23.11 -- switch --flake .#"${PROFILE}"
 
 .PHONY: build
 build:
-	nix run home-manager/release-23.11 -- build --flake .#"${ACTIVATION_USER}@${ACTIVATION_HOST}"
+	nix run home-manager/release-23.11 -- build --flake .#"${PROFILE}"
 
 .PHONY: fmt
 fmt:

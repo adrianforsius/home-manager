@@ -32,6 +32,7 @@ with pkgs; [
   devenv
   cachix
   lynx
+  tldr
 
   transmission
   zoom
