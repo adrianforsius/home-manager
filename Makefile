@@ -12,6 +12,11 @@ build:
 fmt:
 	find . -name "*.nix" | xargs nix develop --command alejandra
 
+.PHONY: build-nix
+build-nix:
+	sudo NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1 nixos-rebuild switch --flake ".#${PROFILE}"
+
+
 .PHONY: bootstrap
 bootrap:
 	./bootstrap.sh
