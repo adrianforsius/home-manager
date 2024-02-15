@@ -118,7 +118,7 @@
   ];
 
   programs =
-    import ./home/programs.nix {inherit pkgs;}
+    import ./home/programs.nix {inherit pkgs config;}
     // {
       # TODO: reevalute if I want to move this to programs
       zsh = {

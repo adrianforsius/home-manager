@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  config,
+  ...
+}:
 with pkgs; {
   # Let Home Manager install and manage itself.
 
@@ -340,8 +344,8 @@ with pkgs; {
     settings = {
       # mouse = "a";
       background = "dark";
-      backupdir = ["~/.vim/backups"];
-      directory = ["~/.vim/swaps"];
+      backupdir = ["${config.home.homeDirectory}/.vim/backups"];
+      directory = ["${config.home.homeDirectory}/.vim/swaps"];
       expandtab = true;
       hidden = true;
       history = 10000;
@@ -351,7 +355,7 @@ with pkgs; {
       relativenumber = true;
       shiftwidth = 4;
       tabstop = 2;
-      undodir = ["~/.vim/undo"];
+      undodir = ["${config.home.homeDirectory}/.vim/undo"];
       undofile = true;
     };
   };

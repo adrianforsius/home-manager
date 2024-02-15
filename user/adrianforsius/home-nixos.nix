@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 with pkgs; {
   # TODO: Enable for darwin/NixOS I don't want to deal with nixGl wrapping
   # for non-darwin/nixos
@@ -21,6 +25,9 @@ with pkgs; {
       window.opacity = 0.9;
     };
   };
+  programs.kitty.enable = true;
+  # TOOD: Find better solution
+  programs.git.signing.key = lib.mkForce "1FD1903A55AC5731";
 
   home.packages = [
     teams-for-linux

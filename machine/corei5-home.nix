@@ -123,17 +123,6 @@ with pkgs; {
     # windowManager = {
     #   i3.enable = true;
     # };
-
-    # Enable touchpad support
-    libinput = {
-      enable = true;
-      touchpad.accelSpeed = "0.7";
-      touchpad.naturalScrolling = true;
-      touchpad.middleEmulation = true;
-      touchpad.tapping = true;
-      touchpad.scrollMethod = "twofinger";
-      touchpad.disableWhileTyping = true;
-    };
   };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
