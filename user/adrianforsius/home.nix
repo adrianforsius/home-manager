@@ -84,8 +84,8 @@
     # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
     PYTHONIOENCODING = "UTF-8";
 
-    # # Increase Bash history size. Allow 32³ entries; the default is 500.
-    HISTSIZE = "32768";
+    # No limit
+    HISTSIZE = "-1";
     # HISTFILESIZE="$(HISTSIZE)";
     # # Omit duplicates and commands that begin with a space from history.
     # HISTCONTROL="ignoreboth";

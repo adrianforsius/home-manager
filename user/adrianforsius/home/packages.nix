@@ -33,6 +33,10 @@ with pkgs; [
   cachix
   lynx
   tldr
+  ncdu
+  du-dust
+  trash-cli
+  duf
 
   transmission
   zoom
