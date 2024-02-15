@@ -30,5 +30,8 @@ gpg --list-secret-keys --keyid-format=long
 printf "get armored gpg key, run:\n"
 printf "gpg --armor --export <key>\n"
 
+printf "adding missing .vim dirs\n"
+mkdir -p ~/.vim/backups && mkdir -p ~/.vim/swaps
+
 printf "all done!\n"
 
