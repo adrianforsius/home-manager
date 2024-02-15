@@ -34,6 +34,7 @@ with pkgs; {
     };
   };
 
+  programs.zsh.enable = true;
   users.users.adrianforsius = {
     isNormalUser = true;
     home = "/home/adrianforsius";

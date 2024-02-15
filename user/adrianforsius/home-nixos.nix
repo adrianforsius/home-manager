@@ -15,7 +15,6 @@ with pkgs; {
       font.normal.style = "Regular";
       live_config_reload = true;
       scrolling.history = 5000;
-      scrolling.smooth = true;
       shell.program = "${pkgs.zsh}/bin/zsh";
       window.decorations = "full";
       window.dynamic_title = true;
@@ -37,6 +36,8 @@ with pkgs; {
   gtk = import ./home/gtk.nix {inherit pkgs;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
+
+  services.network-manager-applet.enable = true;
 
   targets.genericLinux.enable = true;
 }

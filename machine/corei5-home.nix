@@ -60,7 +60,7 @@ with pkgs; {
   # location.latitude = 38.0;
   # location.longitude = -105.0;
   # Used to automatically adjust brightness and temperature of the screen
-  services.clight.enable = true;
+  # services.clight.enable = true;
 
   fonts = {
     enableDefaultPackages = true;
@@ -135,4 +135,7 @@ with pkgs; {
       touchpad.disableWhileTyping = true;
     };
   };
+
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  # networking.networkmanager.packages = [ networkmanagerapplet ];
 }
