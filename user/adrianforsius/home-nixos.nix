@@ -25,7 +25,10 @@ with pkgs; {
       window.opacity = 0.9;
     };
   };
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    theme = "Gruvbox Dark";
+  };
   # TOOD: Find better solution
   programs.git.signing.key = lib.mkForce "1FD1903A55AC5731";
 
@@ -45,6 +48,4 @@ with pkgs; {
   xdg = import ./home/xdg.nix {inherit pkgs;};
 
   services.network-manager-applet.enable = true;
-
-  targets.genericLinux.enable = true;
 }
