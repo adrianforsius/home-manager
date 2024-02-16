@@ -25,8 +25,8 @@ with pkgs; {
     xclip
 
     # Themeing
-    gruvbox-dark-gtk
-    gruvbox-dark-icons-gtk
+    # gruvbox-dark-gtk
+    # gruvbox-dark-icons-gtk
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -108,8 +108,8 @@ with pkgs; {
   services.xserver = {
     enable = true;
     layout = "es,us";
-    autoRepeatDelay = 300;
-    autoRepeatInterval = 50;
+    autoRepeatDelay = 305;
+    autoRepeatInterval = 55;
 
     desktopManager = {
       wallpaper.mode = "fill";
@@ -120,16 +120,11 @@ with pkgs; {
     };
 
     displayManager = {
-      lightdm = {
+      sddm = {
         enable = true;
-        greeter.enable = true;
-
-        greeters = {
-          enso.enable = true;
-        };
       };
       sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 400 50
+        ${pkgs.xorg.xset}/bin/xset r rate 310 51
       '';
     };
 
