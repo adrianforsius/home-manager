@@ -1,26 +1,27 @@
 {pkgs, ...}: {
   enable = true;
   iconTheme = {
-    name = "adwaita";
-    # package = pkgs.xfce.papirus-dark-icon-theme;
-    package = pkgs.xfce.xfce4-icon-theme;
+    name = "gruvbox-dark-icons-gtk";
+    package = pkgs.gruvbox-dark-icons-gtk;
   };
+
   font = {
-    name = "FiraCode Nerd Font";
-    size = 9;
+    name = "TeX Gyre Adventor";
+    size = 12;
   };
+
   theme = {
     name = "matcha-dark-pueril";
-    package = pkgs.matcha-gtk-theme;
+    package = pkgs.gruvbox-dark-gtk;
   };
+
   gtk3.extraConfig = {
-    Settings = ''
-      gtk-application-prefer-dark-theme=1
-    '';
+    gtk-application-prefer-dark-theme = 1;
+    gtk-enable-animations = 0;
   };
+
   gtk4.extraConfig = {
-    Settings = ''
-      gtk-application-prefer-dark-theme=1
-    '';
+    gtk-application-prefer-dark-theme = 1;
+    gtk-enable-animations = 0;
   };
 }

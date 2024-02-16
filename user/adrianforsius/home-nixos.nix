@@ -26,6 +26,8 @@ with pkgs; {
     };
   };
   programs.kitty = {
+    font.size = 16;
+    font.name = "MesloLGS Nerd Font Mono";
     enable = true;
     theme = "Gruvbox Dark";
   };

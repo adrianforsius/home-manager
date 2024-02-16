@@ -21,9 +21,12 @@ with pkgs; {
     cachix
     gnumake
     killall
-    niv
     rxvt_unicode
     xclip
+
+    # Themeing
+    gruvbox-dark-gtk
+    gruvbox-dark-icons-gtk
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -89,8 +92,8 @@ with pkgs; {
       noto-fonts
     ];
     fontconfig.defaultFonts = {
-      monospace = ["MesloLGS Nerd Font Mono" "Noto Mono"];
-      sansSerif = ["MesloLGS Nerd Font" "Noto Sans"];
+      # monospace = ["MesloLGS Nerd Font Mono" "Noto Mono"];
+      # sansSerif = ["MesloLGS Nerd Font" "Noto Sans"];
       serif = ["Noto Serif"];
     };
   };
@@ -104,9 +107,9 @@ with pkgs; {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "us";
-    autoRepeatDelay = 265;
-    autoRepeatInterval = 20;
+    layout = "es,us";
+    autoRepeatDelay = 300;
+    autoRepeatInterval = 50;
 
     desktopManager = {
       wallpaper.mode = "fill";
@@ -117,7 +120,14 @@ with pkgs; {
     };
 
     displayManager = {
-      lightdm.enable = true;
+      lightdm = {
+        enable = true;
+        greeter.enable = true;
+
+        greeters = {
+          enso.enable = true;
+        };
+      };
     };
 
     # windowManager = {

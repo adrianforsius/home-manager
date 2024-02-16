@@ -138,7 +138,7 @@
           ignoreSpace = true;
           ignoreDups = true;
           extended = true;
-          share = false;
+          share = true;
           save = 10000; # save 10,000 lines of history
           size = 100000;
         };
@@ -164,5 +164,5 @@
   };
   home.language = import ./home/language.nix {};
 
-  xresources.extraConfig = builtins.readFile ./home/config/xresources;
+  xresources.extraConfig = builtins.readFile ./home/config/Xresources;
 }
