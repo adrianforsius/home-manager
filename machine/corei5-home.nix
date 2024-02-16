@@ -128,6 +128,9 @@ with pkgs; {
           enso.enable = true;
         };
       };
+      sessionCommands = ''
+        ${pkgs.xorg.xset}/bin/xset r rate 400 50
+      '';
     };
 
     # windowManager = {
