@@ -23,10 +23,6 @@ with pkgs; {
     killall
     rxvt_unicode
     xclip
-
-    # Themeing
-    # gruvbox-dark-gtk
-    # gruvbox-dark-icons-gtk
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -111,26 +107,23 @@ with pkgs; {
     autoRepeatDelay = 305;
     autoRepeatInterval = 55;
 
-    desktopManager = {
-      wallpaper.mode = "fill";
-      xfce = {
-        enable = true;
-        enableXfwm = true;
-      };
-    };
-
     displayManager = {
-      sddm = {
-        enable = true;
-      };
+      sddm.enable = true;
+      defaultSession = "none+i3";
+
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 310 51
       '';
     };
 
-    # windowManager = {
-    #   i3.enable = true;
-    # };
+    windowManager.i3 = {
+      enable = true;
+      extraPackages = [
+        rofi
+        polybar
+        feh
+      ];
+    };
   };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
