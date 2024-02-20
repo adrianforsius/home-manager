@@ -5,12 +5,9 @@
 
   mime.enable = true;
 
-  # desktopEntries = {
-  #   xfce4-terminal = {
-  #     name = "Xfce Terminal";
-  #     exec = "xfce4-terminal --disable-server";
-  #   };
-  # };
+  "i3/config".text = builtins.readFile ./i3;
+  "rofi/config.rasi".text = builtins.readFile ./rofi;
+
   mimeApps = {
     enable = true;
     # Use file --mime-type <filename> to detect mime type

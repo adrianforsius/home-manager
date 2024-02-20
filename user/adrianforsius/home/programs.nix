@@ -17,6 +17,8 @@ with pkgs; {
   man.enable = true;
   k9s.enable = true;
 
+  i3status-rust.enable = true;
+
   git = {
     enable = true;
     userName = "Adrian Forsius";
