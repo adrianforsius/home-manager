@@ -50,4 +50,5 @@
 // pkgs.lib.optionals pkgs.stdenv.isLinux {
   pbcopy = "xsel --clipboard --input";
   pbpaste = "xsel --clipboard --output";
+  open = "xdg-open";
 }
