@@ -2,17 +2,6 @@
 with pkgs; {
   xdg.autostart.enable = true;
   xdg.icons.enable = true;
-  # programs.hyperland = {
-  #   enable = true;
-  #   xwayland.enable = true;
-  # };
-  # environment.systemPackages = [
-  #   rofi-wayland
-  #   kitty
-  #
-  #   waybar
-  #   eww
-  # ];
 
   nix = {
     # use unstable nix so we can access flakes
@@ -32,6 +21,11 @@ with pkgs; {
       substituters = ["https://cache.nixos.org" "https://adrianforsius.cachix.org"];
       trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "adrianforsius.cachix.org-1:dqiGV3J707B/aFdb8YS2u59G50jcgNUabpcw1vOq/e4="];
     };
+    # TODO: Enable when more stable
+    # gc = {
+    #   automatic = true;
+    #   options = "--max-freed $((30*8*1024**3))" # 30 GB
+    # };
   };
 
   programs.zsh.enable = true;

@@ -39,10 +39,9 @@ with pkgs; {
     whatsapp-for-linux
     xclip
     xsel
-    # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
     pacman
-    # albert
-    (callPackage ./home/package/cerebro {})
+    # Keeping for reference:
+    # (callPackage ./home/package/cerebro {})
   ];
 
   gtk = import ./home/gtk.nix {inherit pkgs;};
