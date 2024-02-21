@@ -1,12 +1,13 @@
 {...}: {
   enable = true;
 
-  # configFile."mimeapps.list".force = true;
-
   mime.enable = true;
 
-  "i3/config".text = builtins.readFile ./i3;
-  "rofi/config.rasi".text = builtins.readFile ./rofi;
+  configFile = {
+    # "mimeapps.list".force = true;
+    "i3/config".text = builtins.readFile ./config/i3;
+    "rofi/config.rasi".text = builtins.readFile ./config/rofi;
+  };
 
   mimeApps = {
     enable = true;

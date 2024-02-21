@@ -17,7 +17,7 @@ with pkgs; {
   man.enable = true;
   k9s.enable = true;
 
-  i3status-rust.enable = true;
+  i3status.enable = true;
 
   git = {
     enable = true;
@@ -68,6 +68,7 @@ with pkgs; {
       # View the current working tree status using the short format
       s = "status -s";
       # Show the diff between the latest commit and the current state
+      staged = "git diff --staged";
       d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat";
       # `git di $number` shows the diff between the state `$number` revisions ago and the current state
       di = "!d() { git diff --patch-with-stat head~$1; }; git diff-index --quiet HEAD -- || clear; d";
