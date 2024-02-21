@@ -5,7 +5,7 @@
 
   configFile = {
     # "mimeapps.list".force = true;
-    "i3/config".text = builtins.readFile ./config/i3;
+    # "i3/config".text = builtins.readFile ./config/i3;
     "rofi/config.rasi".text = builtins.readFile ./config/rofi;
   };
 

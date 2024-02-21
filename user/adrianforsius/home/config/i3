@@ -133,7 +133,7 @@ bindsym $mod+Shift+r restart
 #----------------------------------------------------------------------
 # Resize Mode
 #----------------------------------------------------------------------
-set $mode_resize Resize / Move
+set $mode_resize # Resize / Move
 
 # This mode will make it easier to resize and move workspaces without
 # having to bind a bunch of obscure bindings.

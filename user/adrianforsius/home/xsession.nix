@@ -1,20 +1,91 @@
-{...}: {
+{config, ...}: let
+  modifier = config.xsession.windowManager.i3.config.modifier;
+in {
   enable = true;
 
   # TODO: move more i3 config from file to here
-  windowManager.i3.enable = true;
-  windowManager.i3.config = {
-    # startup = [
-    #   {
-    #     command = "feh --bg-fill ~/.wallpaper.jpg";
-    #     always = true;
-    #     notification = true;
-    #   }
-    #   {
-    #     command = "nm-applet";
-    #     notification = false;
-    #   }
-    # ];
+  windowManager.i3 = {
+    enable = true;
+    config = {
+      startup = [
+        {
+          command = "feh --bg-fill ~/.wallpaper.jpg";
+          always = true;
+          notification = true;
+        }
+        {
+          command = "nm-applet";
+          notification = false;
+        }
+      ];
+
+      fonts = {
+        names = ["monospace"];
+        style = "Bold";
+        size = 14.0;
+      };
+
+      bars = [
+        {
+          position = "top";
+          statusCommand = "i3status";
+
+          workspaceButtons = true;
+          workspaceNumbers = true;
+
+          fonts = {
+            names = ["monospace"];
+            style = "Bold";
+            size = 14.0;
+          };
+        }
+      ];
+
+      modifier = "Mod4";
+      keybindings = {
+        "${modifier}+o" = "exec rofi -show run";
+        "${modifier}+n" = "exec kitty";
+        "${modifier}+d" = "split h";
+        "${modifier}+Shift+d" = "split v";
+
+        # kill focused window
+        "${modifier}+w" = "kill";
+
+        # change focus
+        "${modifier}+h" = "focus left";
+        "${modifier}+j" = "focus down";
+        "${modifier}+k" = "focus up";
+        "${modifier}+l" = "focus right";
+
+        # move focused window
+        "${modifier}+Shift+h" = "move left";
+        "${modifier}+Shift+j" = "move down";
+        "${modifier}+Shift+k" = "move up";
+        "${modifier}+Shift+l" = "move right";
+
+        # enter fullscreen mode for the focused container
+        "${modifier}+Shift+f" = "fullscreen toggle";
+
+        # change container layout (stacked, tabbed, toggle split)
+        "${modifier}+Shift+s" = "layout stacking";
+        "${modifier}+Shift+w" = "layout tabbed";
+        "${modifier}+Shift+e" = "layout toggle split";
+
+        # toggle tiling / floating
+        "${modifier}+Shift+space" = "floating toggle";
+
+        # change focus between tiling / floating windows
+        "${modifier}+space" = "focus mode_toggle";
+
+        # focus the parent container
+        "${modifier}+Shift+a" = "focus parent";
+
+        # reload the configuration file
+        "${modifier}+Shift+c" = "reload";
+        # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+        "${modifier}+Shift+r" = "restart";
+      };
+    };
     extraConfig = ''
       set $mod Mod4
 
@@ -44,67 +115,17 @@
       set_from_resource $green		i3wm.color10	#B5BD56
 
       #class                  border      backgr.     text        split
-      client.focused          $green     $green       $black      $red
+      client.focused          $green      $green      $black      $red
       client.focused_inactive $grey       $grey       $lightgrey  $grey
       client.unfocused        $grey       $grey       $lightgrey  $grey
       client.urgent           $red        $red        $black      $red
       client.background       $back
 
       #----------------------------------------------------------------------
-      # Startup
-      #----------------------------------------------------------------------
-      # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-      # screen before suspend. Use loginctl lock-session to lock your screen.
-      exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-
-      #----------------------------------------------------------------------
       # Keybindings
       #----------------------------------------------------------------------
       # Use Mouse+$mod to drag floating windows to their wanted position
       floating_modifier $mod
-
-      bindsym $mod+o exec rofi -show run
-
-      # start a terminal
-      bindsym $mod+n exec kitty
-      bindsym $mod+d split h
-      bindsym $mod+Shift+d split v
-
-      # kill focused window
-      bindsym $mod+w kill
-
-      # change focus
-      bindsym $mod+h focus left
-      bindsym $mod+j focus down
-      bindsym $mod+k focus up
-      bindsym $mod+l focus right
-
-      # move focused window
-      bindsym $mod+Shift+h move left
-      bindsym $mod+Shift+j move down
-      bindsym $mod+Shift+k move up
-      bindsym $mod+Shift+l move right
-
-      # enter fullscreen mode for the focused container
-      bindsym $mod+Shift+f fullscreen toggle
-
-      # change container layout (stacked, tabbed, toggle split)
-      bindsym $mod+Shift+s layout stacking
-      bindsym $mod+Shift+w layout tabbed
-      bindsym $mod+Shift+e layout toggle split
-
-      # toggle tiling / floating
-      bindsym $mod+Shift+space floating toggle
-
-      # change focus between tiling / floating windows
-      bindsym $mod+space focus mode_toggle
-
-      # focus the parent container
-      bindsym $mod+Shift+a focus parent
-
-      # focus the child container
-      #bindsym $mod+Shift+d focus child
 
       # Define names for default workspaces for which we configure key bindings later on.
       # We use variables to avoid repeating the names in multiple places.
@@ -142,11 +163,6 @@
       bindsym $mod+Shift+8 move container to workspace number $ws8
       bindsym $mod+Shift+9 move container to workspace number $ws9
       bindsym $mod+Shift+0 move container to workspace number $ws10
-
-      # reload the configuration file
-      bindsym $mod+Shift+c reload
-      # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-      bindsym $mod+Shift+r restart
 
       #----------------------------------------------------------------------
       # Resize Mode
@@ -210,20 +226,6 @@
       }
 
       bindsym $mod+BackSpace mode "$mode_system"
-
-      # Start i3bar to display a workspace bar (plus the system information i3status
-      # finds out, if available)
-      bar {
-          position top
-          status_command i3status
-
-          # colors {
-          #     background $back
-          # }
-      }
-
-      exec --no-startup-id nm-applet --sm-disable
-      exec_always feh --bg-fill ~/.wallpaper.jpg
     '';
   };
 }
