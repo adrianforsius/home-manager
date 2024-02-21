@@ -41,6 +41,15 @@ in {
         }
       ];
 
+      assigns = {
+        "2:🌐" = [
+          {class = "^google-chrome-stable$";}
+        ];
+        "3:💬" = [
+          {class = "^Slack$";}
+        ];
+      };
+
       modifier = "Mod4";
       keybindings = {
         "${modifier}+o" = "exec rofi -show run";
