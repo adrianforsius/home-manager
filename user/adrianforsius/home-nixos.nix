@@ -32,6 +32,15 @@ with pkgs; {
     enable = true;
     theme = "Gruvbox Dark";
   };
+
+  programs.i3status = {
+    enable = true;
+    modules = {
+      ipv6.enable = false;
+      "battery all".enable = false;
+      "ethernet _first_".enable = false;
+    };
+  };
   # TOOD: Find better solution
   programs.git.signing.key = lib.mkForce "1FD1903A55AC5731";
 
