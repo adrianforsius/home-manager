@@ -17,6 +17,9 @@ in {
           command = "nm-applet";
           notification = false;
         }
+        {command = "kitty";}
+        {command = "slack";}
+        {command = "google-chrome-stable";}
       ];
 
       fonts = {
@@ -42,10 +45,13 @@ in {
       ];
 
       assigns = {
-        "2:🌐" = [
-          {class = "^google-chrome-stable$";}
+        "1: term" = [
+          {class = "^Kitty$";}
         ];
-        "3:💬" = [
+        "2: web" = [
+          {class = "^(google-chrome|firefox|google-chrome-stable)$";}
+        ];
+        "3: slack" = [
           {class = "^Slack$";}
         ];
       };
