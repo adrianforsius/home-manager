@@ -115,6 +115,9 @@ with pkgs; {
         ${pkgs.xorg.xset}/bin/xset r rate 310 51
       '';
     };
+    desktopManager = {
+      xterm.enable = false;
+    };
 
     windowManager.i3 = {
       enable = true;
