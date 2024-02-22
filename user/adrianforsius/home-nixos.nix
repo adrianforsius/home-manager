@@ -45,7 +45,7 @@ with pkgs; {
         settings = {
           format = "♪ %volume";
           format_muted = "♪ muted (%volume)";
-          device = "pulse:1";
+          device = "default";
         };
       };
       "battery all".enable = false;
