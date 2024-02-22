@@ -65,6 +65,7 @@ with pkgs; {
     pacman
     pamixer
     maim
+    xdotool
     # Keeping for reference:
     # (callPackage ./home/package/cerebro {})
   ];

@@ -104,6 +104,9 @@ in {
 
         # select and copy to clipboard
         "${modifier}+Shift+x" = "exec maim -s | xclip -selection clipboard -t image/png";
+
+        # screenshot active window to clipboard
+        "${modifier}+Shift+z" = "exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png";
       };
     };
     extraConfig = ''
