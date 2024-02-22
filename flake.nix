@@ -59,6 +59,7 @@
       };
     };
 
+    # TODO: Activate when migrating from arch
     # nixosConfigurations."adrianforsius@adrian" = mkSystem "cx1carbon" {
     #   func = nixpkgs.lib.nixosSystem;
     #   home-manager = inputs.home-manager.nixosModules;
