@@ -57,4 +57,6 @@
   hardware.opengl.enable = true;
 
   sound.enable = true;
+  security.rtkit.enable = true; # bring in audio
+  hardware.pulseaudio.enable = true;
 }
