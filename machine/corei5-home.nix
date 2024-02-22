@@ -23,6 +23,8 @@ with pkgs; {
     killall
     rxvt_unicode
     xclip
+    pulseaudio
+    pavucontrol
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -127,6 +129,15 @@ with pkgs; {
         feh
       ];
     };
+  };
+
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
+    # If you want to use JACK applications, uncomment this
   };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.

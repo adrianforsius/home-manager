@@ -58,5 +58,7 @@
 
   sound.enable = true;
   security.rtkit.enable = true; # bring in audio
-  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio = {
+  #   enable = true;
+  # };
 }

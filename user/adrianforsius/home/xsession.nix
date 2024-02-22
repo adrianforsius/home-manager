@@ -46,10 +46,10 @@ in {
 
       assigns = {
         "1: term" = [
-          {class = "^Kitty$";}
+          {class = "^kitty$";}
         ];
         "2: web" = [
-          {class = "^(google-chrome|firefox|google-chrome-stable)$";}
+          {class = "^(firefox|google-chrome-stable)$";}
         ];
         "3: slack" = [
           {class = "^Slack$";}

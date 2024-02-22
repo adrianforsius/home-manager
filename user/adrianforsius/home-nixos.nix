@@ -40,6 +40,14 @@ with pkgs; {
     enable = true;
     modules = {
       ipv6.enable = false;
+      "volume master" = {
+        position = 1;
+        settings = {
+          format = "♪ %volume";
+          format_muted = "♪ muted (%volume)";
+          device = "pulse:1";
+        };
+      };
       "battery all".enable = false;
       "ethernet _first_".enable = false;
     };
@@ -53,6 +61,7 @@ with pkgs; {
     xclip
     xsel
     pacman
+    pamixer
     # Keeping for reference:
     # (callPackage ./home/package/cerebro {})
   ];
