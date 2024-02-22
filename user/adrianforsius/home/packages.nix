@@ -37,6 +37,7 @@ with pkgs; [
   du-dust
   trash-cli
   duf
+  neofetch
 
   transmission
   zoom

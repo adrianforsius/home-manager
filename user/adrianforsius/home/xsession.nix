@@ -58,7 +58,9 @@ in {
 
       modifier = "Mod4";
       keybindings = {
+        "${modifier}+space" = "exec rofi -show combi -modes combi -combi-modes \"window#drun#run\"";
         "${modifier}+o" = "exec rofi -show run";
+        "${modifier}+Shift+o" = "exec rofi -show window";
         "${modifier}+n" = "exec kitty";
         "${modifier}+d" = "split h";
         "${modifier}+Shift+d" = "split v";
@@ -90,7 +92,7 @@ in {
         "${modifier}+Shift+space" = "floating toggle";
 
         # change focus between tiling / floating windows
-        "${modifier}+space" = "focus mode_toggle";
+        # "${modifier}+space" = "focus mode_toggle";
 
         # focus the parent container
         "${modifier}+Shift+a" = "focus parent";
