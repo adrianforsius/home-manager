@@ -66,14 +66,12 @@ with pkgs; {
       # View the current working tree status using the short format
       s = "status -s";
       # Show the diff between the latest commit and the current state
-      staged = "git diff --staged";
+      staged = "!git diff --staged";
       d = "!git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat";
       # `git di $number` shows the diff between the state `$number` revisions ago and the current state
       di = "!d() { git diff --patch-with-stat head~$1; }; git diff-index --quiet HEAD -- || clear; d";
       # pull in remote changes for the current repository and all its submodules
       p = "!git pull; git submodule foreach git pull origin master";
-      # clone a repository including all submodules
-      c = "clone --recursive";
       # commit all changes
       ca = "!git add -a && git commit -av";
       # switch to a branch, creating it if necessary
