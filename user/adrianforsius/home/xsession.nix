@@ -101,6 +101,9 @@ in {
         "${modifier}+Shift+c" = "reload";
         # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${modifier}+Shift+r" = "restart";
+
+        # select and copy to clipboard
+        "${modifier}+Shift+x" = "exec maim -s | xclip -selection clipboard -t image/png";
       };
     };
     extraConfig = ''

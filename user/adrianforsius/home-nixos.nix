@@ -64,6 +64,7 @@ with pkgs; {
     xsel
     pacman
     pamixer
+    maim
     # Keeping for reference:
     # (callPackage ./home/package/cerebro {})
   ];
