@@ -31,6 +31,9 @@ with pkgs; {
     font.name = "MesloLGS Nerd Font Mono";
     enable = true;
     theme = "Gruvbox Dark";
+    settings = {
+      enable_audio_bell = false;
+    };
   };
 
   programs.i3status = {
