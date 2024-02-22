@@ -48,6 +48,8 @@ with pkgs; {
           device = "default";
         };
       };
+      "load".enable = false;
+      "disk /".enable = false;
       "battery all".enable = false;
       "ethernet _first_".enable = false;
     };
