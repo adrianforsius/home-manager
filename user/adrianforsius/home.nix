@@ -119,33 +119,7 @@
     "$HOME/sdk/go1.21.1/bin"
   ];
 
-  programs =
-    import ./home/programs.nix {inherit pkgs config;}
-    // {
-      # TODO: reevalute if I want to move this to programs
-      zsh = {
-        enable = true;
-        shellAliases = import ./home/aliases.nix {inherit pkgs config;};
-        enableAutosuggestions = true;
-        enableCompletion = true;
-        syntaxHighlighting.enable = true;
-        "oh-my-zsh" = {
-          enable = true;
-          plugins = ["thefuck" "aws" "docker" "history" "z" "gh" "git"];
-          # theme = "steeef";
-        };
-
-        history = {
-          expireDuplicatesFirst = true;
-          ignoreSpace = true;
-          ignoreDups = true;
-          extended = true;
-          share = true;
-          save = 10000; # save 10,000 lines of history
-          size = 100000;
-        };
-      };
-    };
+  programs = import ./home/programs.nix {inherit pkgs config;};
 
   services.gpg-agent = {
     enable = true;

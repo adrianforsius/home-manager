@@ -26,6 +26,13 @@ with pkgs; {
       window.opacity = 0.9;
     };
   };
+
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    extraConfig = ''IdentityFile ~/.ssh/id_ed25519'';
+  };
+
   programs.kitty = {
     font.size = 16;
     font.name = "MesloLGS Nerd Font Mono";

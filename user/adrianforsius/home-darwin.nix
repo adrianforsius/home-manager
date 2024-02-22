@@ -23,6 +23,15 @@ with pkgs; {
     };
   };
 
+  programs.ssh = {
+    enable = true;
+    addKeysToAgent = "yes";
+    extraConfig = ''
+      IdentityFile ~/.ssh/id_ed25519
+      UseKeyChain yes
+    '';
+  };
+
   home.packages = [
     xquartz
     rectangle
