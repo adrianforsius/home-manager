@@ -10,7 +10,7 @@
   mkHome = import ./mkhome.nix;
   # The config files for this system.
   machineConfig = ../machine/${machine}.nix;
-  userOSConfig = ../user/${config.user.name}/${config.name}.nix;
+  OSConfig = ../user/${config.user.name}/${config.name}.nix;
   userHMConfig = ../user/${config.user.name}/home.nix;
   userHMOSConfig = ../user/${config.user.name}/home-${config.name}.nix;
   home = mkHome {
@@ -29,7 +29,7 @@ in
       {nixpkgs.overlays = overlays;}
 
       machineConfig
-      userOSConfig
+      OSConfig
       home-manager.home-manager
       home
 
