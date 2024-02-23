@@ -14,6 +14,10 @@
     };
     devenv.url = "github:cachix/devenv/latest";
     flake-utils.url = "github:numtide/flake-utils";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
