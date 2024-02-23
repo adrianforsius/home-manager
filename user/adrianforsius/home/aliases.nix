@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{...}: {
   ".." = "cd ..";
   "..." = "cd ../..";
   "...." = "cd ../../..";
@@ -47,9 +46,4 @@
   swap-clean = "rm -f ~/.vim/swaps/.*; rm -f ~/.vim/swaps/*";
   pubkey = "cat ~/.ssh/id_ed25519.pub | pbcopy";
   clone = "_f() { echo \$1; git clone git@github.com:\$1.git ~/src/github.com/\$1 && cd ~/src/github.com/\$1}; _f";
-}
-// pkgs.lib.optionals pkgs.stdenv.isLinux {
-  pbcopy = "xsel --clipboard --input";
-  pbpaste = "xsel --clipboard --output";
-  open = "xdg-open";
 }

@@ -77,6 +77,12 @@ with pkgs; {
     # (callPackage ./home/package/cerebro {})
   ];
 
+  programs.zsh.shellAliases = {
+    pbcopy = "xsel --clipboard --input";
+    pbpaste = "xsel --clipboard --output";
+    open = "xdg-open";
+  };
+
   gtk = import ./home/gtk.nix {inherit pkgs;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
