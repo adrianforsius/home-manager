@@ -20,7 +20,7 @@
     ignoreDups = true;
     extended = true;
     share = true;
-    save = 10000; # save 10,000 lines of history
-    size = 100000;
+    save = 1000000; # save 1,000,000 lines of history
+    size = 1000000;
   };
 }
