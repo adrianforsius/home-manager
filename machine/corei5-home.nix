@@ -105,10 +105,10 @@ with pkgs; {
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    layout = "es,us";
     autoRepeatDelay = 305;
     autoRepeatInterval = 55;
 
+    xkb.layout = "es,us";
     displayManager = {
       sddm.enable = true;
       defaultSession = "none+i3";

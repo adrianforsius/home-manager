@@ -15,6 +15,7 @@
     devenv.url = "github:cachix/devenv/latest";
     flake-utils.url = "github:numtide/flake-utils";
     nixvim = {
+      # url = "github:nix-community/nixvim";
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -107,7 +108,6 @@
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" rec {
       config = {
         func = inputs.darwin.lib.darwinSystem;
-        home-manager = inputs.home-manager.darwinModules;
         name = "darwin";
         arch = "aarch64-darwin";
         host = "adrian";
@@ -116,7 +116,7 @@
           home = "/Users/adrianforsius";
         };
       };
-      home-manager = inputs.home-manager.nixosModules;
+      home-manager = inputs.home-manager.darwinModules;
     };
 
     devShells = eachSystemMap defaultSystems (system: let

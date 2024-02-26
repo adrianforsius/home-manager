@@ -19,6 +19,8 @@ in {
         }
         {command = "kitty";}
         {command = "slack";}
+        # {command = "code";}
+        # {command = "nvim";}
         {command = "google-chrome-stable";}
       ];
 
@@ -49,7 +51,11 @@ in {
           {class = "^kitty$";}
         ];
         "2: web" = [
-          {class = "^(firefox|google-chrome-stable)$";}
+          # {class = "^code$";}
+          # {class = "^nvim$";}
+          # {class = "^google\-chrome\-stable$";}
+          # {class = "^Google\ Chrome$";}
+          {class = "chrome";}
         ];
         "3: slack" = [
           {class = "^Slack$";}

@@ -14,7 +14,13 @@
   userHMConfig = ../user/${config.user.name}/home.nix;
   userHMOSConfig = ../user/${config.user.name}/home-${config.name}.nix;
   home = mkHome {
-    modules = [userHMConfig userHMOSConfig];
+    modules = [
+      userHMConfig
+      userHMOSConfig
+
+      # extra modules
+      inputs.nixvim.homeManagerModules.nixvim
+    ];
     user = config.user;
   };
 in
