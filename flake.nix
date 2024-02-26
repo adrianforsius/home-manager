@@ -16,7 +16,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     nixvim = {
       # url = "github:nix-community/nixvim";
-      url = "github:nix-community/nixvim";
+      url = "github:adrianforsius/flake-vim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -38,6 +38,9 @@
     overlays = [
       (final: prev: {
         devenv = inputs.devenv.packages.${prev.system}.devenv;
+      })
+      (final: prev: {
+        nvim = inputs.nixvim.packages.${prev.system}.default;
       })
     ];
     mkSystem = import ./lib/mksystem.nix {inherit overlays nixpkgs inputs;};

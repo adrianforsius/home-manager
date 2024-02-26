@@ -11,7 +11,6 @@ with pkgs; {
   vim = import ./program/vim.nix {inherit pkgs config;};
   starship = import ./program/starship.nix {inherit lib;};
   # neovim = import ./program/neovim.nix {inherit pkgs;};
-  nixvim = import ./program/nixvim.nix {inherit pkgs;};
 
   home-manager.enable = true;
   thefuck.enable = true;
