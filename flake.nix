@@ -40,7 +40,7 @@
         devenv = inputs.devenv.packages.${prev.system}.devenv;
       })
       (final: prev: {
-        nvim = inputs.nixvim.packages.${prev.system}.default;
+        neovim = inputs.nixvim.packages.${prev.system}.default;
       })
     ];
     mkSystem = import ./lib/mksystem.nix {inherit overlays nixpkgs inputs;};

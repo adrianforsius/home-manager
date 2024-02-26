@@ -39,6 +39,8 @@ with pkgs; [
   duf
   neofetch
 
+  neovim
+
   transmission
   zoom
   # vscode

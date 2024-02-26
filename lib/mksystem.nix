@@ -19,7 +19,7 @@
       userHMOSConfig
 
       # extra modules
-      inputs.nixvim.homeManagerModules.nixvim
+      # inputs.nixvim.homeManagerModules.nixvim
     ];
     user = config.user;
   };
