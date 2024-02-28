@@ -74,15 +74,15 @@ with pkgs; {
       (nerdfonts.override {
         # holy hell it can take a long time to install everything; strip down
         fonts = [
-          "FiraCode"
-          "Hasklig"
-          "DroidSansMono"
-          "DejaVuSansMono"
-          "iA-Writer"
+          # "FiraCode"
+          # "Hasklig"
+          # "DroidSansMono"
+          # "DejaVuSansMono"
+          # "iA-Writer"
+          # "Meslo"
+          # "SourceCodePro"
+          # "Inconsolata"
           "JetBrainsMono"
-          "Meslo"
-          "SourceCodePro"
-          "Inconsolata"
           "NerdFontsSymbolsOnly" # for some apps, you can use this and then any unpatched font
         ];
       })
