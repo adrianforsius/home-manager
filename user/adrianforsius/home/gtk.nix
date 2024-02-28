@@ -6,8 +6,8 @@
   };
 
   font = {
-    name = "TeX Gyre Adventor";
-    size = 12;
+    name = "JetBrains Mono";
+    size = 16;
   };
 
   theme = {

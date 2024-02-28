@@ -133,11 +133,6 @@
 
   fonts.fontconfig.enable = true;
 
-  # xfconf.settings = {
-  #   xfce4-session = {
-  #     "startup/ssh-agent/enabled" = true;
-  #   };
-  # };
   home.language = import ./home/language.nix {};
 
   xresources.extraConfig = builtins.readFile ./home/config/Xresources;
