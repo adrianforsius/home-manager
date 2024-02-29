@@ -145,21 +145,31 @@ with pkgs; {
     # If you want to use JACK applications, uncomment this
   };
 
-  # services.kmonad = {
-  #   enable = true;
-  #   keyboards = {
-  #     poker4 = {
-  #       name = "io";
-  #       config = builtins.readFile ./config/kmonad/poker4.kbd;
-  #       device = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-kbd";
-  #       defcfg = {
-  #         # enable = true;
-  #         fallthrough = true;
-  #         allowCommands = false;
-  #       };
-  #     };
-  #   };
-  # };
+  services.kmonad = {
+    enable = true;
+    keyboards = {
+      poker4 = {
+        name = "io";
+        config = builtins.readFile ./config/kmonad/poker4.kbd;
+        device = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-if01";
+        defcfg = {
+          # enable = true;
+          fallthrough = true;
+          allowCommands = false;
+        };
+      };
+      black-widow = {
+        name = "io";
+        config = builtins.readFile ./config/kmonad/black-widow.kbd;
+        device = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_2013-if01-event-kbd";
+        defcfg = {
+          # enable = true;
+          fallthrough = true;
+          allowCommands = false;
+        };
+      };
+    };
+  };
 
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
   # networking.networkmanager.packages = [ networkmanagerapplet ];

@@ -19,6 +19,10 @@
       url = "github:adrianforsius/flake-vim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kmonad = {
+      url = "github:kmonad/kmonad?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -90,8 +94,8 @@
           name = "adrianforsius";
           home = "/home/adrianforsius";
         };
+        modules = [inputs.home-manager.nixosModules.home-manager];
       };
-      home-manager = inputs.home-manager.nixosModules;
     };
 
     nixosConfigurations.corei5-home = mkSystem "corei5-home" {
@@ -104,8 +108,11 @@
           name = "adrianforsius";
           home = "/home/adrianforsius";
         };
+        modules = [
+          inputs.home-manager.nixosModules.home-manager
+          inputs.kmonad.nixosModules.default
+        ];
       };
-      home-manager = inputs.home-manager.nixosModules;
     };
 
     darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" rec {
@@ -118,8 +125,8 @@
           name = "adrianforsius";
           home = "/Users/adrianforsius";
         };
+        modules = [inputs.home-manager.darwinModules.home-manager];
       };
-      home-manager = inputs.home-manager.darwinModules;
     };
 
     devShells = eachSystemMap defaultSystems (system: let

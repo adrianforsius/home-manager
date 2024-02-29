@@ -2,10 +2,7 @@
   overlays,
   nixpkgs,
   inputs,
-}: machine: {
-  config,
-  home-manager,
-}: let
+}: machine: {config}: let
   mkPkgs = import ./mkpkg.nix {inherit nixpkgs;};
   mkHome = import ./mkhome.nix;
   # The config files for this system.
@@ -28,24 +25,26 @@ in
     system = config.name;
     pkgs = mkPkgs config.arch;
 
-    modules = [
-      # Apply our overlays. Overlays are keyed by system type so we have
-      # to go through and apply our system type. We do this first so
-      # the overlays are available globally.
-      {nixpkgs.overlays = overlays;}
+    modules =
+      [
+        # Apply our overlays. Overlays are keyed by system type so we have
+        # to go through and apply our system type. We do this first so
+        # the overlays are available globally.
+        {nixpkgs.overlays = overlays;}
 
-      machineConfig
-      OSConfig
-      home-manager.home-manager
-      home
+        machineConfig
+        OSConfig
+        # home-manager.home-manager
+        home
 
-      # We expose some extra arguments so that our modules can parameterize
-      # better based on these values.
-      {
-        config._module.args = {
-          inherit inputs;
-          user = config.user;
-        };
-      }
-    ];
+        # We expose some extra arguments so that our modules can parameterize
+        # better based on these values.
+        {
+          config._module.args = {
+            inherit inputs;
+            user = config.user;
+          };
+        }
+      ]
+      ++ config.modules;
   }

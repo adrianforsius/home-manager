@@ -37,6 +37,32 @@ with pkgs; {
     # };
   };
 
+  # services.kmonad = {
+  #   enable = true;
+  #   keyboards = {
+  #     poker4 = {
+  #       name = "io";
+  #       config = builtins.readFile ../../machine/config/kmonad/poker4.kbd;
+  #       device = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-if01";
+  #       defcfg = {
+  #         # enable = true;
+  #         fallthrough = true;
+  #         allowCommands = false;
+  #       };
+  #     };
+  #     black-widow = {
+  #       name = "io";
+  #       config = builtins.readFile ../../machine/config/kmonad/black-widow.kbd;
+  #       device = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_2013-if01-event-kbd";
+  #       defcfg = {
+  #         # enable = true;
+  #         fallthrough = true;
+  #         allowCommands = false;
+  #       };
+  #     };
+  #   };
+  # };
+
   programs.zsh.enable = true;
   users.users.adrianforsius = {
     isNormalUser = true;
