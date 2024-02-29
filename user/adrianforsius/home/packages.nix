@@ -38,6 +38,7 @@ with pkgs; [
   trash-cli
   duf
   neofetch
+  haskellPackages.kmonad
 
   neovim
 

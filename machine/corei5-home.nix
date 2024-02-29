@@ -115,6 +115,11 @@ with pkgs; {
 
       sessionCommands = ''
         ${pkgs.xorg.xset}/bin/xset r rate 310 51
+
+        # display power management signaling: timeout for screen
+        ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+        # disable screen saver with these two options no more sleep
+        ${pkgs.xorg.xset}/bin/xset s off
       '';
     };
     desktopManager = {
