@@ -108,7 +108,7 @@ with pkgs; {
     autoRepeatDelay = 305;
     autoRepeatInterval = 55;
 
-    xkb.layout = "es,us";
+    xkb.layout = "es,us,se";
     displayManager = {
       sddm.enable = true;
       defaultSession = "none+i3";
@@ -149,21 +149,21 @@ with pkgs; {
     enable = true;
     keyboards = {
       poker4 = {
-        name = "io";
+        # name = "io";
         config = builtins.readFile ./config/kmonad/poker4.kbd;
         device = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-if01";
         defcfg = {
-          # enable = true;
+          enable = true;
           fallthrough = true;
           allowCommands = false;
         };
       };
       black-widow = {
-        name = "io";
+        # name = "io";
         config = builtins.readFile ./config/kmonad/black-widow.kbd;
-        device = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_2013-if01-event-kbd";
+        device = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_2013-event-kbd";
         defcfg = {
-          # enable = true;
+          enable = true;
           fallthrough = true;
           allowCommands = false;
         };

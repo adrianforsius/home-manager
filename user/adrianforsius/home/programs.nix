@@ -10,7 +10,9 @@ with pkgs; {
   git = import ./program/git.nix {};
   vim = import ./program/vim.nix {inherit pkgs config;};
   starship = import ./program/starship.nix {inherit lib;};
-  # neovim = import ./program/neovim.nix {inherit pkgs;};
+  neovim = {
+    vimAlias = true;
+  };
   # nixvim = import ./program/nixvim.nix {inherit pkgs;};
 
   home-manager.enable = true;
