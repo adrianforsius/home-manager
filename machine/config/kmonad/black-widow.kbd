@@ -38,9 +38,9 @@
       esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12        ssrq slck pause
   f13 grv  1    2    3    4    5    6    7    8    9    0    _    _    bspc  ins  home pgup  nlck kp/  kp*  kp-
   f14 tab  q    w    e    r    t    y    u    i    o    p    _    _    ret   del  end  pgdn  kp7  kp8  kp9  kp+
-  f15 @mcp @ca  @gs  @ad  @sf  @rg  h    j    k    l    _    _    _                          kp4  kp5  kp6
-  f16 lsft lsgt z    x    c    v    b    n    m    _    _    _    rsft            up         kp1  kp2  kp3  kprt
-  f17 lctl lmet lalt           @lwrspc             ralt rmet cmp  rctl       left down rght  kp0  kp.
+  f15 @mcp @ca  @gs  @ad  @sf  g    h    j    k    l    _    _    _                          kp4  kp5  kp6
+  f16 @lse lsgt z    x    c    v    b    n    m    _    _    _    rsft            up         kp1  kp2  kp3  kprt
+  f17 lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght  kp0  kp.
 )
 
 
@@ -70,11 +70,14 @@
   sf (tap-hold-next-release 200 f lsft)
 
   ;; Arrow layer on hold, sticky layer 1 on tap
-  mcp (tap-hold-next-release 200 (sticky-key 800 (layer-toggle layer1)) (layer-toggle arrows))
 
 
-  ly1 (sticky-key 800 (layer-toggle layer1))
-  ly2 (sticky-key 800 (layer-toggle layer2))
+  mcp (tap-hold-next-release 200 (layer-next layer1) (layer-toggle arrows))
+
+  lse (tap-hold-next-release 200 esc lsft)
+
+  ly1 (layer-next layer1)
+  ly2 (layer-next layer2)
 
   ;; Tap once for X twice for Y:
   lprn (around lsft 8)
