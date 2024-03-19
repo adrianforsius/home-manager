@@ -11,6 +11,7 @@
     tmp.useTmpfs = true;
   };
 
+  users.users.adrianforsius.createHome = false; # This machine has home partitioned use that part
   fileSystems."/home" = {
     device = "/dev/disk/by-id/nvme-WDC_PC_SN730_SDBQNTY-512G-1001_20124F807325_1-part8";
     fsType = "ext4";
