@@ -87,7 +87,7 @@
     autoRepeatDelay = 305;
     autoRepeatInterval = 55;
 
-    xkb.layout = "es,us,se";
+    xkb.layout = "us,es";
     displayManager = {
       sddm.enable = true;
       defaultSession = "none+i3";
