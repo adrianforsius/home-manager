@@ -74,14 +74,6 @@ with pkgs; {
       (nerdfonts.override {
         # holy hell it can take a long time to install everything; strip down
         fonts = [
-          # "FiraCode"
-          # "Hasklig"
-          # "DroidSansMono"
-          # "DejaVuSansMono"
-          # "iA-Writer"
-          # "Meslo"
-          # "SourceCodePro"
-          # "Inconsolata"
           "JetBrainsMono"
           "NerdFontsSymbolsOnly" # for some apps, you can use this and then any unpatched font
         ];
@@ -90,8 +82,6 @@ with pkgs; {
       noto-fonts
     ];
     fontconfig.defaultFonts = {
-      # monospace = ["MesloLGS Nerd Font Mono" "Noto Mono"];
-      # sansSerif = ["MesloLGS Nerd Font" "Noto Sans"];
       serif = ["Noto Serif"];
     };
   };
@@ -132,6 +122,7 @@ with pkgs; {
         rofi
         polybar
         feh
+        i3lock
       ];
     };
   };
@@ -149,7 +140,6 @@ with pkgs; {
     enable = true;
     keyboards = {
       poker4 = {
-        # name = "io";
         config = builtins.readFile ./config/kmonad/poker4.kbd;
         device = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-if01";
         defcfg = {
@@ -159,7 +149,6 @@ with pkgs; {
         };
       };
       black-widow = {
-        # name = "io";
         config = builtins.readFile ./config/kmonad/black-widow.kbd;
         device = "/dev/input/by-id/usb-Razer_Razer_BlackWidow_2013-event-kbd";
         defcfg = {

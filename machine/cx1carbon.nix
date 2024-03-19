@@ -97,6 +97,7 @@
 
         # display power management signaling: timeout for screen
         ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+
         # disable screen saver with these two options no more sleep
         ${pkgs.xorg.xset}/bin/xset s off
       '';
@@ -111,6 +112,7 @@
         rofi
         polybar
         feh
+        i3lock
       ];
     };
   };
@@ -159,9 +161,7 @@
   services.fwupd.enable = true; # firmware update; run: sudo fwupdmgr update
 
   # Allow closing lid without going to sleep
-  services.logind.extraConfig = ''
-    HandleLidSwitch=ignore
-  '';
+  services.logind.lidSwitch = "ignore";
 
   networking = {
     #wireless.enable = true;  # Enables wireless support via wpa_supplicant.
