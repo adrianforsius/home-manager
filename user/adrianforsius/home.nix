@@ -44,6 +44,7 @@
     # "";
 
     ".wallpaper.jpg".source = ./home/asset/wooden-table-coffee.jpg;
+    ".lock.jpg".source = ./home/asset/nix.jpg;
   };
 
   # Fix for not finding applications in luanchers

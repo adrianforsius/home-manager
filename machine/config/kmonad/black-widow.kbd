@@ -39,7 +39,7 @@
   f13 grv  1    2    3    4    5    6    7    8    9    0    _    _    bspc  ins  home pgup  nlck kp/  kp*  kp-
   f14 tab  q    w    e    r    t    y    u    i    o    p    _    _    ret   del  end  pgdn  kp7  kp8  kp9  kp+
   f15 @mcp @ca  @gs  @ad  @sf  g    h    j    k    l    @m;  _    _                          kp4  kp5  kp6
-  f16 @lse lsgt z    x    c    v    b    n    m    _    _    _    rsft            up         kp1  kp2  kp3  kprt
+  f16 lsft lsgt z    x    c    v    b    n    m    _    _    _    rsft            up         kp1  kp2  kp3  kprt
   f17 lctl lmet lalt           spc                 ralt rmet cmp  rctl       left down rght  kp0  kp.
 )
 
@@ -75,7 +75,7 @@
 
   mcp (tap-hold-next-release 200 (layer-next layer1) (layer-toggle arrows))
 
-  lse (tap-hold-next-release 200 esc lsft)
+  ;; lse (tap-hold-next-release 200 esc lsft)
 
   ly1 (layer-next layer1)
   ly2 (layer-next layer2)
@@ -102,7 +102,7 @@
       _    _    _    _    _    _    _    _    _    _    _    _    _          _    _    _
   _   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _    _    _    _    _
   _   _    _    _    _    _    _    _    _    _    _    _    _    _    _     _    _    _    _    _    _    _
-  _   _    ä    å    ö    _    _    left down up   rght _    _    _                         _    _    _
+  _   _    _    _    _    _    _    left down up   rght _    _    _                         _    _    _
   _   _    _    _    _    _    _    _    _    _    _    _    _    _               _         _    _    _    _
   _   _    _    _              _                   _    _    _    _          _    _    _    _    _
 )

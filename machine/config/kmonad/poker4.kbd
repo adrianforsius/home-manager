@@ -27,7 +27,7 @@
 (deflayer arrows
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     ä    å    ö    _    _    left down up   rght _    _    _
+  _     _    _    _    _    _    left down up   rght _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _    _
 )
