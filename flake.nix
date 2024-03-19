@@ -72,17 +72,19 @@
     };
 
     # TODO: Activate when migrating from arch
-    # nixosConfigurations."adrianforsius@adrian" = mkSystem "cx1carbon" {
-    #   func = nixpkgs.lib.nixosSystem;
-    #   home-manager = inputs.home-manager.nixosModules;
-    #   name = "nixos";
-    #   arch = "x86_64-linux";
-    #   host = "adrian";
-    #   user = {
-    #     name = "adrianforsius";
-    #     home = "/home/adrianforsius";
-    #   };
-    # };
+    nixosConfigurations.cx1carbon = mkSystem "cx1carbon" {
+      config = {
+        func = nixpkgs.lib.nixosSystem;
+        name = "nixos";
+        arch = "x86_64-linux";
+        host = "adrian";
+        user = {
+          name = "adrianforsius";
+          home = "/home/adrianforsius";
+        };
+        modules = [inputs.home-manager.nixosModules.home-manager];
+      };
+    };
 
     nixosConfigurations.vm-intel = mkSystem "vm-intel" {
       config = {

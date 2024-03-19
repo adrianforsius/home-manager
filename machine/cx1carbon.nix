@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./hardware/C1Carbon.nix
+    ./hardware/cx1carbon.nix
   ];
   environment.systemPackages = [
     git

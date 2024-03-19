@@ -34,7 +34,6 @@ in
 
         machineConfig
         OSConfig
-        # home-manager.home-manager
         home
 
         # We expose some extra arguments so that our modules can parameterize
