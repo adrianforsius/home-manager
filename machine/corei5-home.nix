@@ -25,6 +25,12 @@ with pkgs; {
     xclip
     pulseaudio
     pavucontrol
+
+    libreoffice-qt
+    hunspell
+    hunspellDicts.sv
+    hunspellDicts.en_GB
+    hunspellDicts.es_MX
   ];
 
   i18n.defaultLocale = "en_US.UTF-8";
