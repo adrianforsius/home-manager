@@ -125,6 +125,12 @@ with pkgs; {
         i3lock
       ];
     };
+
+    xautolock = {
+      enable = true;
+      locker = "\"${pkgs.i3lock}/bin/i3lock\"";
+      time = 10; # minutes
+    };
   };
 
   services.pipewire = {
