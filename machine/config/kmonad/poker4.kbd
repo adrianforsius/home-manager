@@ -14,59 +14,92 @@
   lctl lmet lalt            spc                 ralt rmet cmp rctl
 )
 
-(defalias
-  num  (layer-toggle numbers) ;; Bind num to a button that switches to a layer
-  kil  C-A-del                ;; Bind kil to a button that Ctrl-Alt-deletes
-)
-
 
 (deflayer qwerty
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
-  caps a    s    d    f    g    h    j    k    l    ;    '    \
-  lsft lsgt z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl @lys lalt           spc                 ralt rmet @swe _
+  _    @ca  @gs  @ad  @sf  g    h    j    k    l    @m;  '    \
+  @lse lsgt z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc                 ralt rmet cmp  rctl
 )
 
 
 (deflayer arrows
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    left down up   rght _    _    _
+  _     ä    å    ö    _    _    left down up   rght _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _    _
 )
 
 
-(deflayer numbers
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    9    8    7    _    _    _    _
-  _     _    _    _    _    _    _    6    5    4    _    _    _
-  _     _    _    _    _    _    _    3    2    1    _    _    _
-  _     _    _              _              _    _    _    _
+(defalias
+  ;; tld (around ralt (around ] spc))
+  ;; car (around lsft (around ] (around ] spc)))
+  ;; eql (around lsft 0)
+  ;; exl (around lsft 1)
+  ;; dqe (around lsft 2)
+  ;; at  (around ralt 2)
+  ;; num (around lsft 3)
+  ;; dll (around ralt 4)
+  ;; pro (around lsft 5)
+  ;; amp (around lsft 6)
+  ;; fws (around lsft 7)
+  ;; ast (around lsft \\)
+  ;; und (around lsft /)
+  ;; que (around lsft -)
+  ;; sqe (around = (around = spc))
+  ;; bic (around lsft (around = spc))
+  ;; bar (around ralt lsgt)
+
+  ;; Left-hand Home Row:
+  ca (tap-hold-next-release 200 a lctl)
+  gs (tap-hold-next-release 225 s lmet)
+  ad (tap-hold-next-release 175 d lalt)
+  sf (tap-hold-next-release 200 f lsft)
+  m; (tap-hold-next-release 200 ; lmet)
+
+  lse (tap-hold-next-release 200 esc lsft)
+
+  ;; Arrow layer on hold, sticky layer 1 on tap
+  ;; mcp (tap-hold-next-release 200 (layer-next layer1) (layer-toggle arrows))
+
+  ;; ly1 (layer-next layer1)
+  ;; ly2 (layer-next layer2)
+
+  ;; Tap once for X twice for Y:
+  ;; lprn (around lsft 8)
+  ;; rprn (around lsft 9)
+  ;; lcbr (around ralt 7)
+  ;; rcbr (around ralt 0)
+  ;; lbrc (around ralt 8)
+  ;; rbrc (around ralt 9)
+  ;; lles lsgt
+  ;; rles (around lsft lsgt)
+
+  ;; prn (multi-tap 200 @lprn @rprn)
+  ;; cbr (multi-tap 200 @lcbr @rcbr)
+  ;; brc (multi-tap 200 @lbrc @rbrc)
+  ;; les (multi-tap 200 @lles @rles)
 )
 
-(defalias aaa (around a a))
-
-(deflayer swedish
-  _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    @aaa _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _    _    _    _    _    _    _    _    _    _    _
-  _     _    _              _              _    _    _    _
-)
 
 
+;;(deflayer layer1
+;;  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _     @dqe @sqe @bar @ast _    _    @tld @fws _    _    _    _    _
+;;  _     @ly2 @pro @amp @exl _    _    @num _    _    _    _    _
+;;  _     _    _    _    _    _    _    _    _    _    _    _    _
+;;  _     _    _              _              _    _    _    _
+;;)
+;;
+;;(deflayer layer2
+;;  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+;;  _     @at  @dll @prn @cbr _    _    @car _    _    _    _    _    _
+;;  _     /    @und @que @eql _    _    @brc @les _    _    _    _
+;;  _     _    _    _    _    _    _    _    _    _    _    _    _
+;;  _     _    _              _              _    _    _    _
+;;)
 
-(defalias lys (layer-toggle around-next-layers))
-(defalias arw (layer-toggle arrows))
-(defalias swe (layer-toggle swedish))
 
-(deflayer around-next-layers
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  _    _    _    _    _    _    _    _    _    _    _    _    _    _
-  @swe _    _    _    _    _    _    _    _    _    _    _    _
-  @num _    _    _    _    _    _    _    _    _    _    _    _
-  @arw _    _              _              _    _    _    _
-)
 
