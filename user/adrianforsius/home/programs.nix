@@ -47,6 +47,16 @@ with pkgs; {
     enableZshIntegration = true;
   };
 
+  kitty = {
+    font.size = 16;
+    font.name = "MesloLGS Nerd Font Mono";
+    enable = true;
+    theme = "Gruvbox Dark";
+    settings = {
+      enable_audio_bell = false;
+    };
+  };
+
   vscode = {
     enable = true;
     mutableExtensionsDir =
