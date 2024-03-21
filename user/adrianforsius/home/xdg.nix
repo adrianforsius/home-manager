@@ -7,6 +7,7 @@
     # "mimeapps.list".force = true;
     # "i3/config".text = builtins.readFile ./config/i3;
     "rofi/config.rasi".text = builtins.readFile ./config/rofi;
+    "kmonad/poker4.kbd".text = builtins.readFile ./config/poker4.kbd;
   };
 
   mimeApps = {

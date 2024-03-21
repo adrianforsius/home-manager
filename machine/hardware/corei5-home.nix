@@ -55,7 +55,6 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.opengl.enable = true;
-
   sound.enable = true;
   security.rtkit.enable = true; # bring in audio
 }
