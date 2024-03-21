@@ -20,7 +20,7 @@
 
 
 (defsrc
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
   caps a    s    d    f    g    h    j    k    l    ;    '    \
   lsft lsgt z    x    c    v    b    n    m    ,    .    /    rsft
@@ -29,7 +29,7 @@
 
 
 (deflayer qwerty
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
   @mcp @ca  @gs  @ad  @sf  g    h    j    k    l    @m;  '    \
   @lse lsgt z    x    c    v    b    n    m    ,    .    /    rsft
