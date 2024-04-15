@@ -134,8 +134,8 @@ with pkgs; {
 
     xautolock = {
       enable = true;
-      locker = "${pkgs.i3lock}/bin/i3lock -i ~/.lock.jpg";
-      time = 1; # minutes
+      locker = "\"${pkgs.i3lock}/bin/i3lock\"";
+      time = 10; # minutes
     };
   };
 

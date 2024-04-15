@@ -11,7 +11,7 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
   esc  a    s    d    f    g    h    j    k    l    ;    '    \
   lsft lsgt z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt            spc                 ralt rmet cmp rctl
+  lctl lmet lalt            spc                ralt rmet cmp  rctl
 )
 
 

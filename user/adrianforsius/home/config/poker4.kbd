@@ -14,7 +14,7 @@
     "sleep 1 && setxkbmap -option compose:ralt")
   cmp-seq ralt    ;; Set the compose key to `RightAlt'
 
-  fallthrough false
+  fallthrough true
   allow-cmd true
 )
 
@@ -27,12 +27,11 @@
   lctl lmet lalt            spc                 ralt rmet cmp rctl
 )
 
-
 (deflayer qwerty
   esc  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
-  @mcp @ca  @gs  @ad  @sf  g    h    j    k    l    @m;  '    \
-  @lse lsgt z    x    c    v    b    n    m    ,    .    /    rsft
+  @tl1 @ca  @gs  @ad  @sf  g    h    j    k    l    @tl2 @tl3 \
+  lsft lsgt z    x    c    v    b    n    m    ,    .    /    rsft
   lctl lmet lalt           spc                 ralt rmet cmp  rctl
 )
 
@@ -47,38 +46,45 @@
 
 
 (defalias
-  tld (around ralt (around ] spc))
-  car (around lsft (around ] (around ] spc)))
-  eql (around lsft 0)
+  dsh -
+  plu +
+  tld ~
+  col :
+  sco ;
+  pun .
+  com ,
+  bsh \\
+  car (around lsft 6)
+  eql =
   exl (around lsft 1)
-  dqe (around lsft 2)
-  at  (around ralt 2)
+  dqe (around lsft ')
+  at  (around lsft 2)
   num (around lsft 3)
-  dll (around ralt 4)
+  dll (around lsft 4)
   pro (around lsft 5)
-  amp (around lsft 6)
-  fws (around lsft 7)
-  ast (around lsft \\)
-  und (around lsft /)
-  que (around lsft -)
-  sqe (around = (around = spc))
-  bic (around lsft (around = spc))
-  bar (around ralt lsgt)
+  amp (around lsft 7)
+  fws /
+  ast (around lsft 8)
+  und (around lsft -)
+  que (around lsft /)
+  sqe '
+  bic `
+  fic ´
+  bar (around lsft \\)
 
   ;; Left-hand Home Row:
   ca (tap-hold-next-release 200 a lctl)
   gs (tap-hold-next-release 225 s lmet)
   ad (tap-hold-next-release 175 d lalt)
   sf (tap-hold-next-release 200 f lsft)
-  m; (tap-hold-next-release 200 ; lmet)
 
   lse (tap-hold-next-release 200 esc lsft)
 
   ;; Arrow layer on hold, sticky layer 1 on tap
-  mcp (tap-hold-next-release 200 (layer-next layer1) (layer-toggle arrows))
-
-  ly1 (layer-next layer1)
-  ly2 (layer-next layer2)
+  tl1 (tap-hold-next-release 200 (layer-next layer1) (layer-toggle arrows))
+  tl2 (tap-hold-next-release 200 (layer-next layer2) lmet)
+  tl3 (tap-hold-next-release 200 (layer-next layer3) lctl)
+  ;; ctl (tap-hold-next-release 200 esc lctl)
 
   ;; Tap once for X twice for Y:
   lprn (around lsft 8)
@@ -97,22 +103,26 @@
 )
 
 
-
 (deflayer layer1
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     @dqe @sqe @bar @ast _    _    @tld @fws _    _    _    _    _
-  _     @ly2 @pro @amp @exl _    _    @num _    _    _    _    _
+  _     @exl @at  @num @dll _    _    _    @bic @fic _    _    _    _
+  _     @pro @car @amp @ast _    _    @plu @dsh @eql @que _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _    _
 )
 
 (deflayer layer2
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
-  _     @at  @dll @prn @cbr _    _    @car _    _    _    _    _    _
-  _     /    @und @que @eql _    _    @brc @les _    _    _    _
+  _     @dqe @sqe _    _    _    _    _    @tld @fws _    _    _    _
+  _     @fws @bsh @und @bar _    _    @brc @prn @cbr @les _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _    _
 )
 
-
-
+(deflayer layer3
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     @col @sco @pun @com _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _              _              _    _    _    _
+)

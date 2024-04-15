@@ -12,7 +12,7 @@ with pkgs; {
   ];
 
   systemd.user.paths = {
-    poker4 = {
+    kmonad-poker4 = {
       Unit = {
         Description = "KMonad trigger for poker4";
       };
@@ -27,7 +27,7 @@ with pkgs; {
   };
 
   systemd.user.services = {
-    poker4 = {
+    kmonad-poker4 = {
       Unit = {
         Description = "KMonad for poker4";
       };
