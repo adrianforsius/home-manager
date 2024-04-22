@@ -1,7 +1,6 @@
 {pkgs, ...}:
 with pkgs; {
   packages = [
-    rnix-lsp
     alejandra
     shellcheck
     shfmt
@@ -17,11 +16,6 @@ with pkgs; {
       alejandra.enable = true;
       deadnix.enable = true;
       shfmt.enable = false;
-    };
-
-    settings = {
-      deadnix.edit = true;
-      deadnix.noLambdaArg = true;
     };
   };
 }
