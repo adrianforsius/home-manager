@@ -21,3 +21,9 @@ build-nix:
 bootrap:
 	./bootstrap.sh
 
+
+.PHONY: config
+config:
+	NIX_CONFIG="experimental-features = nix-command flakes" \
+	nix run nixpkgs#git -- clone https://github.com/adrianforsius/home-manager ~/.config/home-manager
+
