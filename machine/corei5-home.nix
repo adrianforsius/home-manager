@@ -25,11 +25,12 @@ with pkgs; {
     xclip
     pulseaudio
     pavucontrol
+    i3lock
 
     libreoffice-qt
     hunspell
-    hunspellDicts.sv
-    hunspellDicts.en_GB
+    hunspellDicts.sv_SE
+    hunspellDicts.en_US
     hunspellDicts.es_MX
   ];
 
@@ -134,7 +135,7 @@ with pkgs; {
 
     xautolock = {
       enable = true;
-      locker = "\"${pkgs.i3lock}/bin/i3lock\"";
+      locker = "${pkgs.i3lock}/bin/i3lock";
       time = 10; # minutes
     };
   };

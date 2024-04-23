@@ -4,7 +4,7 @@
   userEmail = "adrianforsius@gmail.com";
   # signing.gpgPath = "/usr/local/bin/gpg";
   signing.signByDefault = true;
-  signing.key = "0EA152470286BFC4";
+  signing.key = "9B51DBE24AC46F6D";
 
   diff-so-fancy.enable = true;
 
