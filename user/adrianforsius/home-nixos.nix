@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  lib,
   ...
 }:
 with pkgs; {
@@ -52,7 +51,7 @@ with pkgs; {
     };
   };
   # TOOD: Find better solution
-  programs.git.signing.key = lib.mkForce "1FD1903A55AC5731";
+  # programs.git.signing.key = lib.mkForce "1FD1903A55AC5731";
 
   home.packages = [
     teams-for-linux
