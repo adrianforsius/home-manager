@@ -5,7 +5,7 @@
 }: {
   enable = true;
   shellAliases = import ./aliases.nix {inherit pkgs config;};
-  enableAutosuggestions = true;
+  autosuggestion.enable = true;
   enableCompletion = true;
   syntaxHighlighting.enable = true;
   "oh-my-zsh" = {

@@ -126,9 +126,14 @@
     enable = true;
     enableScDaemon = false;
 
+    pinentryPackage = pkgs.pinentry-qt;
     # cache the keys forever so we don't get asked for a password
     defaultCacheTtl = 34560000;
     maxCacheTtl = 34560000;
+    # extraConfig = ''
+    #   allow-emacs-pinentry
+    #   allow-loopback-pinentry
+    # '';
   };
 
   fonts.fontconfig.enable = true;

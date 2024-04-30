@@ -100,43 +100,47 @@ with pkgs; {
   system.stateVersion = "23.11"; # Did you read the comment?
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    autoRepeatDelay = 305;
-    autoRepeatInterval = 55;
-
-    xkb.layout = "es,us,se";
+  services = {
     displayManager = {
       sddm.enable = true;
       defaultSession = "none+i3";
-
-      sessionCommands = ''
-        ${pkgs.xorg.xset}/bin/xset r rate 310 51
-
-        # display power management signaling: timeout for screen
-        ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
-        # disable screen saver with these two options no more sleep
-        ${pkgs.xorg.xset}/bin/xset s off
-      '';
-    };
-    desktopManager = {
-      xterm.enable = false;
     };
 
-    windowManager.i3 = {
+    xserver = {
       enable = true;
-      extraPackages = [
-        rofi
-        polybar
-        feh
-        i3lock
-      ];
-    };
+      autoRepeatDelay = 305;
+      autoRepeatInterval = 55;
 
-    xautolock = {
-      enable = true;
-      locker = "${pkgs.i3lock}/bin/i3lock";
-      time = 10; # minutes
+      xkb.layout = "es,us,se";
+      displayManager = {
+        sessionCommands = ''
+          ${pkgs.xorg.xset}/bin/xset r rate 310 51
+
+          # display power management signaling: timeout for screen
+          ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+          # disable screen saver with these two options no more sleep
+          ${pkgs.xorg.xset}/bin/xset s off
+        '';
+      };
+      desktopManager = {
+        xterm.enable = false;
+      };
+
+      windowManager.i3 = {
+        enable = true;
+        extraPackages = [
+          rofi
+          polybar
+          feh
+          i3lock
+        ];
+      };
+
+      xautolock = {
+        enable = true;
+        locker = "${pkgs.i3lock}/bin/i3lock";
+        time = 10; # minutes
+      };
     };
   };
 
