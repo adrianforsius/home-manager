@@ -124,7 +124,6 @@
 
   services.gpg-agent = {
     enable = true;
-    pinentryFlavor = "qt";
     enableScDaemon = false;
 
     # cache the keys forever so we don't get asked for a password

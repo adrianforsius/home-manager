@@ -23,7 +23,7 @@
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.useOSProber = true;
-  boot.loader.grub.device = "/dev/sdb"; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/disk/by-id/ata-PNY_500GB_SATA_SSD_PNH02248038200300474";
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5d39d1d9-2aa6-4ef8-8a89-5af18cbcb8ab";
@@ -31,7 +31,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/b9f4382d-965b-40b7-be12-dd676e98dfcc";}
+    {device = "/dev/disk/by-uuid/d869705f-dbc0-42f1-831d-682d8f4897e1";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
