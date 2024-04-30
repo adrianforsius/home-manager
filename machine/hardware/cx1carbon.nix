@@ -1,50 +1,40 @@
-{pkgs, ...}: {
-  boot = {
-    # Use the systemd-boot EFI boot loader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = ["mem_sleep_default=deep" "nvme.noacpi=1" "net.ifnames=0"];
-    initrd.checkJournalingFS = false;
-    supportedFilesystems = ["btrfs"];
-    tmp.cleanOnBoot = true;
-    tmp.useTmpfs = true;
-  };
+{
+  lib,
+  config,
+  modulesPath,
+  ...
+}: {
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+  ];
 
-  users.users.adrianforsius.uid = 1000; # files current uid
-  users.users.adrianforsius.createHome = false; # This machine has home partitioned use that part
+  boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ata_piix" "ahci" "pata_jmicron" "firewire_ohci" "usbhid" "usb_storage" "floppy" "sd_mod"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-intel"];
+  boot.extraModulePackages = [];
+
+  # Use the GRUB 2 boot loader.
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.efiInstallAsRemovable = true;
+  # boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  # Define on which hard drive you want to install Grub.
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.useOSProber = true;
+  # boot.loader.grub.device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325";
+  boot.loader.systemd-boot.enable = true;
+
+  fileSystems."/" = {
+    device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325_1-part1";
+    fsType = "ext4";
+  };
   fileSystems."/home" = {
-    device = "/dev/disk/by-id/nvme-WDC_PC_SN730_SDBQNTY-512G-1001_20124F807325_1-part8";
+    device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325_1-part8";
     fsType = "ext4";
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/boot";
-    fsType = "vfat";
-  };
-
-  swapDevices = [];
-
-  hardware = {
-    enableAllFirmware = true;
-    # video.hidpi.enable = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = with pkgs; [
-        mesa.drivers
-      ];
-    };
-    pulseaudio = {
-      enable = false;
-      #package = pkgs.pulseaudioFull; # needed for bluetooth audio
-    };
-    # no bluetooth on boot
-    bluetooth.enable = true;
-    bluetooth.powerOnBoot = true;
-  };
+  swapDevices = [
+    {device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325_1-part2";}
+  ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -64,4 +54,11 @@
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  hardware.opengl.enable = true;
+  sound.enable = true;
+  bluetooth.enable = true;
+  bluetooth.powerOnBoot = true;
+  security.rtkit.enable = true; # bring in audio
 }
