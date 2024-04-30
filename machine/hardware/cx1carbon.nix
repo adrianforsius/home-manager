@@ -48,7 +48,7 @@
     auth = ''
       key_mgmt=WPA-PSK
       eap=PEAP
-      identity="quad-home"
+      identity="carbon-home"
       password="@HOME_PASSWORD@"
     '';
   };
