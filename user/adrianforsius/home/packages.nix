@@ -59,7 +59,7 @@ with pkgs; [
 
   gopls
   python3
-  nodejs_21
+  nodejs
 
   # nerdfonts
   # It is sometimes useful to fine-tune packages, for example, by applying

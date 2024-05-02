@@ -11,6 +11,9 @@ with pkgs; {
     # (callPackage ./home/package/cerebro {})
   ];
 
+  programs.git.signing.signByDefault = false;
+  programs.git.signing.key = ""; # TODO: Add me
+
   systemd.user.paths = {
     kmonad-poker4 = {
       Unit = {

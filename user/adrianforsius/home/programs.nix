@@ -26,6 +26,13 @@ with pkgs; {
   man.enable = true;
   k9s.enable = true;
 
+  google-chrome.enable = true;
+
+  # chromium = {
+  #   enable = true;
+  #   package = pkgs.google-chrome;
+  # };
+
   direnv = {
     enable = true;
     nix-direnv.enable = true;
