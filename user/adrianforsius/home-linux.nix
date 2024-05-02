@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 with pkgs; {
   home.packages = [
     teams-for-linux
@@ -11,8 +15,8 @@ with pkgs; {
     # (callPackage ./home/package/cerebro {})
   ];
 
-  programs.git.signing.signByDefault = false;
-  programs.git.signing.key = ""; # TODO: Add me
+  programs.git.signing.signByDefault = lib.mkForce false;
+  programs.git.signing.key = lib.mkForce ""; # TODO: Add me
 
   systemd.user.paths = {
     kmonad-poker4 = {
