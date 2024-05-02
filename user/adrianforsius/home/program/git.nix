@@ -3,12 +3,13 @@
   userName = "Adrian Forsius";
   userEmail = "adrianforsius@gmail.com";
   # signing.gpgPath = "/usr/local/bin/gpg";
-  signing.signByDefault = true;
-  signing.key = "9B51DBE24AC46F6D";
 
   diff-so-fancy.enable = true;
 
   extraConfig = {
+    commit.gpgsign = true;
+    signing.key = "~/.ssh/id_ed25519.pub";
+
     push.default = "matching";
     diff.tool = "code";
     merge = {
