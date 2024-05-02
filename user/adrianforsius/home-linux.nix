@@ -24,8 +24,8 @@ with pkgs; {
         Description = "KMonad trigger for poker4";
       };
       Path = {
-        PathExists = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-if01";
-        Unit = "poker4.service";
+        PathExists = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-kbd";
+        Unit = "kmonad-poker4.path";
       };
       Install = {
         WantedBy = ["default.target"];
