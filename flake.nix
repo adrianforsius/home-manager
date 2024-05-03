@@ -40,10 +40,10 @@
     ];
 
     overlays = [
-      (final: prev: {
+      (_: prev: {
         devenv = inputs.devenv.packages.${prev.system}.devenv;
       })
-      (final: prev: {
+      (_: prev: {
         neovim = inputs.nixvim.packages.${prev.system}.default;
       })
     ];
