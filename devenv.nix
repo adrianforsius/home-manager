@@ -4,6 +4,7 @@ with pkgs; {
     alejandra
     shellcheck
     shfmt
+    nil
   ];
 
   enterShell = ''
