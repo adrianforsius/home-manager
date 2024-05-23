@@ -23,6 +23,10 @@
       url = "github:kmonad/kmonad?dir=nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -49,7 +53,7 @@
     ];
     mkSystem = import ./lib/mksystem.nix {inherit overlays nixpkgs inputs;};
   in {
-    homeConfigurations."adrianforsius@adrian" = inputs.home-manager.lib.homeManagerConfiguration rec {
+    homeConfigurations."adrianforsius@adrian" = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs {
         system = "x86_64-linux";
         config.allowUnfree = true;
@@ -82,7 +86,11 @@
           name = "adrianforsius";
           home = "/home/adrianforsius";
         };
-        modules = [inputs.home-manager.nixosModules.home-manager];
+        modules = [
+          inputs.home-manager.nixosModules.home-manager
+          inputs.kmonad.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+        ];
       };
     };
 
@@ -113,11 +121,12 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.kmonad.nixosModules.default
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };
 
-    darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" rec {
+    darwinConfigurations.macbook-pro-m1 = mkSystem "macbook-pro-m1" {
       config = {
         func = inputs.darwin.lib.darwinSystem;
         name = "darwin";
@@ -127,7 +136,10 @@
           name = "adrianforsius";
           home = "/Users/adrianforsius";
         };
-        modules = [inputs.home-manager.darwinModules.home-manager];
+        modules = [
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.darwinModules.stylix
+        ];
       };
     };
 

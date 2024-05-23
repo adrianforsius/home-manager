@@ -50,8 +50,6 @@ with pkgs; {
       "ethernet _first_".enable = false;
     };
   };
-  # TOOD: Find better solution
-  # programs.git.signing.key = lib.mkForce "1FD1903A55AC5731";
 
   home.packages = [
     teams-for-linux
@@ -72,7 +70,7 @@ with pkgs; {
     open = "xdg-open";
   };
 
-  gtk = import ./home/gtk.nix {inherit pkgs;};
+  gtk = import ./home/gtk.nix {inherit pkgs lib;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
 

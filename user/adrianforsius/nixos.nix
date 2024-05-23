@@ -1,5 +1,8 @@
-{pkgs, ...}:
-with pkgs; {
+{
+  pkgs,
+  config,
+  ...
+}: {
   xdg.autostart.enable = true;
   xdg.icons.enable = true;
 
@@ -36,6 +39,8 @@ with pkgs; {
     #   options = "--max-freed $((30*8*1024**3))" # 30 GB
     # };
   };
+
+  stylix = import ./home/stylix.nix {inherit pkgs config;};
 
   programs.zsh.enable = true;
   users.users.adrianforsius = {

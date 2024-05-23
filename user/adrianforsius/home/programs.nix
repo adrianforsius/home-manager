@@ -1,9 +1,9 @@
 {
   pkgs,
   config,
+  lib,
   ...
-}:
-with pkgs; {
+}: {
   # Let Home Manager install and manage itself.
   zsh = import ./zsh.nix {inherit pkgs config;};
 
@@ -55,8 +55,6 @@ with pkgs; {
   };
 
   kitty = {
-    font.size = 16;
-    font.name = "MesloLGS Nerd Font Mono";
     enable = true;
     theme = "Gruvbox Dark";
     settings = {

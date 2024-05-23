@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   specialArgs,
   ...
 }: {
@@ -120,7 +121,7 @@
     "$HOME/sdk/go1.21.1/bin"
   ];
 
-  programs = import ./home/programs.nix {inherit pkgs config;};
+  programs = import ./home/programs.nix {inherit pkgs config lib;};
 
   services.gpg-agent = {
     enable = true;

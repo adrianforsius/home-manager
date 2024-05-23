@@ -1,4 +1,8 @@
-{pkgs, ...}:
+{
+  pkgs,
+  lib,
+  ...
+}:
 with pkgs; {
   home.packages = [
     teams-for-linux
@@ -47,7 +51,7 @@ with pkgs; {
     };
   };
 
-  gtk = import ./home/gtk.nix {inherit pkgs;};
+  gtk = import ./home/gtk.nix {inherit pkgs lib;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
 

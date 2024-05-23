@@ -27,7 +27,7 @@ in {
       fonts = {
         names = ["monospace"];
         style = "Bold";
-        size = 14.0;
+        size = 11.0;
       };
 
       bars = [
