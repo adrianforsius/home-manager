@@ -44,6 +44,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # "";
 
+    ".wallpaper-nix-blue.jpg".source = ./home/asset/wallpaper-nix-blue.png;
     ".wallpaper.jpg".source = ./home/asset/wooden-table-coffee.jpg;
     ".lock.jpg".source = ./home/asset/nix.jpg;
   };

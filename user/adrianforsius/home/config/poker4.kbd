@@ -109,7 +109,7 @@
 (deflayer layer1
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   _     @exl @at  @num @dll _    _    _    @bic @fic _    _    _    _
-  _     @pro @car @amp @ast _    _    @plu @dsh @eql @que _    _
+  _     @ast @pro @amp @car _    _    @plu @dsh @eql @que _    _
   _     _    _    _    _    _    _    _    _    ä    ö    å    _
   _     _    _              _              _    _    _    _
 )
@@ -117,7 +117,7 @@
 (deflayer layer2
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   _     @dqe @sqe @tld @fws _    _    _    _    _    _    _    _    _
-  _     @fws @bsh @und @bar _    _    _    _    _    _    _    _
+  _     @col @sco @pun @com _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _    _
 )
@@ -125,7 +125,7 @@
 (deflayer layer3
   _     _    _    _    _    _    _    _    _    _    _    _    _    _
   _     @brc @prn @cbr @les _    _    _    _    _    _    _    _    _
-  _     @col @sco @pun @com _    _    _    _    _    _    _    _
+  _     @und @bar @bsh @fws _    _    _    _    _    _    _    _
   _     _    _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _    _
 )

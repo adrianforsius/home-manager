@@ -1,7 +1,7 @@
 {pkgs, ...}: {
-  # autoEnable = true;
+  autoEnable = true;
   polarity = "dark";
-  image = ./asset/wp12329532-nixos-wallpapers.png;
+  image = ./asset/wallpaper-nix-blue.png;
   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
   fonts = {
     serif = {
@@ -25,9 +25,9 @@
     };
   };
   fonts.sizes = {
-    applications = 12;
     terminal = 18;
-    desktop = 11;
-    popups = 11;
+    # applications = 12;
+    # desktop = 11;
+    # popups = 11;
   };
 }

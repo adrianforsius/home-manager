@@ -74,7 +74,7 @@ with pkgs; {
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
 
-  xsession = import ./home/xsession.nix {inherit config;};
+  xsession = import ./home/xsession.nix {inherit config lib;};
 
   services.network-manager-applet.enable = true;
 }

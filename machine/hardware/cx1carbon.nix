@@ -21,19 +21,20 @@
   # boot.loader.grub.efiSupport = true;
   # boot.loader.grub.useOSProber = true;
   # boot.loader.grub.device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325";
+  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
   fileSystems."/" = {
-    device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325_1-part1";
+    device = "/dev/disk/by-uuid/e643be5f-05df-405a-9fcb-318c7554bfec";
     fsType = "ext4";
   };
   fileSystems."/home" = {
-    device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325_1-part8";
+    device = "/dev/disk/by-uuid/687561cf-3cf7-4385-a164-25599ee4f76a";
     fsType = "ext4";
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-id/nvme-WDC_PC_SDBQNTY-512G-1001_201224F807325_1-part2";}
+    {device = "/dev/disk/by-uuid/91e9c056-7811-4c58-a5b2-f948c59fa918";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -58,7 +59,7 @@
 
   hardware.opengl.enable = true;
   sound.enable = true;
-  bluetooth.enable = true;
-  bluetooth.powerOnBoot = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
   security.rtkit.enable = true; # bring in audio
 }

@@ -205,4 +205,6 @@ bar {
 }
 
 exec --no-startup-id nm-applet --sm-disable
+# exec xrandr --addmode "Virtual1" 1920x1080_60.00
+# exec_always xrandr --output "Virtual1" --mode 1920x1080_60.00
 exec_always feh --bg-fill ~/.wallpaper.jpg

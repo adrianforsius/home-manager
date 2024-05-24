@@ -111,7 +111,7 @@ with pkgs; {
       autoRepeatDelay = 305;
       autoRepeatInterval = 55;
 
-      xkb.layout = "es,us,se";
+      xkb.layout = "us,se,es";
       displayManager = {
         sessionCommands = ''
           ${pkgs.xorg.xset}/bin/xset r rate 310 51

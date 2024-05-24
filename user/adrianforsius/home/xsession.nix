@@ -17,6 +17,9 @@ in {
           command = "nm-applet";
           notification = false;
         }
+        {
+          command = "blueman-applet";
+        }
         {command = "kitty";}
         {command = "slack";}
         # {command = "code";}
@@ -27,7 +30,7 @@ in {
       fonts = {
         names = ["monospace"];
         style = "Bold";
-        size = 11.0;
+        # size = lib.mkForce 11.0;
       };
 
       bars = [
