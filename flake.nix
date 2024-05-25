@@ -88,7 +88,7 @@
         };
         modules = [
           inputs.home-manager.nixosModules.home-manager
-          # inputs.kmonad.nixosModules.default
+          inputs.kmonad.nixosModules.default
           inputs.stylix.nixosModules.stylix
         ];
       };

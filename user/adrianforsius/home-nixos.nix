@@ -70,6 +70,38 @@ with pkgs; {
     open = "xdg-open";
   };
 
+  # systemd.user.paths = {
+  #   kmonad-poker4 = {
+  #     Unit = {
+  #       Description = "KMonad trigger for poker4";
+  #     };
+  #     Path = {
+  #       PathExists = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-kbd";
+  #       Unit = "kmonad-poker4.path";
+  #     };
+  #     Install = {
+  #       WantedBy = ["default.target"];
+  #     };
+  #   };
+  # };
+  #
+  # systemd.user.services = {
+  #   kmonad-poker4 = {
+  #     Unit = {
+  #       Description = "KMonad for poker4";
+  #     };
+  #     Service = {
+  #       ExecStart = "kmonad %E/kmonad/poker4.kbd";
+  #       Restart = "always";
+  #       RestartSec = 3;
+  #       Nice = "-20";
+  #     };
+  #     Install = {
+  #       WantedBy = ["default.target"];
+  #     };
+  #   };
+  # };
+
   gtk = import ./home/gtk.nix {inherit pkgs lib;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
