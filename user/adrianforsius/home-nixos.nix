@@ -44,6 +44,26 @@ with pkgs; {
           device = "default";
         };
       };
+      "wireless _first_" = {
+        position = 2;
+        settings = {
+          format_up = "W:%quality w %bitrate";
+          format_down = "W: down";
+        };
+      };
+      "battery 0" = {
+        position = 3;
+        settings = {
+          format = "%status %percentage %remaining %emptytime";
+        };
+      };
+      "memory" = {
+        position = 4;
+        settings = {
+          format = "%used | %available";
+        };
+      };
+
       "load".enable = false;
       "disk /".enable = false;
       "battery all".enable = false;
@@ -70,38 +90,6 @@ with pkgs; {
     open = "xdg-open";
   };
 
-  # systemd.user.paths = {
-  #   kmonad-poker4 = {
-  #     Unit = {
-  #       Description = "KMonad trigger for poker4";
-  #     };
-  #     Path = {
-  #       PathExists = "/dev/input/by-id/usb-Heng_Yu_Technology_Poker_4_Y0000000000000-event-kbd";
-  #       Unit = "kmonad-poker4.path";
-  #     };
-  #     Install = {
-  #       WantedBy = ["default.target"];
-  #     };
-  #   };
-  # };
-  #
-  # systemd.user.services = {
-  #   kmonad-poker4 = {
-  #     Unit = {
-  #       Description = "KMonad for poker4";
-  #     };
-  #     Service = {
-  #       ExecStart = "kmonad %E/kmonad/poker4.kbd";
-  #       Restart = "always";
-  #       RestartSec = 3;
-  #       Nice = "-20";
-  #     };
-  #     Install = {
-  #       WantedBy = ["default.target"];
-  #     };
-  #   };
-  # };
-
   gtk = import ./home/gtk.nix {inherit pkgs lib;};
 
   xdg = import ./home/xdg.nix {inherit pkgs;};
@@ -109,4 +97,29 @@ with pkgs; {
   xsession = import ./home/xsession.nix {inherit config lib;};
 
   services.network-manager-applet.enable = true;
+  # services.polybar = rec {
+  #   enable = true;
+  #   package = pkgs.polybar.override {
+  #     # i3GapsSupport = true;
+  #     pulseSupport = true;
+  #   };
+  #   script = "${package}/bin/polybar top &";
+  #   config = {
+  #     "bar/top" = {
+  #       monitor = "\${env:MONITOR:HDMI-1}";
+  #       width = "100%";
+  #       height = "3%";
+  #       radius = 0;
+  #       modules-center = "date";
+  #     };
+  #
+  #     "module/date" = {
+  #       type = "internal/date";
+  #       internal = 5;
+  #       date = "%d.%m.%y";
+  #       time = "%H:%M";
+  #       label = "%time%  %date%";
+  #     };
+  #   };
+  # };
 }

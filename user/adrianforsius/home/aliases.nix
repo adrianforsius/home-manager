@@ -41,7 +41,7 @@
 
   aws-login = "aws ecr get-login --no-include-email | sh";
 
-  d = "docker-compose";
+  d = "docker compose";
   k = "kubectl";
   swap-clean = "rm -f ~/.vim/swaps/.*; rm -f ~/.vim/swaps/*";
   pubkey = "cat ~/.ssh/id_ed25519.pub | pbcopy";

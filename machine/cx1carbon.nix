@@ -123,8 +123,8 @@
             };
           };
           hooks = {
-            predetect = {
-              "set-background" = "${pkgs.feh} --bg-fill ~/.wallpaper-nix-blue.jpg";
+            postswitch = {
+              "set-background" = "${pkgs.feh} --bg-fill ~/.wallpaper.jpg";
             };
           };
         };
@@ -170,7 +170,7 @@
         locker = "${pkgs.i3lock}/bin/i3lock";
         time = 10; # minutes
         extraOptions = [
-          "-i ~/.lock.jpg"
+          "-i ~/.lock.jpg --ignore-empty-password"
         ];
       };
     };
