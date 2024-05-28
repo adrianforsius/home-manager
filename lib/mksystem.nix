@@ -21,7 +21,7 @@
     user = config.user;
   };
 in
-  config.func rec {
+  config.func {
     system = config.name;
     pkgs = mkPkgs config.arch;
 

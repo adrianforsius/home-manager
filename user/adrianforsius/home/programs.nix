@@ -26,8 +26,7 @@
   man.enable = true;
   k9s.enable = true;
 
-  google-chrome.enable = true;
-
+  # google-chrome.enable = true;
   # chromium = {
   #   enable = true;
   #   package = pkgs.google-chrome;

@@ -161,16 +161,17 @@
           rofi
           polybar
           feh
-          i3lock
+          i3lock-fancy
+          i3-layout-manager
         ];
       };
 
       xautolock = {
         enable = true;
-        locker = "${pkgs.i3lock}/bin/i3lock";
+        locker = "${pkgs.i3lock-fancy}/bin/i3lock";
         time = 10; # minutes
         extraOptions = [
-          "-i ~/.lock.jpg --ignore-empty-password"
+          "-p"
         ];
       };
     };
