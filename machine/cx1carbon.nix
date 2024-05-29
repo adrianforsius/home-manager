@@ -38,7 +38,7 @@
     hunspellDicts.es_MX
   ];
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "sv_SE.UTF-8";
 
   services.printing.enable = true; # cupsd printing
   services.earlyoom.enable = true; # out of memory detection
