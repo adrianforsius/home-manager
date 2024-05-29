@@ -124,7 +124,7 @@
           };
           hooks = {
             postswitch = {
-              "set-background" = "${pkgs.feh} --bg-fill ~/.wallpaper.jpg";
+              "set-background" = "${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg";
             };
           };
         };
@@ -140,9 +140,11 @@
       xkb.layout = "us,se,es";
       displayManager = {
         sessionCommands = ''
-          autorandr -c
-          systemctl restart autorandr.service
+          ${pkgs.autorandr}/bin/autorandr -c
+          ${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg
+          # systemctl restart autorandr.service
 
+          sleep 1 && ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option compose:ralt
           ${pkgs.xorg.xset}/bin/xset r rate 310 51
 
           # display power management signaling: timeout for screen
@@ -168,7 +170,7 @@
 
       xautolock = {
         enable = true;
-        locker = "${pkgs.i3lock-fancy}/bin/i3lock";
+        locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy";
         time = 10; # minutes
         extraOptions = [
           "-p"
@@ -187,6 +189,8 @@
           enable = true;
           fallthrough = true;
           allowCommands = false;
+          # compose.key = "menu";
+          # compose.delay = 1000;
         };
       };
       black-widow = {
@@ -196,6 +200,8 @@
           enable = true;
           fallthrough = true;
           allowCommands = false;
+          # compose.key = "menu";
+          # compose.delay = 1000;
         };
       };
     };

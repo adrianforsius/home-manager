@@ -45,7 +45,8 @@
     # "";
 
     ".wallpaper-nix-blue.jpg".source = ./home/asset/wallpaper-nix-blue.png;
-    ".wallpaper.jpg".source = ./home/asset/wooden-table-coffee.jpg;
+    # ".wallpaper.jpg".source = ./home/asset/wooden-table-coffee.jpg;
+    ".wallpaper.jpg".source = ./home/asset/coffe2-2560x1440.jpg;
     ".lock.jpg".source = ./home/asset/nix.jpg;
   };
 
