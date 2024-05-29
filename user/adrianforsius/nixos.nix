@@ -33,11 +33,11 @@
       ];
     };
 
-    # TODO: Enable when more stable
-    # gc = {
-    #   automatic = true;
-    #   options = "--max-freed $((30*8*1024**3))" # 30 GB
-    # };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--max-freed $((75*8*1024**3))"; # 75 GB threshhold
+    };
   };
 
   stylix = import ./home/stylix.nix {inherit pkgs config;};
