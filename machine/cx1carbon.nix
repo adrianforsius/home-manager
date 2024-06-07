@@ -140,11 +140,10 @@
       xkb.layout = "us,se,es";
       displayManager = {
         sessionCommands = ''
-          ${pkgs.autorandr}/bin/autorandr -c
+          #${pkgs.autorandr}/bin/autorandr -c
           ${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg
-          # systemctl restart autorandr.service
 
-          sleep 1 && ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option compose:ralt
+          ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option compose:ralt
           ${pkgs.xorg.xset}/bin/xset r rate 310 51
 
           # display power management signaling: timeout for screen

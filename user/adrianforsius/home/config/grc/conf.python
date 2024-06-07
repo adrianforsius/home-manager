@@ -1,0 +1,14 @@
+regexp=^(WARNING) .*
+colour=yellow
+-
+regexp=^(INFO) .*
+colour=magenta
+-
+regexp=^(ERROR) .*
+colour=red
+-
+regexp=[^\s]+(Error)
+colour=red
+-
+regexp=[^\s]+\.py"
+colour=cyan

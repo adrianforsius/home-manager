@@ -1,0 +1,2 @@
+regexp = (service)
+colours = cyan

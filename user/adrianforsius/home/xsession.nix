@@ -58,7 +58,7 @@ in {
           # {class = "^nvim$";}
           # {class = "^google\-chrome\-stable$";}
           # {class = "^Google\ Chrome$";}
-          {class = "chrome";}
+          {class = "google-chrome";}
         ];
         "3: slack" = [
           {class = "^Slack$";}
@@ -106,8 +106,8 @@ in {
         # focus the parent container
         "${modifier}+Shift+a" = "focus parent";
 
-        # reload the configuration file
-        "${modifier}+Shift+c" = "reload";
+        # reload the configuration file: not applicable for nixos
+        # "${modifier}+Shift+c" = "reload";
         # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
         "${modifier}+Shift+r" = "restart";
 
@@ -116,6 +116,13 @@ in {
 
         # screenshot active window to clipboard
         "${modifier}+Shift+z" = "exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png";
+
+        # volume
+        "${modifier}+comma" = "exec amixer set Master -q 5%-";
+        "${modifier}+period" = "exec amixer set Master -q 5%+";
+
+        # volume
+        "${modifier}+Ctrl+l" = "exec i3lock-fancy --nofork -p";
       };
     };
     extraConfig = ''
@@ -258,6 +265,8 @@ in {
       }
 
       bindsym $mod+BackSpace mode "$mode_system"
+      exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -p
+
     '';
   };
 }

@@ -1,0 +1,10 @@
+#  ============ postgres ===========
+# Highlight error
+regexp=(ERROR)
+colours=red
+==============
+regexp=(DETAIL)
+colours=cyan
+==============
+regexp=(dd3tech\/dd360)
+colours=cyan

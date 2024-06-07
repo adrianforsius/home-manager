@@ -48,6 +48,11 @@
     # ".wallpaper.jpg".source = ./home/asset/wooden-table-coffee.jpg;
     ".wallpaper.jpg".source = ./home/asset/coffe2-2560x1440.jpg;
     ".lock.jpg".source = ./home/asset/nix.jpg;
+    ".grc" = {
+      source = ./home/config/grc;
+      force = true;
+      recursive = true;
+    };
   };
 
   # Fix for not finding applications in luanchers

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{pkgs, ...}:
 with pkgs; [
   # # Adds the "hello" command to your environment. It prints a friendly
   # # "Hello, world!" when run.
@@ -73,7 +69,7 @@ with pkgs; [
   # You can also create simple shell scripts directly inside your
   # configuration. For example, this adds a command "my-hello" to your
   # environment:
-  (pkgs.writeShellScriptBin "reload" ''
-    nix run home-manager/release-${config.home.stateVersion} -- switch
-  '')
+  # (pkgs.writeShellScriptBin "reload" ''
+  #   nix run home-manager/master -- switch
+  # '')
 ]
