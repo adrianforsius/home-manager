@@ -58,7 +58,7 @@ in {
           # {class = "^nvim$";}
           # {class = "^google\-chrome\-stable$";}
           # {class = "^Google\ Chrome$";}
-          {class = "google-chrome";}
+          {class = "google";}
         ];
         "3: slack" = [
           {class = "^Slack$";}
@@ -265,7 +265,7 @@ in {
       }
 
       bindsym $mod+BackSpace mode "$mode_system"
-      exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -p
+      #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork -p
 
     '';
   };

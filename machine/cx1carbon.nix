@@ -30,6 +30,7 @@
     pavucontrol
     arandr
     autorandr
+    i3lock-fancy
 
     libreoffice-qt
     hunspell
@@ -140,7 +141,7 @@
       xkb.layout = "us,se,es";
       displayManager = {
         sessionCommands = ''
-          #${pkgs.autorandr}/bin/autorandr -c
+          ${pkgs.autorandr}/bin/autorandr -c
           ${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg
 
           ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option compose:ralt
@@ -169,11 +170,8 @@
 
       xautolock = {
         enable = true;
-        locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy";
-        time = 10; # minutes
-        extraOptions = [
-          "-p"
-        ];
+        locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy --nofork -p";
+        time = 3; # minutes
       };
     };
   };
