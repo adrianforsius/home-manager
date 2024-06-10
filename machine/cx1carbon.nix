@@ -28,6 +28,8 @@
     autorandr
     i3lock-fancy
 
+    gomodifytags
+
     libreoffice-qt
     hunspell
     hunspellDicts.sv_SE

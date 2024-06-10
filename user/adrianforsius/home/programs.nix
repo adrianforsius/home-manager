@@ -81,12 +81,13 @@
       editorconfig.editorconfig
       mikestead.dotenv
       ms-python.python
+      # evgeniypeshkov.syntax-highlighter
     ];
     # keybindings = [
     # ];
     userSettings = {
       "workbench.sideBar.location" = "right";
-      "editor.fontSize" = 22;
+      "editor.fontSize" = 20;
     };
   };
 
