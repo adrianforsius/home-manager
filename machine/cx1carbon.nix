@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./hardware/cx1carbon.nix
   ];
@@ -148,9 +144,10 @@
           ${pkgs.xorg.xset}/bin/xset r rate 310 51
 
           # display power management signaling: timeout for screen
-          ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+          # ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+
           # disable screen saver with these two options no more sleep
-          ${pkgs.xorg.xset}/bin/xset s off
+          # ${pkgs.xorg.xset}/bin/xset s off
         '';
       };
       desktopManager = {
@@ -171,7 +168,7 @@
       xautolock = {
         enable = true;
         locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy --nofork -p";
-        time = 3; # minutes
+        time = 10; # minutes
       };
     };
   };

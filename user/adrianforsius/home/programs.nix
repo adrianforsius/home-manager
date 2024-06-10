@@ -63,29 +63,31 @@
 
   vscode = {
     enable = true;
-    mutableExtensionsDir =
-      true; # to allow vscode to install extensions not available via nix
+    package = pkgs.vscode.fhs;
+    mutableExtensionsDir = true; # to allow vscode to install extensions not available via nix
     # VSCode already has sync in the cloud
     # TODO: Replicate sync settings, for now its just easier to sync
-    # extensions = with vscode-extensions; [
-    #   vscodevim.vim
-    #   hashicorp.terraform
-    #   rust-lang.rust-analyzer
-    #   esbenp.prettier-vscode
-    #   bbenoist.nix
-    #   ms-vscode.makefile-tools
-    #   golang.go
-    #   eamodio.gitlens
-    #   github.copilot
-    #   dbaeumer.vscode-eslint
-    #   editorconfig.editorconfig
-    #   mikestead.dotenv
-    #   ms-python.python
-    # ];
+    extensions = with pkgs.vscode-extensions; [
+      vscodevim.vim
+      hashicorp.terraform
+      rust-lang.rust-analyzer
+      esbenp.prettier-vscode
+      bbenoist.nix
+      ms-vscode.makefile-tools
+      golang.go
+      eamodio.gitlens
+      github.copilot
+      dbaeumer.vscode-eslint
+      editorconfig.editorconfig
+      mikestead.dotenv
+      ms-python.python
+    ];
     # keybindings = [
     # ];
-    # userSettings = {
-    # };
+    userSettings = {
+      "workbench.sideBar.location" = "right";
+      "editor.fontSize" = 22;
+    };
   };
 
   firefox = {
