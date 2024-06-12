@@ -1251,11 +1251,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1718019327,
-        "narHash": "sha256-d701hAVoheTZUQXJzzb3gNh2LJNuFSRy4DgYcMJvwTU=",
+        "lastModified": 1718193287,
+        "narHash": "sha256-qPePmYeo1L67GXWQ22GpazHeDFUQyFgZGhDSI4txP3A=",
         "owner": "adrianforsius",
         "repo": "flake-vim",
-        "rev": "80060f8fb568df265f1813e2437243c1a068f5a2",
+        "rev": "607dea0386a83664e264e1fb5874d9bddf64d729",
         "type": "github"
       },
       "original": {
