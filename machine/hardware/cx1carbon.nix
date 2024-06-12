@@ -2,6 +2,7 @@
   lib,
   config,
   modulesPath,
+  # pkgs,
   ...
 }: {
   imports = [
@@ -59,6 +60,8 @@
 
   hardware.opengl.enable = true;
   sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  # hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   security.rtkit.enable = true; # bring in audio

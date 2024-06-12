@@ -127,6 +127,19 @@
             };
           };
         };
+        "home-lap" = {
+          fingerprint = {
+            eDP-1 = "00ffffffffffff0009e5db0700000000011c0104a51f1178027d50a657529f27125054000000010101010101010101010101010101013a3880de703828403020360035ae1000001afb2c80de703828403020360035ae1000001a000000fe00424f452043510a202020202020000000fe004e4531343046484d2d4e36310a0043";
+          };
+          config = {
+            eDP-1.enable = false;
+          };
+          # hooks = {
+          #   postswitch = {
+          #     "set-background" = "${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg";
+          #   };
+          # };
+        };
       };
     };
 
@@ -169,8 +182,10 @@
 
       xautolock = {
         enable = true;
+        # enableNotifier = true;
         locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy --nofork -p";
         time = 10; # minutes
+        extraOptions = ["-corners" "---+"];
       };
     };
   };

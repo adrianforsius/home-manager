@@ -39,7 +39,8 @@ with pkgs; [
   neovim
 
   transmission
-  zoom
+  # zoom
+  zoom-us
   # vscode
   # postman # TODO: 404 on mirror
   insomnia
