@@ -35,6 +35,7 @@ with pkgs; [
   duf
   neofetch
   haskellPackages.kmonad
+  gxkb
 
   neovim
 
