@@ -46,6 +46,9 @@ with pkgs; [
   # postman # TODO: 404 on mirror
   insomnia
   gimp
+  htmlq
+  imagemagick
+  xfce.thunar
   qpdfview
   vlc
   feh

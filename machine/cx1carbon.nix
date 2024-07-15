@@ -40,6 +40,12 @@
   i18n.defaultLocale = "sv_SE.UTF-8";
 
   services.printing.enable = true; # cupsd printing
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   services.earlyoom.enable = true; # out of memory detection
   # services.autorandr.enable = true; # autodetect display config
   security.sudo.enable = true;

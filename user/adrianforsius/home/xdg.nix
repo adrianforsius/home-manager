@@ -17,7 +17,7 @@
       # TODO: set good defaults
       # "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
       # "text/calendar" = [ "org.kde.korganizer.desktop" ];
-      # "application/pdf" = [ "org.pwmt.zathura-pdf-mupdf.desktop" ];
+      # "application/pdf" = [ "feh.desktop" ];
 
       # Images
       "image/bmp" = ["feh.desktop"];
@@ -52,6 +52,11 @@
       "x-scheme-handler/https" = "google-chrome.desktop";
       "x-scheme-handler/about" = "google-chrome.desktop";
       "x-scheme-handler/unknown" = "google-chrome.desktop";
+      # "text/html" = "google-chrome-stable.desktop";
+      # "x-scheme-handler/http" = "google-chrome-stable.desktop";
+      # "x-scheme-handler/https" = "google-chrome-stable.desktop";
+      # "x-scheme-handler/about" = "google-chrome-stable.desktop";
+      # "x-scheme-handler/unknown" = "google-chrome-stable.desktop";
     };
   };
 }
