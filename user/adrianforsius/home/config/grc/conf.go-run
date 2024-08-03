@@ -21,3 +21,6 @@ colour=red
 -
 regexp=\_gen.go.*
 colour=red
+-
+regexp=.*error.*
+colour=red

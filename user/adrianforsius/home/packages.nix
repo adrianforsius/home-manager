@@ -36,6 +36,9 @@ with pkgs; [
   neofetch
   haskellPackages.kmonad
   gxkb
+  sqlite
+  graphviz
+  skypeforlinux
 
   neovim
 
@@ -47,6 +50,7 @@ with pkgs; [
   insomnia
   gimp
   htmlq
+  unzip
   imagemagick
   xfce.thunar
   qpdfview

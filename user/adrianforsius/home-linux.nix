@@ -11,6 +11,7 @@ with pkgs; {
     xsel
     # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
     pacman
+    skypeforlinux
     # albert
     # (callPackage ./home/package/cerebro {})
   ];
