@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  enable = true;
   autoEnable = true;
   polarity = "dark";
   image = ./asset/wallpaper-nix-blue.png;
@@ -25,7 +26,7 @@
     };
   };
   fonts.sizes = {
-    terminal = 18;
+    terminal = 17;
     # applications = 12;
     # desktop = 11;
     # popups = 11;

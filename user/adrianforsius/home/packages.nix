@@ -43,7 +43,7 @@ with pkgs; [
 
   neovim
 
-  transmission
+  transmission_4
   # zoom
   zoom-us
   # vscode
