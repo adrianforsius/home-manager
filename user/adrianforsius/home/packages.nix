@@ -39,6 +39,7 @@ with pkgs; [
   sqlite
   graphviz
   skypeforlinux
+  sqlitebrowser
 
   neovim
 
