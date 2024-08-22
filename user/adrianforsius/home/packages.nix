@@ -40,6 +40,7 @@ with pkgs; [
   graphviz
   skypeforlinux
   sqlitebrowser
+  typescript
 
   neovim
 
