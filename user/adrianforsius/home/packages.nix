@@ -41,7 +41,9 @@ with pkgs; [
   skypeforlinux
   sqlitebrowser
   typescript
+  spotify
 
+  poppler_utils
   neovim
 
   transmission_4

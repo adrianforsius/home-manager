@@ -108,6 +108,31 @@
     autorandr = {
       enable = true;
       profiles = {
+        "home-alt" = {
+          fingerprint = {
+            HDMI-1 = "00ffffffffffff004c2dcd053432524c2a130103801009782a6041a6564a9c25125054230800a9408180814081009500b30001010101023a801871382d40582c4500a05a0000001e011d007251d01e206e285500a05a0000001e000000fd00323c1e5111000a202020202020000000fc0053796e634d61737465720a2020017802031cf14890041f0514130312230907078301000066030c00100080011d80d0721c1620102c2580a05a0000009e011d8018711c1620582c2500a05a0000009e011d00bc52d01e20b8285540a05a0000001e8c0ad090204031200c405500a05a000000188c0ad08a20e02d10103e9600a05a0000001800000000000000000046";
+            eDP-1 = "00ffffffffffff0009e5db0700000000011c0104a51f1178027d50a657529f27125054000000010101010101010101010101010101013a3880de703828403020360035ae1000001afb2c80de703828403020360035ae1000001a000000fe00424f452043510a202020202020000000fe004e4531343046484d2d4e36310a0043";
+          };
+          config = {
+            eDP-1.enable = false;
+            HDMI-1 = {
+              enable = true;
+              # mode = "3840x2160";
+              mode = "1680x1050";
+              rate = "60.00";
+              primary = true;
+              # crtc = 1;
+              position = "0x0";
+              rotate = "normal";
+              # scale = { x = 0.5; y = 0.5;};
+            };
+          };
+          hooks = {
+            postswitch = {
+              "set-background" = "${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg";
+            };
+          };
+        };
         "home" = {
           fingerprint = {
             HDMI-1 = "00ffffffffffff004c2d520f58485843111f0103804627782aaea5af4f42af260f5054bfef80714f810081c081809500a9c0b300010108e80030f2705a80b0588a00b9882100001e000000fd00184b1e873c000a202020202020000000fc005533324a3539780a2020202020000000ff0048344c523530303435370a2020010d020334f04d611203130420221f105f605d5e23090707830100006d030c002000b83c20006001020367d85dc401788003e30f0104023a801871382d40582c4500b9882100001e023a80d072382d40102c4580b9882100001e04740030f2705a80b0588a00b9882100001e565e00a0a0a0295030203500b9882100001a00000090";
@@ -246,7 +271,7 @@
         # enableNotifier = true;
         locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy --nofork -p";
         time = 60; # minutes
-        extraOptions = ["-corners" "---+" "-cornerdelay" "1" "-cornerredelay" "1" "-cornersize" "40"];
+        extraOptions = ["-corners" "---+" "-cornerdelay" "1" "-cornerredelay" "1" "-cornersize" "10"];
       };
     };
   };
