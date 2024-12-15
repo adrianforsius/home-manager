@@ -30,6 +30,7 @@ with pkgs; [
   lynx
   tldr
   ncdu
+  wireshark
   du-dust
   trash-cli
   duf
@@ -42,6 +43,7 @@ with pkgs; [
   sqlitebrowser
   typescript
   spotify
+  rquickshare
 
   poppler_utils
   neovim
