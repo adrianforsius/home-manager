@@ -27,6 +27,7 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = {
@@ -90,6 +91,7 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.kmonad.nixosModules.default
           inputs.stylix.nixosModules.stylix
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
         ];
       };
     };

@@ -9,10 +9,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ata_piix" "ahci" "pata_jmicron" "firewire_ohci" "usbhid" "usb_storage" "floppy" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  # boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ata_piix" "ahci" "pata_jmicron" "firewire_ohci" "usbhid" "usb_storage" "floppy" "sd_mod"];
+  # boot.initrd.kernelModules = [];
+  # boot.kernelModules = ["kvm-intel"];
+  # boot.extraModulePackages = [];
 
   # Use the GRUB 2 boot loader.
   # boot.loader.grub.enable = true;
@@ -46,7 +46,7 @@
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s26f7u3.useDHCP = lib.mkDefault true;
   networking.wireless.environmentFile = "/run/secrets/wireless.env";
-  networking.wireless.networks.norrberget8-dark-knight-2 = {
+  networking.wireless.networks.norrberget8 = {
     auth = ''
       key_mgmt=WPA-PSK
       eap=PEAP
@@ -60,8 +60,8 @@
 
   hardware.graphics.enable = true;
   hardware.pulseaudio.enable = true;
-  # hardware.pulseaudio.package = pkgs.pulseaudioFull;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+
   security.rtkit.enable = true; # bring in audio
 }
