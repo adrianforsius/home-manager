@@ -12,7 +12,7 @@ with pkgs; {
     alejandra --version
   '';
 
-  pre-commit = {
+  git-hooks = {
     hooks = {
       alejandra.enable = true;
       deadnix.enable = true;
