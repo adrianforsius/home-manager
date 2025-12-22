@@ -58,9 +58,9 @@
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.graphics.enable = true;
-  hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
+  services.pulseaudio.enable = true;
 
   security.rtkit.enable = true; # bring in audio
 }

@@ -37,7 +37,6 @@
     hunspellDicts.sv_SE
     hunspellDicts.en_US
     hunspellDicts.es_MX
-
   ];
 
   i18n.defaultLocale = "sv_SE.UTF-8";
@@ -276,7 +275,16 @@
         # enableNotifier = true;
         locker = "${pkgs.i3lock-fancy}/bin/i3lock-fancy --nofork -p";
         time = 60; # minutes
-        extraOptions = ["-corners" "---+" "-cornerdelay" "1" "-cornerredelay" "1" "-cornersize" "20"];
+        extraOptions = [
+          "-corners"
+          "---+"
+          "-cornerdelay"
+          "1"
+          "-cornerredelay"
+          "1"
+          "-cornersize"
+          "20"
+        ];
       };
     };
   };
@@ -385,7 +393,10 @@
 
     # no longer using local dns -- tailscale settings will take
     # over automatically and make sure all dns is safe
-    nameservers = ["1.1.1.1" "8.8.8.8"];
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
     resolvconf.useLocalResolver = false;
     firewall.enable = true;
     firewall.checkReversePath = false; # disable rpfilter so wireguard works
@@ -406,7 +417,6 @@
   #   };
   #   pulse.enable = true;
   # };
-  # services.pulseaudio.enable = false;
   services.pipewire.enable = false;
 
   services.fprintd.enable = true; # enable fingerprint scanner

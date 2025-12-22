@@ -28,7 +28,8 @@ with pkgs; {
 
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
+    matchBlocks."*".addKeysToAgent = "yes";
     extraConfig = ''IdentityFile ~/.ssh/id_ed25519'';
   };
 
