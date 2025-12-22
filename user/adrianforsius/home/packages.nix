@@ -23,15 +23,13 @@ with pkgs; [
   swagger-codegen
   ngrok
   minikube
-  ansible
-  appimagekit
   devenv
   cachix
-  lynx
+  # lynx
   tldr
   ncdu
   wireshark
-  du-dust
+  dust
   trash-cli
   duf
   neofetch
@@ -39,13 +37,12 @@ with pkgs; [
   gxkb
   sqlite
   graphviz
-  skypeforlinux
   sqlitebrowser
   typescript
-  spotify
+  # spotify
   rquickshare
 
-  poppler_utils
+  poppler-utils
   neovim
 
   transmission_4
@@ -53,8 +50,8 @@ with pkgs; [
   zoom-us
   # vscode
   # postman # TODO: 404 on mirror
-  insomnia
-  gimp
+  # insomnia
+  # gimp
   htmlq
   unzip
   imagemagick
@@ -63,7 +60,7 @@ with pkgs; [
   vlc
   feh
   slack
-  franz
+  # franz
   docker
   tailscale
   google-chrome
@@ -79,7 +76,8 @@ with pkgs; [
   # overrides. You can do that directly here, just don"t forget the
   # parentheses. Maybe you want to install Nerd Fonts with a limited number of
   # fonts?
-  (nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
+  pkgs.nerd-fonts.jetbrains-mono
+  pkgs.nerd-fonts.symbols-only
 
   # You can also create simple shell scripts directly inside your
   # configuration. For example, this adds a command "my-hello" to your

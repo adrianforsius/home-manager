@@ -12,7 +12,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    devenv.url = "github:cachix/devenv/latest";
+    devenv.url = "github:cachix/devenv";
     flake-utils.url = "github:numtide/flake-utils";
     nixvim = {
       # url = "github:nix-community/nixvim";
@@ -27,13 +27,13 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-ld.url = "github:Mic92/nix-ld";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
   };
 
   outputs = {
     nixpkgs,
     flake-utils,
-    darwin,
     ...
   } @ inputs: let
     inherit (flake-utils.lib) eachSystemMap;
@@ -46,10 +46,10 @@
 
     overlays = [
       (_: prev: {
-        devenv = inputs.devenv.packages.${prev.system}.devenv;
+        devenv = inputs.devenv.packages.${prev.stdenv.hostPlatform.system}.devenv;
       })
       (_: prev: {
-        neovim = inputs.nixvim.packages.${prev.system}.default;
+        neovim = inputs.nixvim.packages.${prev.stdenv.hostPlatform.system}.default;
       })
     ];
     mkSystem = import ./lib/mksystem.nix {inherit overlays nixpkgs inputs;};
@@ -92,6 +92,7 @@
           inputs.kmonad.nixosModules.default
           inputs.stylix.nixosModules.stylix
           inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
+          inputs.nix-ld.nixosModules.nix-ld
         ];
       };
     };
@@ -124,6 +125,7 @@
           inputs.home-manager.nixosModules.home-manager
           # inputs.kmonad.nixosModules.default
           inputs.stylix.nixosModules.stylix
+          inputs.nix-ld.nixosModules.nix-ld
         ];
       };
     };
@@ -141,6 +143,7 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           inputs.stylix.darwinModules.stylix
+          inputs.nix-ld.nixosModules.nix-ld
         ];
       };
     };

@@ -45,7 +45,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s26f7u3.useDHCP = lib.mkDefault true;
-  networking.wireless.environmentFile = "/run/secrets/wireless.env";
   networking.wireless.networks.norrberget8 = {
     auth = ''
       key_mgmt=WPA-PSK

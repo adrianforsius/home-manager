@@ -1,4 +1,3 @@
-{pkgs, ...}:
 with pkgs; {
   imports = [
     ./hardware/corei5-home.nix
@@ -21,7 +20,7 @@ with pkgs; {
     cachix
     gnumake
     killall
-    rxvt_unicode
+    rxvt-unicode-unwrapped
     xclip
     pulseaudio
     pavucontrol
@@ -144,14 +143,13 @@ with pkgs; {
     };
   };
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-    # If you want to use JACK applications, uncomment this
-  };
+  # services.pipewire = {
+  #   enable = true;
+  #   alsa.enable = true;
+  #   alsa.support32Bit = true;
+  #   pulse.enable = true;
+  #   jack.enable = true;
+  # };
 
   services.kmonad = {
     enable = true;

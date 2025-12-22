@@ -21,9 +21,9 @@
     cachix
     gnumake
     killall
-    rxvt_unicode
+    rxvt-unicode-unwrapped
     xclip
-    pulseaudio
+    # pulseaudio
     pavucontrol
     arandr
     autorandr
@@ -38,17 +38,7 @@
     hunspellDicts.en_US
     hunspellDicts.es_MX
 
-    # gaming related
-    mangohud
-    protonup
   ];
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
-
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\${HOME}/.steam/root/compatibilitytools.d";
-  };
 
   i18n.defaultLocale = "sv_SE.UTF-8";
 
@@ -81,6 +71,8 @@
   # location.longitude = -105.0;
   # Used to automatically adjust brightness and temperature of the screen
   # services.clight.enable = true;
+  # programs.nix-ld.enable = true;
+  programs.nix-ld.dev.enable = true;
 
   # fonts = {
   #   enableDefaultPackages = true;
@@ -414,6 +406,8 @@
   #   };
   #   pulse.enable = true;
   # };
+  # services.pulseaudio.enable = false;
+  services.pipewire.enable = false;
 
   services.fprintd.enable = true; # enable fingerprint scanner
   services.cachix-agent.enable = false;

@@ -6,12 +6,11 @@
 with pkgs; {
   home.packages = [
     teams-for-linux
-    whatsapp-for-linux
+    wasistlos
     xclip
     xsel
     # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
     pacman
-    skypeforlinux
     # albert
     # (callPackage ./home/package/cerebro {})
   ];

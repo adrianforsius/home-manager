@@ -73,7 +73,7 @@ with pkgs; {
 
   home.packages = [
     teams-for-linux
-    whatsapp-for-linux
+    wasistlos
     xclip
     xsel
     pacman

@@ -16,7 +16,7 @@
   # nixvim = import ./program/nixvim.nix {inherit pkgs;};
 
   home-manager.enable = true;
-  thefuck.enable = true;
+  pay-respects.enable = true;
   go.enable = true;
   gpg.enable = true;
   bat.enable = true;
@@ -24,7 +24,11 @@
   jq.enable = true;
   less.enable = true;
   man.enable = true;
-  k9s.enable = true;
+  diff-so-fancy = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+  # k9s.enable = true;
 
   # google-chrome.enable = true;
   # chromium = {
@@ -45,7 +49,8 @@
 
   ssh = {
     enable = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
+    matchBlocks."*".addKeysToAgent = "yes";
   };
 
   fzf = {
@@ -55,7 +60,7 @@
 
   kitty = {
     enable = true;
-    theme = "Gruvbox Dark";
+    themeFile = "gruvbox-dark";
     settings = {
       enable_audio_bell = false;
     };
@@ -67,7 +72,7 @@
     mutableExtensionsDir = true; # to allow vscode to install extensions not available via nix
     # VSCode already has sync in the cloud
     # TODO: Replicate sync settings, for now its just easier to sync
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       vscodevim.vim
       hashicorp.terraform
       rust-lang.rust-analyzer
@@ -85,15 +90,14 @@
     ];
     # keybindings = [
     # ];
-    userSettings = {
+    profiles.default.userSettings = {
       "workbench.sideBar.location" = "right";
-      "editor.fontSize" = 20;
     };
   };
 
-  firefox = {
-    enable = true;
-  };
+  # firefox = {
+  #   enable = true;
+  # };
 
   gh = {
     enable = true;
