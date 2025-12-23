@@ -1,5 +1,6 @@
-{pkgs, ...}:
-with pkgs; [
+{ pkgs, ... }:
+with pkgs;
+[
   # # Adds the "hello" command to your environment. It prints a friendly
   # # "Hello, world!" when run.
   # pkgs.hello
@@ -23,7 +24,6 @@ with pkgs; [
   swagger-codegen
   ngrok
   minikube
-  devenv
   cachix
   # lynx
   tldr
