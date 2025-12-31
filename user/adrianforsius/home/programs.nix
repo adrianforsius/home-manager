@@ -3,20 +3,24 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   # Let Home Manager install and manage itself.
-  zsh = import ./zsh.nix {inherit pkgs config;};
+  zsh = import ./zsh.nix { inherit pkgs config; };
 
-  git = import ./program/git.nix {};
-  vim = import ./program/vim.nix {inherit pkgs config;};
-  starship = import ./program/starship.nix {inherit lib;};
+  git = import ./program/git.nix { };
+  vim = import ./program/vim.nix { inherit pkgs config; };
+  starship = import ./program/starship.nix { inherit lib; };
   neovim = {
     vimAlias = true;
   };
   # nixvim = import ./program/nixvim.nix {inherit pkgs;};
 
   home-manager.enable = true;
-  pay-respects.enable = true;
+  pay-respects = {
+    enable = true;
+    enableZshIntegration = true;
+  };
   go.enable = true;
   gpg.enable = true;
   bat.enable = true;
@@ -44,7 +48,10 @@
 
   ripgrep = {
     enable = true;
-    arguments = ["--max-columns-preview" "--colors=line:style:bold"];
+    arguments = [
+      "--max-columns-preview"
+      "--colors=line:style:bold"
+    ];
   };
 
   ssh = {

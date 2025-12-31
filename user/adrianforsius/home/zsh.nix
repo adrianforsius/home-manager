@@ -2,15 +2,23 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   enable = true;
-  shellAliases = import ./aliases.nix {inherit pkgs config;};
+  shellAliases = import ./aliases.nix { inherit pkgs config; };
   autosuggestion.enable = true;
   enableCompletion = true;
   syntaxHighlighting.enable = true;
   "oh-my-zsh" = {
     enable = true;
-    plugins = ["thefuck" "aws" "docker" "history" "z" "gh" "git"];
+    plugins = [
+      "aws"
+      "docker"
+      "history"
+      "z"
+      "gh"
+      "git"
+    ];
     # theme = "steeef";
   };
 
