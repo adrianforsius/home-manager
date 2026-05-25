@@ -26,6 +26,7 @@
   bat.enable = true;
   dircolors.enable = true;
   jq.enable = true;
+  uv.enable = true;
   less.enable = true;
   man.enable = true;
   diff-so-fancy = {
@@ -91,6 +92,7 @@
       github.copilot
       dbaeumer.vscode-eslint
       editorconfig.editorconfig
+      anthropic-claude-code
       mikestead.dotenv
       ms-python.python
       # evgeniypeshkov.syntax-highlighter

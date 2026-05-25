@@ -66,7 +66,7 @@ with pkgs;
   google-chrome
 
   gopls
-  python3
+  # python3 # use uv instead
   nodejs
 
   hugo

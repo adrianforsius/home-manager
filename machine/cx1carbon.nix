@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware/cx1carbon.nix
   ];
@@ -39,6 +40,7 @@
     hunspellDicts.es_MX
   ];
 
+  environment.localBinInPath = true;
   i18n.defaultLocale = "sv_SE.UTF-8";
 
   services.printing.enable = true; # cupsd printing
@@ -376,7 +378,7 @@
 
   networking = {
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    wireless.interfaces = ["wlan0"];
+    wireless.interfaces = [ "wlan0" ];
     wireless.iwd.enable = true;
     networkmanager = {
       enable = true;
