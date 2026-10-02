@@ -23,7 +23,6 @@
     cachix
     gnumake
     killall
-    rxvt-unicode-unwrapped
     xclip
     code-cursor
     # pulseaudio
@@ -70,13 +69,6 @@
   # '';
 
   time.timeZone = "Europe/Stockholm";
-
-  # suggest install package if cmd missing
-  programs.command-not-found = {
-    enable = true;
-    # flake nixpkgs ships no programs.sqlite; use the stateful channel database (needs a root channel)
-    dbPath = "/nix/var/nix/profiles/per-user/root/channels/nixos/programs.sqlite";
-  };
 
   # programs.ssh.startAgent = true;
   programs.dconf.enable = true;
@@ -393,11 +385,8 @@
   # };
 
   networking = {
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    wireless.interfaces = [ "wlan0" ];
-    # NetworkManager uses wpa_supplicant (networking.wireless.enable). nixpkgs now asserts that
-    # it is mutually exclusive with iwd; set networkmanager.wifi.backend = "iwd" to use iwd instead.
-    # wireless.iwd.enable = true;
+    # NetworkManager runs wpa_supplicant itself. Do not set wireless.interfaces here: it would start
+    # a separate supplicant bound to a fixed interface name, which only exists when iwd is enabled.
     networkmanager = {
       enable = true;
       # wifi.backend = "iwd";
@@ -409,7 +398,6 @@
     };
     # The global useDHCP flag is deprecated, set to false here.
     useDHCP = false;
-    interfaces.wlan0.useDHCP = true;
 
     # no longer using local dns -- tailscale settings will take
     # over automatically and make sure all dns is safe

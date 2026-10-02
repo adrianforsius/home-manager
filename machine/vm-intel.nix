@@ -96,7 +96,6 @@
     gnumake
     killall
     niv
-    rxvt-unicode-unwrapped
     xclip
   ];
 

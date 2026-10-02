@@ -22,7 +22,6 @@ with pkgs;
     cachix
     gnumake
     killall
-    rxvt-unicode-unwrapped
     xclip
     pulseaudio
     pavucontrol
@@ -52,13 +51,6 @@ with pkgs;
   # '';
 
   time.timeZone = "Europe/Berlin";
-
-  # suggest install package if cmd missing
-  programs.command-not-found = {
-    enable = true;
-    # flake nixpkgs ships no programs.sqlite; use the stateful channel database (needs a root channel)
-    dbPath = "/nix/var/nix/profiles/per-user/root/channels/nixos/programs.sqlite";
-  };
 
   # console = {
   #   font = "Lat2-Terminus16";

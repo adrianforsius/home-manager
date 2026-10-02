@@ -56,12 +56,9 @@
       overlays = [
         (_: prev: {
           # cmp-spell is now marked unfree in nixpkgs and the nixvim fork builds with a
-          # pkgs without allowUnfree, so re-evaluate it with one that allows it.
+          # pkgs without allowUnfree, so build it with the host pkgs, which allows it.
           neovim = inputs.nixvim.packages.${prev.stdenv.hostPlatform.system}.default.extend {
-            nixpkgs.pkgs = import nixpkgs {
-              inherit (prev.stdenv.hostPlatform) system;
-              config.allowUnfree = true;
-            };
+            nixpkgs.pkgs = prev;
           };
         })
       ];
