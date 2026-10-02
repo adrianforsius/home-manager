@@ -92,7 +92,7 @@
       github.copilot
       dbaeumer.vscode-eslint
       editorconfig.editorconfig
-      anthropic-claude-code
+      # anthropic-claude-code
       mikestead.dotenv
       ms-python.python
       # evgeniypeshkov.syntax-highlighter

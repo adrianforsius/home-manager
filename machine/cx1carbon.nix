@@ -24,6 +24,7 @@
     killall
     rxvt-unicode-unwrapped
     xclip
+    code-cursor
     # pulseaudio
     pavucontrol
     arandr
@@ -31,6 +32,7 @@
     i3lock-fancy
     inetutils
 
+    claude-code
     gomodifytags
 
     libreoffice-qt
@@ -48,6 +50,14 @@
     enable = true;
     nssmdns4 = true;
     openFirewall = true;
+  };
+
+  services.upower = {
+    enable = true;
+    percentageLow = 15;
+    percentageCritical = 7;
+    percentageAction = 7;
+    criticalPowerAction = "PowerOff"; # Options: "PowerOff", "Hibernate", "HybridSleep"
   };
 
   services.earlyoom.enable = true; # out of memory detection
