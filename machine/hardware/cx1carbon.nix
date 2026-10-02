@@ -4,7 +4,8 @@
   modulesPath,
   # pkgs,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -35,7 +36,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/91e9c056-7811-4c58-a5b2-f948c59fa918";}
+    { device = "/dev/disk/by-uuid/91e9c056-7811-4c58-a5b2-f948c59fa918"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -45,14 +46,6 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s26f7u3.useDHCP = lib.mkDefault true;
-  networking.wireless.networks.norrberget8 = {
-    auth = ''
-      key_mgmt=WPA-PSK
-      eap=PEAP
-      identity="carbon-home"
-      password="@HOME_PASSWORD@"
-    '';
-  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

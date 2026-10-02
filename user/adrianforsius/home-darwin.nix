@@ -1,5 +1,6 @@
-{pkgs, ...}:
-with pkgs; {
+{ pkgs, ... }:
+with pkgs;
+{
   # for non-darwin/nixos
 
   programs.alacritty = {
@@ -36,6 +37,5 @@ with pkgs; {
     xquartz
     rectangle
     iterm2
-    virtualbox
   ];
 }

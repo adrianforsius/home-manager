@@ -33,14 +33,11 @@ with pkgs;
   trash-cli
   duf
   neofetch
-  haskellPackages.kmonad
-  gxkb
   sqlite
   graphviz
   sqlitebrowser
   typescript
   # spotify
-  rquickshare
 
   poppler-utils
   neovim
@@ -55,9 +52,6 @@ with pkgs;
   htmlq
   unzip
   imagemagick
-  xfce.thunar
-  qpdfview
-  vlc
   feh
   slack
   # franz
@@ -85,4 +79,15 @@ with pkgs;
   # (pkgs.writeShellScriptBin "reload" ''
   #   nix run home-manager/master -- switch
   # '')
+]
+++ lib.optionals stdenv.hostPlatform.isLinux [
+  haskellPackages.kmonad
+  gxkb
+  rquickshare
+  xfce.thunar
+  qpdfview
+  vlc
+]
+++ lib.optionals stdenv.hostPlatform.isDarwin [
+  vlc-bin
 ]

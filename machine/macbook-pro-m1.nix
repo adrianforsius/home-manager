@@ -7,16 +7,6 @@
       keep-outputs = true
       keep-derivations = true
     '';
-
-    # public binary cache that I use for all my derivations. You can keep
-    # this, use your own, or toss it. Its typically safe to use a binary cache
-    # since the data inside is checksummed.
-    settings = {
-      substituters = [
-        "https://adrianforsius-nixos-config.cachix.org"
-      ]; # TODO: Setup cachix
-      trusted-public-keys = [ "XXX" ];
-    };
   };
 
   environment.systemPackages = with pkgs; [ cachix ];
@@ -145,7 +135,7 @@
       PMPrintingExpandedStateForPrint2 = true;
     };
     CustomSystemPreferences = {
-      "com.apple.loginwindow" = {
+      "/Library/Preferences/com.apple.loginwindow" = {
         ShowInputMenu = true;
         AdminHostInfo = "HostName";
       };

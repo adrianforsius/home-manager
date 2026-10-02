@@ -76,7 +76,7 @@
 
   vscode = {
     enable = true;
-    package = pkgs.vscode.fhs;
+    package = if pkgs.stdenv.hostPlatform.isLinux then pkgs.vscode.fhs else pkgs.vscode;
     mutableExtensionsDir = true; # to allow vscode to install extensions not available via nix
     # VSCode already has sync in the cloud
     # TODO: Replicate sync settings, for now its just easier to sync
