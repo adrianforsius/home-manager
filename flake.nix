@@ -29,9 +29,7 @@
     nix-ld.url = "github:Mic92/nix-ld";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     sops-nix = {
-      # pinned to the last revision that builds with Go 1.25, the newest Go in our nixpkgs.
-      # Later revisions need Go 1.26: unpin together with a nixpkgs update.
-      url = "github:Mic92/sops-nix/49087bdf94a25b835cf479e2a1c22293eabcdc2d";
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

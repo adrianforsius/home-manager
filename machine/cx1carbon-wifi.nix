@@ -1,15 +1,9 @@
 {
   config,
-  inputs,
-  pkgs,
   ...
 }:
 {
   sops = {
-    # sops-nix computes vendorHash against its own nixpkgs, which differs from ours
-    package =
-      inputs.sops-nix.packages.${pkgs.stdenv.hostPlatform.system}.sops-install-secrets.override
-        { vendorHash = "sha256-SXOd+0yh0DQr3uLVQBdw07J9j5HNuFJSOajDul1B1qo="; };
     defaultSopsFile = ../secrets/wifi.yaml;
     # root-owned copy of the age key, see secrets/README.md
     age.keyFile = "/var/lib/sops-nix/key.txt";
