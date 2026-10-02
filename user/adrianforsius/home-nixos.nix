@@ -97,6 +97,11 @@ with pkgs; {
 
   xsession = import ./home/xsession.nix {inherit config lib;};
 
+  # rofi is only installed as a package (programs.rofi is not enabled), so stylix's rofi theming
+  # applies to nothing, and its module still sets the renamed programs.rofi.font and warns.
+  # Remove once stylix updates that module.
+  stylix.targets.rofi.enable = false;
+
   services.network-manager-applet.enable = true;
   # services.polybar = rec {
   #   enable = true;
