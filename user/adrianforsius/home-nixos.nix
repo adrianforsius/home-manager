@@ -29,7 +29,7 @@ with pkgs; {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*".addKeysToAgent = "yes";
+    settings."*".AddKeysToAgent = "yes";
     extraConfig = ''IdentityFile ~/.ssh/id_ed25519'';
   };
 
@@ -74,7 +74,7 @@ with pkgs; {
 
   home.packages = [
     teams-for-linux
-    wasistlos
+    karere # replaces wasistlos, removed from nixpkgs (archived upstream)
     xclip
     xsel
     pacman

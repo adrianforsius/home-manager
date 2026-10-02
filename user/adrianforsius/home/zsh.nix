@@ -5,6 +5,8 @@
 }:
 {
   enable = true;
+  # keep the legacy location (home directory), see the home-manager 26.05 default change
+  dotDir = config.home.homeDirectory;
   shellAliases = import ./aliases.nix { inherit pkgs config; };
   autosuggestion.enable = true;
   enableCompletion = true;

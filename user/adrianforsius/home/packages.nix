@@ -32,7 +32,7 @@ with pkgs;
   dust
   trash-cli
   duf
-  neofetch
+  fastfetch # replaces neofetch, removed from nixpkgs
   sqlite
   graphviz
   sqlitebrowser
@@ -85,7 +85,7 @@ with pkgs;
   haskellPackages.kmonad
   gxkb
   rquickshare
-  xfce.thunar
+  thunar
   qpdfview
   vlc
 ]

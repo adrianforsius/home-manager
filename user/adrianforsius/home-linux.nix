@@ -6,7 +6,7 @@
 with pkgs; {
   home.packages = [
     teams-for-linux
-    wasistlos
+    karere # replaces wasistlos, removed from nixpkgs (archived upstream)
     xclip
     xsel
     # xfce.xfce4-terminal # TODO: fix when installed from nix icons gets messed up
