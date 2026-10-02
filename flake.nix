@@ -55,13 +55,7 @@
         })
       ];
       forEachSupportedSystem =
-        f:
-        nixpkgs.lib.genAttrs defaultSystems (
-          system:
-          f {
-            pkgs = import nixpkgs { inherit system; };
-          }
-        );
+        f: nixpkgs.lib.genAttrs defaultSystems (system: f { pkgs = import nixpkgs { inherit system; }; });
       mkSystem = import ./lib/mksystem.nix { inherit overlays nixpkgs inputs; };
     in
     {
@@ -118,7 +112,10 @@
             name = "adrianforsius";
             home = "/home/adrianforsius";
           };
-          modules = [ inputs.home-manager.nixosModules.home-manager ];
+          modules = [
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+          ];
         };
       };
 
@@ -152,9 +149,8 @@
             home = "/Users/adrianforsius";
           };
           modules = [
-            inputs.home-manager.nixosModules.home-manager
+            inputs.home-manager.darwinModules.home-manager
             inputs.stylix.darwinModules.stylix
-            inputs.nix-ld.nixosModules.nix-ld
           ];
         };
       };
@@ -178,7 +174,10 @@
         {
           default =
             let
-              inherit (self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check) shellHook enabledPackages;
+              inherit (self.checks.${pkgs.stdenv.hostPlatform.system}.pre-commit-check)
+                shellHook
+                enabledPackages
+                ;
             in
             pkgs.mkShellNoCC {
               inherit shellHook;

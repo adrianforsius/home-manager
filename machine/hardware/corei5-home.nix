@@ -6,15 +6,27 @@
   config,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = ["uhci_hcd" "ehci_pci" "ata_piix" "ahci" "pata_jmicron" "firewire_ohci" "usbhid" "usb_storage" "floppy" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "uhci_hcd"
+    "ehci_pci"
+    "ata_piix"
+    "ahci"
+    "pata_jmicron"
+    "firewire_ohci"
+    "usbhid"
+    "usb_storage"
+    "floppy"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
+  boot.extraModulePackages = [ ];
 
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
@@ -31,7 +43,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/d869705f-dbc0-42f1-831d-682d8f4897e1";}
+    { device = "/dev/disk/by-uuid/d869705f-dbc0-42f1-831d-682d8f4897e1"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -41,20 +53,19 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s26f7u3.useDHCP = lib.mkDefault true;
-  networking.wireless.environmentFile = "/run/secrets/wireless.env";
+  networking.wireless.secretsFile = "/run/secrets/wireless.env";
   networking.wireless.networks.norrberget8-dark-knight-2 = {
     auth = ''
       key_mgmt=WPA-PSK
       eap=PEAP
       identity="quad-home"
-      password="@HOME_PASSWORD@"
+      password=ext:HOME_PASSWORD
     '';
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-  hardware.opengl.enable = true;
-  sound.enable = true;
+  hardware.graphics.enable = true;
   security.rtkit.enable = true; # bring in audio
 }

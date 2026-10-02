@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   nix = {
     # We need to enable flakes
     extraOptions = ''
@@ -11,14 +12,21 @@
     # this, use your own, or toss it. Its typically safe to use a binary cache
     # since the data inside is checksummed.
     settings = {
-      substituters = ["https://adrianforsius-nixos-config.cachix.org"]; # TODO: Setup cachix
-      trusted-public-keys = ["XXX"];
+      substituters = [
+        "https://adrianforsius-nixos-config.cachix.org"
+      ]; # TODO: Setup cachix
+      trusted-public-keys = [ "XXX" ];
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    cachix
-  ];
+  environment.systemPackages = with pkgs; [ cachix ];
+
+  system.primaryUser = "adrianforsius";
+
+  networking.applicationFirewall = {
+    enable = true;
+    enableStealthMode = true;
+  };
 
   system.defaults = {
     #
@@ -30,8 +38,6 @@
     };
     # login window settings
     loginwindow = {
-      ShowInputMenu = true;
-      AdminHostInfo = "HostName";
       # disable guest account
       GuestEnabled = false;
       # show name instead of username
@@ -63,14 +69,6 @@
       TrackpadThreeFingerDrag = true;
     };
 
-    # firewall settings
-    alf = {
-      # 0 = disabled 1 = enabled 2 = blocks all connections except for essential services
-      globalstate = 1;
-      loggingenabled = 0;
-      stealthenabled = 1;
-    };
-
     spaces.spans-displays = false; # separate spaces on each display
 
     # dock settings
@@ -100,9 +98,7 @@
     # };
 
     NSGlobalDomain = {
-      AppleHighlightColor = "0.764700 0.976500 0.568600";
       NSDisableAutomaticTermination = true;
-      NSQuitAlwaysKeepsWindows = false;
       NSTextShowsControlCharacters = true;
       NSTableViewDefaultSizeMode = 2;
       NSUseAnimatedFocusRing = false;
@@ -144,13 +140,20 @@
       NSNavPanelExpandedStateForSaveMode2 = true;
       NSDocumentSaveNewDocumentsToCloud = false;
       # speed up animation on open/save boxes (default:0.2)
-      NSWindowResizeTime = 0.001;
+      NSWindowResizeTime = 1.0e-3;
       PMPrintingExpandedStateForPrint = true;
       PMPrintingExpandedStateForPrint2 = true;
     };
-    CustomSystemPreferences = {};
+    CustomSystemPreferences = {
+      "com.apple.loginwindow" = {
+        ShowInputMenu = true;
+        AdminHostInfo = "HostName";
+      };
+    };
     CustomUserPreferences = {
       NSGlobalDomain = {
+        AppleHighlightColor = "0.764700 0.976500 0.568600";
+        NSQuitAlwaysKeepsWindows = false;
         # Add a context menu item for showing the Web Inspector in web views
         WebKitDeveloperExtras = true;
       };
@@ -231,7 +234,7 @@
       # Turn on app auto-update
       "com.apple.commerce".AutoUpdate = true;
       "mo.com.sleeplessmind.Wooshy" = {
-        "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":768,\"carbonKeyCode\":49}";
+        "KeyboardShortcuts_toggleWith" = ''{"carbonModifiers":768,"carbonKeyCode":49}'';
         SUEnableAutomaticChecks = 0;
         SUUpdateGroupIdentifier = 3425398139;
         allowCyclingThroughTargets = 1;
@@ -244,15 +247,15 @@
         searchIncludesTrafficLightButtons = 1;
       };
       "mo.com.sleeplessmind.kindaVim" = {
-        "KeyboardShortcuts_enterNormalMode" = "{\"carbonModifiers\":4096,\"carbonKeyCode\":53}";
+        "KeyboardShortcuts_enterNormalMode" = ''{"carbonModifiers":4096,"carbonKeyCode":53}'';
         "NSStatusItem Preferred Position Item-0" = 6009;
         SUEnableAutomaticChecks = 0;
         SUUpdateGroupIdentifier = 790660886;
-        appsForWhichToEnforceElectron = "[\"com.superhuman.electron\"]";
-        appsForWhichToEnforceKeyboardStrategy = "[\"mo.com.sleeplessmind.Wooshy\"]";
-        appsForWhichToUseHybridMode = "[\"com.apple.Safari\"]";
-        appsToAdviseFor = "[\"com.apple.mail\"]";
-        appsToIgnore = "[\"io.alacritty\",\"com.microsoft.VSCode\",\"org.qt-project.Qt.QtWebEngineCore\"]";
+        appsForWhichToEnforceElectron = ''["com.superhuman.electron"]'';
+        appsForWhichToEnforceKeyboardStrategy = ''["mo.com.sleeplessmind.Wooshy"]'';
+        appsForWhichToUseHybridMode = ''["com.apple.Safari"]'';
+        appsToAdviseFor = ''["com.apple.mail"]'';
+        appsToIgnore = ''["io.alacritty","com.microsoft.VSCode","org.qt-project.Qt.QtWebEngineCore"]'';
         charactersWindowContent = "move";
         "com_apple_SwiftUI_Settings_selectedTabIndex" = 0;
         enableCommandPassthrough = 1;
@@ -263,7 +266,7 @@
         showCharactersWindow = 0;
       };
       "mo.com.sleeplessmind.Scrolla" = {
-        "KeyboardShortcuts_toggleWith" = "{\"carbonModifiers\":4352,\"carbonKeyCode\":49}";
+        "KeyboardShortcuts_toggleWith" = ''{"carbonModifiers":4352,"carbonKeyCode":49}'';
         "NSStatusItem Preferred Position Item-0" = 6276;
         SUEnableAutomaticChecks = 0;
         SUUpdateGroupIdentifier = 3756402529;

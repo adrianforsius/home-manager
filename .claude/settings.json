@@ -9,8 +9,9 @@
       "Bash(nix flake show:*)",
       "Bash(nix eval:*)",
       "Bash(nix search:*)",
-      "Bash(nix build:* --dry-run)",
-      "Bash(statix check:*)"
+      "Bash(nix build * --dry-run)",
+      "Bash(statix check:*)",
+      "Bash(nixfmt --check:*)"
     ],
     "deny": [
       "Bash(nixos-rebuild switch:*)",

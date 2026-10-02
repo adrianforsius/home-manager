@@ -1,4 +1,6 @@
-with pkgs; {
+{ pkgs, ... }:
+with pkgs;
+{
   imports = [
     ./hardware/corei5-home.nix
   ];
@@ -77,18 +79,13 @@ with pkgs; {
     packages = [
       powerline-fonts
       source-code-pro
-      (nerdfonts.override {
-        # holy hell it can take a long time to install everything; strip down
-        fonts = [
-          "JetBrainsMono"
-          "NerdFontsSymbolsOnly" # for some apps, you can use this and then any unpatched font
-        ];
-      })
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only # for some apps, you can use this and then any unpatched font
       vegur
       noto-fonts
     ];
     fontconfig.defaultFonts = {
-      serif = ["Noto Serif"];
+      serif = [ "Noto Serif" ];
     };
   };
 

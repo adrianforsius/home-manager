@@ -2,15 +2,19 @@ PROFILE ?= ${PROFILE}
 
 .PHONY: switch
 switch:
-	nix run home-manager/release-23.11 -- switch --flake .#"${PROFILE}"
+	nix run home-manager/master -- switch --flake .#"${PROFILE}"
 
 .PHONY: build
 build:
-	nix run home-manager/release-23.11 -- build --flake .#"${PROFILE}"
+	nix run home-manager/master -- build --flake .#"${PROFILE}"
+
+.PHONY: check
+check:
+	nix flake check
 
 .PHONY: fmt
 fmt:
-	find . -name "*.nix" | xargs nix develop --command alejandra
+	find . -name "*.nix" | xargs nix develop --command nixfmt
 
 .PHONY: build-nix
 build-nix:
@@ -18,7 +22,7 @@ build-nix:
 
 
 .PHONY: bootstrap
-bootrap:
+bootstrap:
 	./bootstrap.sh
 
 

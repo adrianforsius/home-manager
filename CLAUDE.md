@@ -24,7 +24,7 @@ packages and options belong in `home-linux.nix` / `home-nixos.nix`.
 
 - **Never run `switch`, `nixos-rebuild switch`, `darwin-rebuild switch` or `make switch`/`build-nix`.** Only build,
   eval and check. The user applies changes themselves.
-- Format with `nixfmt` (the pre-commit hook). The Makefile `fmt` target mentions alejandra and is stale.
+- Format with `nixfmt` (the pre-commit hook); `make fmt` runs it.
 - `nix flake check` runs the formatting hook; `statix` and `nixd` are available in `nix develop`.
 - Flake inputs follow `nixpkgs` (nixos-unstable). The `nixvim` input is the user's own fork `adrianforsius/flake-vim`.
 - Do not commit unrelated working-tree changes; stage files explicitly.
@@ -34,7 +34,7 @@ packages and options belong in `home-linux.nix` / `home-nixos.nix`.
 ```
 nix flake check
 nix build .#nixosConfigurations.<host>.config.system.build.toplevel --dry-run
-nix build .#darwinConfigurations.macbook-pro-m1.system --dry-run   # Darwin; may not be buildable on Linux
+nix eval --raw .#darwinConfigurations.macbook-pro-m1.system.drvPath   # Darwin evaluates on Linux but cannot be built here
 nix build .#homeConfigurations."adrianforsius@adrian".activationPackage --dry-run
 ```
 
