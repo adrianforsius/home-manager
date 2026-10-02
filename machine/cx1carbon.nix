@@ -2,6 +2,7 @@
 {
   imports = [
     ./hardware/cx1carbon.nix
+    ./cx1carbon-wifi.nix
   ];
   environment.systemPackages = with pkgs; [
     git

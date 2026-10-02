@@ -28,6 +28,9 @@ packages and options belong in `home-linux.nix` / `home-nixos.nix`.
 - `nix flake check` runs the formatting hook; `statix` and `nixd` are available in `nix develop`.
 - Flake inputs follow `nixpkgs` (nixos-unstable). The `nixvim` input is the user's own fork `adrianforsius/flake-vim`.
 - Do not commit unrelated working-tree changes; stage files explicitly.
+- Secrets use sops-nix (age) and live encrypted in `secrets/`; see `secrets/README.md`. Never write secret values into
+  `.nix` files, commands or chat, and never read `~/.config/sops/age/keys.txt`. New files must be `git add`ed before
+  flake evaluation can see them.
 
 ## Verifying changes
 

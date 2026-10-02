@@ -28,6 +28,10 @@
     };
     nix-ld.url = "github:Mic92/nix-ld";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # git hooks used for the devShell
     git-hooks.url = "github:cachix/git-hooks.nix";
@@ -98,6 +102,7 @@
             inputs.stylix.nixosModules.stylix
             inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-7th-gen
             inputs.nix-ld.nixosModules.nix-ld
+            inputs.sops-nix.nixosModules.sops
           ];
         };
       };
