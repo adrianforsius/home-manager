@@ -54,7 +54,11 @@ with pkgs;
   time.timeZone = "Europe/Berlin";
 
   # suggest install package if cmd missing
-  programs.command-not-found.enable = true;
+  programs.command-not-found = {
+    enable = true;
+    # flake nixpkgs ships no programs.sqlite; use the stateful channel database (needs a root channel)
+    dbPath = "/nix/var/nix/profiles/per-user/root/channels/nixos/programs.sqlite";
+  };
 
   # console = {
   #   font = "Lat2-Terminus16";
@@ -64,7 +68,8 @@ with pkgs;
   # programs.ssh.startAgent = true;
   programs.dconf.enable = true;
   # Used to adjust the brightness of the screen
-  programs.light.enable = true;
+  # programs.light was removed from nixpkgs; acpilight provides xbacklight and the udev rules
+  hardware.acpilight.enable = true;
   # clight requires a latitude and longitude
   # location.latitude = 38.0;
   # location.longitude = -105.0;
@@ -110,12 +115,12 @@ with pkgs;
       xkb.layout = "us,se,es";
       displayManager = {
         sessionCommands = ''
-          ${pkgs.xorg.xset}/bin/xset r rate 310 51
+          ${pkgs.xset}/bin/xset r rate 310 51
 
           # display power management signaling: timeout for screen
-          ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+          ${pkgs.xset}/bin/xset dpms 0 0 0
           # disable screen saver with these two options no more sleep
-          ${pkgs.xorg.xset}/bin/xset s off
+          ${pkgs.xset}/bin/xset s off
         '';
       };
       desktopManager = {

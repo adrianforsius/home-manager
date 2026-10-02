@@ -72,12 +72,17 @@
   time.timeZone = "Europe/Stockholm";
 
   # suggest install package if cmd missing
-  programs.command-not-found.enable = true;
+  programs.command-not-found = {
+    enable = true;
+    # flake nixpkgs ships no programs.sqlite; use the stateful channel database (needs a root channel)
+    dbPath = "/nix/var/nix/profiles/per-user/root/channels/nixos/programs.sqlite";
+  };
 
   # programs.ssh.startAgent = true;
   programs.dconf.enable = true;
   # Used to adjust the brightness of the screen
-  programs.light.enable = true;
+  # programs.light was removed from nixpkgs; acpilight provides xbacklight and the udev rules
+  hardware.acpilight.enable = true;
   # clight requires a latitude and longitude
   # location.latitude = 38.0;
   # location.longitude = -105.0;
@@ -258,14 +263,14 @@
           ${pkgs.autorandr}/bin/autorandr -c
           ${pkgs.feh}/bin/feh --bg-fill ~/.wallpaper.jpg
 
-          ${pkgs.xorg.setxkbmap}/bin/setxkbmap -option compose:ralt
-          ${pkgs.xorg.xset}/bin/xset r rate 310 51
+          ${pkgs.setxkbmap}/bin/setxkbmap -option compose:ralt
+          ${pkgs.xset}/bin/xset r rate 310 51
 
           # display power management signaling: timeout for screen
-          # ${pkgs.xorg.xset}/bin/xset dpms 0 0 0
+          # ${pkgs.xset}/bin/xset dpms 0 0 0
 
           # disable screen saver with these two options no more sleep
-          # ${pkgs.xorg.xset}/bin/xset s off
+          # ${pkgs.xset}/bin/xset s off
         '';
       };
       desktopManager = {
@@ -390,7 +395,9 @@
   networking = {
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     wireless.interfaces = [ "wlan0" ];
-    wireless.iwd.enable = true;
+    # NetworkManager uses wpa_supplicant (networking.wireless.enable). nixpkgs now asserts that
+    # it is mutually exclusive with iwd; set networkmanager.wifi.backend = "iwd" to use iwd instead.
+    # wireless.iwd.enable = true;
     networkmanager = {
       enable = true;
       # wifi.backend = "iwd";
