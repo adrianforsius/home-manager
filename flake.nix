@@ -28,8 +28,12 @@
     };
     nix-ld.url = "github:Mic92/nix-ld";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    # no nixpkgs follows: its Go package needs a newer Go than our nixpkgs has, so it builds with its own
-    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix = {
+      # pinned to the last revision that builds with Go 1.25, the newest Go in our nixpkgs.
+      # Later revisions need Go 1.26: unpin together with a nixpkgs update.
+      url = "github:Mic92/sops-nix/49087bdf94a25b835cf479e2a1c22293eabcdc2d";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # git hooks used for the devShell
     git-hooks.url = "github:cachix/git-hooks.nix";
