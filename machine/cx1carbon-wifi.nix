@@ -1,6 +1,13 @@
-{ config, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   sops = {
+    # built by sops-nix with its own nixpkgs: the default builds with ours, which has an older Go
+    package = inputs.sops-nix.packages.${pkgs.stdenv.hostPlatform.system}.sops-install-secrets;
     defaultSopsFile = ../secrets/wifi.yaml;
     # root-owned copy of the age key, see secrets/README.md
     age.keyFile = "/var/lib/sops-nix/key.txt";

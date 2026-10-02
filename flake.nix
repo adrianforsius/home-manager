@@ -28,10 +28,8 @@
     };
     nix-ld.url = "github:Mic92/nix-ld";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # no nixpkgs follows: its Go package needs a newer Go than our nixpkgs has, so it builds with its own
+    sops-nix.url = "github:Mic92/sops-nix";
 
     # git hooks used for the devShell
     git-hooks.url = "github:cachix/git-hooks.nix";
