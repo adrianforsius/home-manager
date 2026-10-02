@@ -58,6 +58,7 @@ with pkgs;
   docker
   tailscale
   google-chrome
+  bitwarden-desktop
 
   gopls
   # python3 # use uv instead
