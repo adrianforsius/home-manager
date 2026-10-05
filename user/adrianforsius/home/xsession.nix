@@ -31,7 +31,12 @@ in
         { command = "slack"; }
         # {command = "code";}
         # {command = "nvim";}
-        { command = "google-chrome-stable --disable-session-crashed-bubble"; }
+        {
+          command = "google-chrome-stable --profile-directory=Default --class=chrome-gmail --disable-session-crashed-bubble";
+        }
+        {
+          command = "google-chrome-stable --user-data-dir=$HOME/.config/google-chrome-work --profile-directory=Default --class=chrome-work --disable-session-crashed-bubble";
+        }
       ];
 
       fonts = {
@@ -65,7 +70,10 @@ in
           # {class = "^nvim$";}
           # {class = "^google\-chrome\-stable$";}
           # {class = "^Google\ Chrome$";}
-          { class = "chrome"; }
+          { class = "^chrome-gmail$"; }
+        ];
+        "4: work" = [
+          { class = "^chrome-work$"; }
         ];
         "3: slack" = [
           { class = "^[Ss]lack$"; }
