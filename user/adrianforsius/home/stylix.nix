@@ -2,7 +2,7 @@
   enable = true;
   autoEnable = true;
   polarity = "dark";
-  image = ./asset/wallpaper-nix-blue.png;
+  image = import ./wallpaper.nix { inherit pkgs; };
   base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
   fonts = {
     serif = {
