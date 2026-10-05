@@ -299,6 +299,10 @@
     };
   };
 
+  # i3lock-fancy's wrapped script uses `#!/usr/bin/env bash`, and the user unit's PATH has no bash,
+  # so the locker silently died when xautolock (hot corner / idle timeout) ran it.
+  systemd.user.services.xautolock.path = [ pkgs.bash ];
+
   services.kmonad = {
     enable = true;
     keyboards = {
