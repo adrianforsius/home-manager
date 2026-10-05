@@ -106,6 +106,13 @@
   #   };
   # };
 
+  # Always restore the previous session; Chrome reads this policy from /etc/opt/chrome
+  # (programs.chromium only writes the policy files, it does not install chromium)
+  programs.chromium = {
+    enable = true;
+    extraOpts.RestoreOnStartup = 1;
+  };
+
   # needed here instead of home-manager so we can run as a user and not root
   programs.wireshark.enable = true;
 

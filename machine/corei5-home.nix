@@ -59,6 +59,13 @@ with pkgs;
 
   # programs.ssh.startAgent = true;
   programs.dconf.enable = true;
+
+  # Always restore the previous session; Chrome reads this policy from /etc/opt/chrome
+  # (programs.chromium only writes the policy files, it does not install chromium)
+  programs.chromium = {
+    enable = true;
+    extraOpts.RestoreOnStartup = 1;
+  };
   # Used to adjust the brightness of the screen
   # programs.light was removed from nixpkgs; acpilight provides xbacklight and the udev rules
   hardware.acpilight.enable = true;

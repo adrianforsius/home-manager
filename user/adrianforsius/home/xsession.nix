@@ -11,6 +11,11 @@ in
     config = {
       startup = [
         {
+          # i3 starts on a bare "1"; move to the named workspace so the assigned kitty window lands where we are
+          command = "i3-msg 'workspace \"1: term\"'";
+          notification = false;
+        }
+        {
           command = "feh --bg-fill ~/.wallpaper.jpg";
           always = true;
           notification = true;
@@ -26,7 +31,7 @@ in
         { command = "slack"; }
         # {command = "code";}
         # {command = "nvim";}
-        { command = "google-chrome-stable"; }
+        { command = "google-chrome-stable --disable-session-crashed-bubble"; }
       ];
 
       fonts = {
@@ -63,7 +68,10 @@ in
           { class = "chrome"; }
         ];
         "3: slack" = [
-          { class = "^Slack$"; }
+          { class = "^[Ss]lack$"; }
+        ];
+        "5: code" = [
+          { class = "^[Cc]ode$"; }
         ];
       };
 
