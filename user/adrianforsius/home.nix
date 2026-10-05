@@ -4,7 +4,8 @@
   lib,
   specialArgs,
   ...
-}: {
+}:
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   # home.username = "adrianforsius";
@@ -26,8 +27,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  home.packages = import ./home/packages.nix {inherit pkgs config;};
-  editorconfig = import ./editorconfig.nix {};
+  home.packages = import ./home/packages.nix { inherit pkgs config; };
+  editorconfig = import ./editorconfig.nix { };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through "home.file".
@@ -128,7 +129,7 @@
     "$HOME/sdk/go1.21.1/bin"
   ];
 
-  programs = import ./home/programs.nix {inherit pkgs config lib;};
+  programs = import ./home/programs.nix { inherit pkgs config lib; };
 
   services.gpg-agent = {
     enable = true;
@@ -146,7 +147,7 @@
 
   fonts.fontconfig.enable = true;
 
-  home.language = import ./home/language.nix {};
+  home.language = import ./home/language.nix { };
 
   xresources.extraConfig = builtins.readFile ./home/config/Xresources;
 }

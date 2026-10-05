@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   enable = true;
 
   plugins = with pkgs.vimPlugins; [
@@ -18,8 +18,6 @@
     # gruvbox
   ];
 
-  extraConfig = ''
-  '';
-  extraLuaConfig = ''
-  '';
+  extraConfig = "";
+  extraLuaConfig = "";
 }

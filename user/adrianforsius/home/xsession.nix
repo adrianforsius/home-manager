@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   modifier = config.xsession.windowManager.i3.config.modifier;
-in {
+in
+{
   enable = true;
 
   # TODO: move more i3 config from file to here
@@ -20,15 +22,15 @@ in {
         {
           command = "blueman-applet";
         }
-        {command = "kitty";}
-        {command = "slack";}
+        { command = "kitty"; }
+        { command = "slack"; }
         # {command = "code";}
         # {command = "nvim";}
-        {command = "google-chrome-stable";}
+        { command = "google-chrome-stable"; }
       ];
 
       fonts = {
-        names = ["monospace"];
+        names = [ "monospace" ];
         style = "Bold";
         # size = lib.mkForce 11.0;
       };
@@ -42,7 +44,7 @@ in {
           workspaceNumbers = true;
 
           fonts = {
-            names = ["monospace"];
+            names = [ "monospace" ];
             style = "Bold";
             size = 14.0;
           };
@@ -51,17 +53,17 @@ in {
 
       assigns = {
         "1: term" = [
-          {class = "^kitty$";}
+          { class = "^kitty$"; }
         ];
         "2: web" = [
           # {class = "^code$";}
           # {class = "^nvim$";}
           # {class = "^google\-chrome\-stable$";}
           # {class = "^Google\ Chrome$";}
-          {class = "chrome";}
+          { class = "chrome"; }
         ];
         "3: slack" = [
-          {class = "^Slack$";}
+          { class = "^Slack$"; }
         ];
       };
 
@@ -115,7 +117,8 @@ in {
         "${modifier}+Shift+x" = "exec maim -s | xclip -selection clipboard -t image/png";
 
         # screenshot active window to clipboard
-        "${modifier}+Shift+z" = "exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png";
+        "${modifier}+Shift+z" =
+          "exec maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png";
 
         # volume
         # "${modifier}+comma" = "exec amixer set Master -q 5%-";

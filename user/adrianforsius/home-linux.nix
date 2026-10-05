@@ -3,7 +3,8 @@
   lib,
   ...
 }:
-with pkgs; {
+with pkgs;
+{
   home.packages = [
     teams-for-linux
     karere # replaces wasistlos, removed from nixpkgs (archived upstream)
@@ -28,7 +29,7 @@ with pkgs; {
         Unit = "kmonad-poker4.path";
       };
       Install = {
-        WantedBy = ["default.target"];
+        WantedBy = [ "default.target" ];
       };
     };
   };
@@ -46,14 +47,14 @@ with pkgs; {
       };
       Install = {
         DefaultInstance = "config";
-        WantedBy = ["default.target"];
+        WantedBy = [ "default.target" ];
       };
     };
   };
 
-  gtk = import ./home/gtk.nix {inherit pkgs lib;};
+  gtk = import ./home/gtk.nix { inherit pkgs lib; };
 
-  xdg = import ./home/xdg.nix {inherit pkgs;};
+  xdg = import ./home/xdg.nix { inherit pkgs; };
 
   targets.genericLinux.enable = true;
 }

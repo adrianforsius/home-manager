@@ -2,7 +2,8 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   enable = true;
   extraConfig = ''
     " Filetype indent with plugin possibility load after vundle to avoid errors
@@ -173,8 +174,8 @@
   settings = {
     # mouse = "a";
     background = "dark";
-    backupdir = ["${config.home.homeDirectory}/.vim/backups"];
-    directory = ["${config.home.homeDirectory}/.vim/swaps"];
+    backupdir = [ "${config.home.homeDirectory}/.vim/backups" ];
+    directory = [ "${config.home.homeDirectory}/.vim/swaps" ];
     expandtab = true;
     hidden = true;
     history = 10000;
@@ -184,7 +185,7 @@
     relativenumber = true;
     shiftwidth = 4;
     tabstop = 2;
-    undodir = ["${config.home.homeDirectory}/.vim/undo"];
+    undodir = [ "${config.home.homeDirectory}/.vim/undo" ];
     undofile = true;
   };
 }

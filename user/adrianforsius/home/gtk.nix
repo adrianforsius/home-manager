@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   # enable = true;
   # iconTheme = {
   #   name = "gruvbox-dark-icons-gtk";

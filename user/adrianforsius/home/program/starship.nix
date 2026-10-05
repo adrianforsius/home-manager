@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   enable = true;
   enableZshIntegration = true;
   settings = {

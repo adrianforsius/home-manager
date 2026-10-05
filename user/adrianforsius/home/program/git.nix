@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   enable = true;
   # signing.gpgPath = "/usr/local/bin/gpg";
 

@@ -1,8 +1,10 @@
-{...}: let
+{ ... }:
+let
   enLocale = "en_US.UTF-8";
   # seLocale = "sv_SE.UTF-8";
   # esLocale = "es_ES.UTF-8";
-in {
+in
+{
   base = "${enLocale}";
   ctype = "${enLocale}";
   numeric = "${enLocale}";

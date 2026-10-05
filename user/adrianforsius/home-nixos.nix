@@ -3,7 +3,8 @@
   config,
   ...
 }:
-with pkgs; {
+with pkgs;
+{
   # TODO: Enable for darwin/NixOS I don't want to deal with nixGl wrapping
   # for non-darwin/nixos
   # programs.alacritty = {
@@ -30,7 +31,7 @@ with pkgs; {
     enable = true;
     enableDefaultConfig = false;
     settings."*".AddKeysToAgent = "yes";
-    extraConfig = ''IdentityFile ~/.ssh/id_ed25519'';
+    extraConfig = "IdentityFile ~/.ssh/id_ed25519";
   };
 
   programs.i3status = {
@@ -91,11 +92,11 @@ with pkgs; {
     open = "xdg-open";
   };
 
-  gtk = import ./home/gtk.nix {inherit pkgs lib;};
+  gtk = import ./home/gtk.nix { inherit pkgs lib; };
 
-  xdg = import ./home/xdg.nix {inherit pkgs;};
+  xdg = import ./home/xdg.nix { inherit pkgs; };
 
-  xsession = import ./home/xsession.nix {inherit config lib;};
+  xsession = import ./home/xsession.nix { inherit config lib; };
 
   # rofi is only installed as a package (programs.rofi is not enabled), so stylix's rofi theming
   # applies to nothing, and its module still sets the renamed programs.rofi.font and warns.
